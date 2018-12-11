@@ -1,0 +1,112 @@
+[
+    {
+        "username": "Buyer_1",
+        "first name": "John",
+        "last name": "Doe",
+        "email": "johndoe@example.com",
+        "password": "john123",
+        "age": "24",
+        "birthday": "10.05.1994",
+        "balance": "800$",
+        "id": 1
+    },
+    {
+        "username": "Buyer_2",
+        "first name": "James",
+        "last name": "Smith",
+        "email": "anton@example.com",
+        "password": "anton123",
+        "age": "22",
+        "birthday": "02.09.1996",
+        "balance": "5000$",
+        "id": 2
+    },
+    {
+        "username": "Buyer_3",
+        "first name": "Robert",
+        "last name": "Ramirez",
+        "email": "anton@example.com",
+        "password": "anton123",
+        "age": "30",
+        "birthday": "05.171988",
+        "balance": "2500$",
+        "id": 3
+    },
+    {
+        "username": "Buyer_4",
+        "first name": "Keith",
+        "last name": "Taylor",
+        "email": "keith@example.com",
+        "password": "keith123",
+        "age": "20",
+        "birthday": "10.05.1998",
+        "balance": "4200$",
+        "id": 4
+    },
+    {
+        "username": "Buyer_5",
+        "first name": "Bruce",
+        "last name": "Wayne",
+        "email": "bruce@example.com",
+        "password": "bruce123",
+        "age": "35",
+        "birthday": "10.05.1983",
+        "balance": "1000$",
+        "id": 5
+    },
+    {
+        "username": "Buyer_6",
+        "first name": "Billy",
+        "last name": "Walker",
+        "email": "billy@example.com",
+        "password": "billy123",
+        "age": "27",
+        "birthday": "09.08.1991",
+        "balance": "4500$",
+        "id": 6
+    },
+    {
+        "username": "Buyer_7",
+        "first name": "Alexandra",
+        "last name": "nelson",
+        "email": "alexandra@example.com",
+        "password": "alexandra123",
+        "age": "18",
+        "birthday": "11.11.2000",
+        "balance": "5210$",
+        "id": 7
+    },
+    {
+        "username": "Buyer_8",
+        "first name": "Jessica",
+        "last name": "Carter",
+        "email": "jessica@example.com",
+        "password": "jessica123",
+        "age": "40",
+        "birthday": "06.15.1978",
+        "balance": "7100$",
+        "id": 8
+    },
+    {
+        "username": "Buyer_9",
+        "first name": "Nathaniel",
+        "last name": "Henderson",
+        "email": "nathaniel@example.com",
+        "password": "nathaniel123",
+        "age": "25",
+        "birthday": "10.05.1993",
+        "balance": "6110$",
+        "id": 9
+    },
+    {
+        "username": "Buyer_10",
+        "first name": "Cory",
+        "last name": "Adams",
+        "email": "cory@example.com",
+        "password": "cory123",
+        "age": "28",
+        "birthday": "27.09.1990",
+        "balance": "10000$",
+        "id": 10
+    }
+]
