@@ -60,12 +60,19 @@
     text-decoration: none;
 }
 
+ 
+
 .logo {
     width: 200px;
     height: 200px;
-    background-color: #59B210;
-}
+    display: flex;
+    align-items :center;
+ }
+img.logoImg{
+    width: 150px;
+    height: 190px;
 
+}
 form.search {
     /* margin: auto; */
     max-width: 800px;

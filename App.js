@@ -62,8 +62,9 @@ class App extends Component {
               </div>
               <div className="middleHeader">
 
-                <div className="logo">
-                  Logo </div>
+                <div class="logo">
+                  <img class="logoImg" src="img/5921100ld.jpg" alt="" srcset="" />
+                </div>
 
                 <form className="search" action="">
                   <div className="inputAndAll">
