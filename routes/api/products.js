@@ -4,8 +4,7 @@ const mongoose = require('mongoose');
 const ObjectId = require('mongodb').ObjectID;
 const passport = require('passport');
 
-const Cart  = require('../../models/Cart');
-
+ 
 const User = require('../../models/User');
 const Product = require("../../models/Product");
 

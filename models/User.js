@@ -30,6 +30,9 @@ const UserSchema = new Schema({
   },
   inbox: {
     type: Array
+  },
+  cart: {
+    type: Array
   }
 });
 

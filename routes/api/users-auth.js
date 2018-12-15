@@ -9,8 +9,7 @@ const passport = require('passport');
 const validateRegisterInput = require('../../validation/register')
 const validateLoginInput = require('../../validation/login')
 
-const Cart = require("../../models/Cart")
-//Load User model
+ //Load User model
 const User = require("../../models/User");
 
 //@route Get api/users/test //komm - copy and pase this on top of routes

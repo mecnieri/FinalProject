@@ -5,8 +5,7 @@ const passport = require('passport');
 const ObjectId = require('mongodb').ObjectID;
 
 //Load Cart Model
-const Cart  = require('../../models/Cart');
-//Load User Profile
+ //Load User Profile
 const User = require('../../models/User');
 
 const Product = require('../../models/Product')

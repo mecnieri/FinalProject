@@ -3,8 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
 
-const Cart = require('../../models/Cart');
-
+ 
 const User = require('../../models/User');
 
 //Load Cart Model
