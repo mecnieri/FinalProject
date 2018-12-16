@@ -9,7 +9,7 @@ const passport = require('passport');
 const validateRegisterInput = require('../../validation/register')
 const validateLoginInput = require('../../validation/login')
 
- //Load User model
+//Load User model
 const User = require("../../models/User");
 
 //@route Get api/users/test //komm - copy and pase this on top of routes
@@ -21,9 +21,9 @@ router.get("/test", (req, res) => res.json({ msg: "works" }));
 //@desc Register user
 //@access Public
 router.post("/register", (req, res) => {
-  const {errors, isValid} = validateRegisterInput(req.body);
+  const { errors, isValid } = validateRegisterInput(req.body);
   //Check validation
-  if(!isValid) {
+  if (!isValid) {
     return res.status(400).json(errors)
   }
   //Check if there already is an user with existing email
@@ -52,10 +52,6 @@ router.post("/register", (req, res) => {
             .catch(err => console.log(err));
         });
       });
-      console.log(newUser._id);
-      const newCart = new Cart({
-        user: newUser._id, products: [12,13,14]})
-      newCart.save();
     }
   });
 });
@@ -64,9 +60,9 @@ router.post("/register", (req, res) => {
 //@desc login user / return jwt toek
 //@access Public
 router.post("/login", (req, res) => {
-  const {errors, isValid} = validateLoginInput(req.body);
+  const { errors, isValid } = validateLoginInput(req.body);
   //Check validation
-  if(!isValid) {
+  if (!isValid) {
     return res.status(400).json(errors)
   }
   const email = req.body.email;
@@ -85,10 +81,10 @@ router.post("/login", (req, res) => {
         //token generated here in future
         //user matched
         //komment may have to add other fields
-        const payload = { id: user.id, name: user.username} //create jwt payload
+        const payload = { id: user.id, name: user.username } //create jwt payload
         //Sign token
-        jwt.sign(payload, keys.secretOrKey, {expiresIn: 3600000},
-          (err, token)=>{
+        jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600000 },
+          (err, token) => {
             res.json({
               success: true,
               token: 'Bearer ' + token
@@ -105,12 +101,11 @@ router.post("/login", (req, res) => {
 //@route Get api/users-auth/current
 //@desc return current user
 //@access private
-router.get('/current', passport.authenticate('jwt', {session: false}), (req, res)=>{
+router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
   res.json({
     id: req.user.id,
     username: req.user.username,
     email: req.user.email,
   });
 })
-
 module.exports = router;
