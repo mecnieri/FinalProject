@@ -1,0 +1,161 @@
+$color-primary: #5D5D5D;
+$color-background: #3d3d3d;
+$color-backgroundWhite: #f7f8f9;
+$color-white: #fff;
+$color-green: #59B210;
+$color-fonts: #434343;
+$color-table: #747474;
+$color-navHover: #54a90f;
+$color-backTextarea: #EFEEED;
+*{
+    background-color: $color-backgroundWhite;
+}
+.checkout{
+    margin: 50px auto auto auto;
+    width: 60%;
+    &--header{
+            & h2{
+            font-size: 50px;
+            text-align: center;
+            font-weight: 200;
+        }
+    }
+    &--billing-address{
+        margin: 50px;
+        & h2{
+            font-size: 30px;
+            padding-bottom: 25px;
+        }
+        & p{
+            padding-top: 25px;
+            font-size: 16px;
+            font-weight: 700;
+            padding-bottom: 10px;
+        }
+        & select {
+            width: 100%;
+            height: 40px;
+            background-color: $color-backTextarea;
+        }
+        & input{
+            background-color: $color-backTextarea;
+            height: 40px;
+            border-style: none;
+        }
+        & .username{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            & .first{
+                width: 48%;
+                &-name{
+                    width: 100%;
+                }
+            }
+            & .last{
+                width: 48%;
+                &-name{
+                    width: 100%;
+                }
+            }
+        }
+        & .company-name{
+            width: 100%;
+            & input{
+                width: 100%;
+                height: 40px;
+                &::placeholder{
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: #B6B5B4;
+                }
+            }
+        }
+        & .address{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            & .street{
+                width: 48%;
+                &--input{
+                    width: 100%;
+                    &::placeholder{
+                        font-size: 16px;
+                        font-weight: 700;
+                        color: #B6B5B4;
+                    }
+                }
+            }
+            & .apartment{
+                align-self: flex-end;
+                width: 48%;
+                &--input{
+                    width: 100%;
+                    &::placeholder{
+                        font-size: 16px;
+                        font-weight: 700;
+                        color: #B6B5B4;
+                    }
+                }
+            }
+        }
+        & .town{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            & .city, & .country, & .postcode{
+                width: 31%;
+                &--input{
+                    width: 100%;
+                    &::placeholder{
+                        font-size: 16px;
+                        font-weight: 700;
+                        color: #B6B5B4;
+                    }
+                }
+            }
+        }
+        & .checkout_contact{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            &--mail, &--phone, {
+                width: 48%;
+                &--input{
+                    width: 100%;
+                    &::placeholder{
+                        font-size: 16px;
+                        font-weight: 700;
+                        color: #B6B5B4;
+                    }
+                }
+            }
+        }
+        & .order-notes{
+            margin-top: 4%;
+        }
+        & .notes{
+            width: 100%;
+            height: 100px;
+            display: flex;
+            align-items: flex-end;
+            flex-direction: column;
+            &--textarea{
+                padding-top: 2%;
+                width: calc(100% - 2px);
+                height: 80%;
+                background-color: $color-backTextarea;
+                resize: none;
+                &::placeholder{
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: #B6B5B4;
+                }
+            }
+        }
+    }
+    & .place-order--btn{
+        margin: 5% 0 15% 0;
+        float: right;
+    }
+}

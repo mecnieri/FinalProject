@@ -21,6 +21,134 @@
 .App-link {
     color: #61dafb;
 }
+* {
+    box-sizing: border-box;
+    font-size: 15px;
+    color: #5D5D5D;
+    margin: 0;
+    padding: 0; }
+  
+  footer {
+    background-color: #f7f8f9; }
+    footer .link-list-row {
+      margin: 75px 0 75px; }
+    footer .container {
+      width: 80vw;
+      margin: auto;
+      display: flex;
+      justify-content: space-around; }
+      footer .container ul {
+        list-style-type: none;
+        padding: 0; }
+        footer .container ul li {
+          list-style-type: none;
+          margin-right: 10px;
+          font-size: 16px; }
+          footer .container ul li a {
+            color: #fff;
+            padding: 6px;
+            background-color: #3d3d3d;
+            border-radius: 100px; }
+            footer .container ul li a .fa {
+              line-height: 1; }
+              footer .container ul li a .fa:hover {
+                color: #59b210;
+                cursor: pointer; }
+    footer .container_1-of-5 {
+      width: calc(100% / 3);
+      padding: 0 15px 0 15px; }
+      footer .container_1-of-5-logo {
+        display: inline-block;
+        vertical-align: top;
+        margin: 7px 0 30px; }
+        footer .container_1-of-5-logo--image {
+          max-width: 100%;
+          vertical-align: middle;
+          border: 0; }
+      footer .container_1-of-5 > p:nth-child(2) {
+        margin: 0 0 29px;
+        font-weight: 700;
+        line-height: 1.4;
+        font-size: 20px; }
+      footer .container_1-of-5 > p:nth-child(3) {
+        margin: 0 0 20px;
+        line-height: 1.4; }
+      footer .container_1-of-5 .social-icons {
+        margin: 58px 0 0;
+        list-style: none;
+        padding: 0; }
+        footer .container_1-of-5 .social-icons > h3 {
+          line-height: 27px;
+          font-size: 20px;
+          letter-spacing: -1px;
+          padding-bottom: 11px;
+          font-weight: 600; }
+        footer .container_1-of-5 .social-icons ul li {
+          display: inline-block; }
+          footer .container_1-of-5 .social-icons ul li a {
+            text-decoration: none; }
+    footer .container_2-of-5 h4, footer .container_3-of-5 h4, footer .container_4-of-5 h4,
+    footer .container_5-of-5 h4 {
+      padding-bottom: 25px;
+      font-size: 18px;
+      line-height: 24px;
+      letter-spacing: -1px;
+      margin-bottom: 0;
+      font-weight: 600; }
+    footer .container_2-of-5 ul li, footer .container_3-of-5 ul li, footer .container_4-of-5 ul li,
+    footer .container_5-of-5 ul li {
+      margin: 0 0 12px 0;
+      color: #adadad; }
+      footer .container_2-of-5 ul li:hover, footer .container_3-of-5 ul li:hover, footer .container_4-of-5 ul li:hover,
+      footer .container_5-of-5 ul li:hover {
+        color: #59b210;
+        cursor: pointer; }
+    footer .footer-copyright {
+      background-color: #3d3d3d;
+      width: 100%;
+      height: 100px; }
+      footer .footer-copyright-container {
+        width: 70%;
+        height: 100%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between; }
+        footer .footer-copyright-container .authors {
+          width: 30%;
+          align-self: center;
+          display: flex;
+          flex-wrap: wrap;
+          position: relative; }
+          footer .footer-copyright-container .authors .names {
+            display: flex;
+            flex-wrap: wrap; }
+            footer .footer-copyright-container .authors .names > h3:nth-child(2n+2) {
+              padding-left: 10px; }
+            footer .footer-copyright-container .authors .names > h3:nth-child(3), footer .footer-copyright-container .authors .names > h3:nth-child(4) {
+              padding-top: 5px; }
+          footer .footer-copyright-container .authors .copy {
+            position: absolute;
+            top: 50%;
+            left:-10%;
+            transform: translate(-50%, -50%); }
+        footer .footer-copyright-container .payment-methods {
+          width: 25%;
+          align-self: center; }
+          footer .footer-copyright-container .payment-methods ul {
+            display: flex;
+            justify-content: space-evenly; }
+        footer .footer-copyright-container h3 {
+          display: inline;
+          color: #fff;
+          font-size: 16px; }
+        footer .footer-copyright-container ul li {
+          display: inline-block;
+          background-color: #fff;
+          width: 50px;
+          text-align: center;
+          border-radius: 2px;
+          padding: 0 5px; }
+  
 
 .top {
     background-color: #F9F9F9;

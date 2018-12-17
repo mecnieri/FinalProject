@@ -1,0 +1,91 @@
+$color-primary: #5D5D5D;
+$color-background: #3d3d3d;
+$color-backgroundWhite: #f7f8f9;
+$color-white: #fff;
+$color-green: #59B210;
+$color-fonts: #434343;
+$color-table: #747474;
+$color-price: #301c53;
+$color-updatecart: #e0e0e0;
+$color-hover: #ececec;
+$color-navHover: #54a90f;
+
+.cart-container{
+    width: 75%;
+    margin: auto;
+    padding: 40px 15px 40px 15px;
+    background-color: $color-backgroundWhite;
+    & .content{
+        width: 100%;
+        &--title{
+            padding: 40px 0 40px 0;
+            text-align: center;
+            color: $color-price;
+            & h2{
+                font-size: 40px;
+                line-height: 50px;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 400;
+            }
+        }
+        &--table{
+            width: 100%;
+            padding: 0 15px 0 15px;
+            display: block;
+            margin: 14px 0 20px;
+            min-height: 1px;
+            &--form{
+                margin: 0;
+            }
+            & table {
+                & th {
+                    color: $color-table;
+                    font-size: 14px;
+                    text-transform: uppercase;
+                    padding: 15px 0 30px 0;
+                    border-bottom: 1px solid #e0e0e0;
+                }
+            }
+        }
+    }
+    & .action{
+        float: right;
+        display: flex;
+        justify-content: space-between;
+        width: 40%;
+        margin: 50px 50px 0 0;
+        flex-wrap: wrap;
+        & .update-cart{
+            width: 40%;
+            border-radius: 5px;
+            background-color: $color-updatecart;
+            color: $color-background;
+            padding: 10px 20px 10px 20px;
+            &:hover{
+                background-color: $color-hover;
+                cursor: pointer;
+            }
+        }
+        & .proceed-checkout{
+            border-radius: 5px;
+            background-color: $color-green;
+            color: $color-white;
+            width: 50%;
+            font-weight: 600;
+            &:hover{
+                background-color: $color-navHover;
+                cursor: pointer;
+            }
+        }
+        & .total{
+            margin-top: 30px;
+            width: 100%;
+            text-align: left;
+            & p{
+                color: $color-primary;
+                font-weight: 600;
+                padding-bottom: 10px;
+            }
+        }
+    }
+}
