@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Link, Route, Redirect } from 'react-router-dom';
 import { ProtectedRoute } from './routes/ProtectedRoute';
 import './App.css';
-import './Header.css'
+import './Header.css';
+import './Cart.css';
 import Data from './db/data.json';
 import { IndexPage } from './components/IndexPage';
 import { ContactPage } from './components/ContactPage';
@@ -10,6 +11,10 @@ import LoginPage from './components/LoginPage';
 import { ProfilePage } from './components/ProfilePage';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Cart from './components/Cart';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import productData from './db/productData.json';
+
 class App extends Component {
   state = {
     showLogin: true
@@ -19,8 +24,8 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Header />
-          <Route
+          {/* <Header /> */}
+          {/* <Route
             path="/"
             exact
             render={() => (<IndexPage title={Data.index.title} desc={Data.index.desc} />)}
@@ -38,8 +43,9 @@ class App extends Component {
             } />
           <ProtectedRoute path="/profile" component={ProfilePage} />
 
-          {!this.state.showLogin && (<Redirect to={`/profile`} />)}
-          <Footer />
+          {!this.state.showLogin && (<Redirect to={`/profile`} />)} */}
+          <Cart productData={productData} />
+          {/* <Footer /> */}
         </div>
       </Router >
     );

@@ -4,7 +4,7 @@ import logo from '../images/5921100ld.jpg'
 
 const Header = () => {
     return (
-        <header className ="header">
+        <header className="header">
             <div className="top">
 
                 <div className="menu">
@@ -79,7 +79,7 @@ const Header = () => {
                         <li>Phones</li>
                         <li>Fridges</li>
                         <li>Accessories</li>
-                        <li>Tv</li>
+                        <li>TV</li>
                         <li>Games</li>
                     </ul>
                 </div>

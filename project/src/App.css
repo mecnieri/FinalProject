@@ -36,7 +36,8 @@ footer {
     width: 80vw;
     margin: auto;
     display: flex;
-    justify-content: space-around; }
+    justify-content: space-around;
+    text-align: left; }
     footer .container ul {
       list-style-type: none;
       padding: 0; }
@@ -227,7 +228,6 @@ form.search input[type=text] {
   font-size: 17px;
   float: left;
   border: none;
-  font-family: 'Open Sans', sans-serif;
 }
 
 form.search .categoriesClass {
@@ -252,7 +252,7 @@ form.search button {
 }
 
 form.search button:hover {
-  background: #0b7dda;
+  background: #54a90f;
 }
 
 form.search::after {
