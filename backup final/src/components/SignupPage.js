@@ -16,7 +16,7 @@ export default class SignupPage extends React.Component {
         return(
             <div className="cont">
   
-  <form className="reg">
+  <form>
    <h1>Registration Form</h1>
     <div className="row">
       <h4>Account</h4>

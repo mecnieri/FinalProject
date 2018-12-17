@@ -1,0 +1,9 @@
+[
+    {
+        "id": 0,
+        "name": "Asus X556",
+        "details": "This gaming laptop is designed to give you a competitive edge in FPS esports titles like Counter-Strike®, Overwatch®, and Team Fortress® 2. Feel the power of Windows 10 Pro, the latest 8th Generation Intel® Core™ i7 processors, and NVIDIA® GeForce® GTX 10-Series graphics; and enjoy the smoothest and most accurate visuals ever on an IPS-level display with a 144Hz refresh rate, 3ms response time, and NVIDIA G-SYNC™ technology. With a desktop-style Aura Sync-enabled keyboard, N-key rollover, and fast-actuating keys, Strix SCAR Edition keeps you centered on the maps — so you’ll rank high, and take out targets with absolute precision!",
+        "price": 2999,
+        "img": "../images/asus.png"
+    }
+]
