@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Link, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { ProtectedRoute } from './routes/ProtectedRoute';
 
 import 'bootstrap';
@@ -16,7 +16,6 @@ import LoginPage from './components/LoginPage';
 import Cart from './components/Cart';
 import SignupPage from './components/SignupPage';
 import UserPanel from './components/UserPanel';
-import { ProfilePage } from './components/ProfilePage';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Slider from './components/Slider';
@@ -25,7 +24,7 @@ import './Checkout.css';
 import './css/Description.css'
 import Description from './components/Description';
 import Dat from './data/item.json';
-
+ 
 class App extends Component {
   state = {
     showLogin: true
@@ -39,8 +38,13 @@ class App extends Component {
           <Route
             path="/"
             exact
-            render={() => (<div><Slider /><IndexPage title={Data.index.title} desc={Data.index.desc} />
-            </div>)}
+            render={() => (
+              <div>
+                <Slider />
+                <IndexPage title={Dat.laptop.name} desc={Dat.laptop.details} url={Dat.laptop.img}/>
+                <IndexPage title={Dat.laptop.name} desc={Dat.laptop.details} url={Dat.laptop.img}/>
+                <IndexPage title={Dat.laptop.name} desc={Dat.laptop.details} url={Dat.laptop.img}/>
+              </div>)}
           />
           <Route
             path="/contact"

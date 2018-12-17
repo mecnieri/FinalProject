@@ -13,11 +13,13 @@ export default class UserPanel extends React.Component {
   // this.password = React.createRef();
   //}
   state = {
-    jsonData: null,
-    showSpinner: true
+    username: null,
+    email: null,
+    balance: null,
+    age: null,
+    birthday: null
   }
   componentDidMount() {
-    console.log("componentDidMount");
     fetch(FETCHURL, {
       method: 'get',
       headers: new Headers({
@@ -25,11 +27,14 @@ export default class UserPanel extends React.Component {
       })
     })
       .then(res => res.json())
-      .then(users => {
-        // setTimeout(() => {
-        console.log(30, users);
-        this.setState({ jsonData: users.username, showSpinner: false })
-        // }, 3000)
+      .then(user => {
+        this.setState({
+          username: user.username,
+          email: user.email,
+          balance: user.balance,
+          age: user.age,
+          birthday: user.birthday
+        })
       })
       .catch(err => console.log(err))
   }
@@ -52,10 +57,10 @@ export default class UserPanel extends React.Component {
               </tr>
 
               <tr>
-                <td>{this.state.jsonData}</td>
-                <td>mjananashvili97@gmail.com</td>
-                <td>20/01/1997</td>
-                <td>2500$</td>
+                <td>{this.state.username}</td>
+                <td>{this.state.email}</td>
+                <td>{this.state.birthday}</td>
+                <td>{this.state.balance}</td>
               </tr>
             </tbody>
 

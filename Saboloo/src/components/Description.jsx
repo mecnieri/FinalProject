@@ -2,14 +2,11 @@ import React from 'react';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
 import Tabs from './Tabs';
-import img from '../images/asus.png'
+
+
 
 class Description extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
+       render() {
         return (
             <section className="item" >
                 <div className="container">
