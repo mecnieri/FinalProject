@@ -9,7 +9,7 @@ const passport = require('passport');
 const validateRegisterInput = require('../../validation/register')
 const validateLoginInput = require('../../validation/login')
 
- //Load User model
+//Load User model
 const User = require("../../models/User");
 
 
@@ -17,9 +17,9 @@ const User = require("../../models/User");
 //@desc Register user
 //@access Public
 router.post("/register", (req, res) => {
-  const {errors, isValid} = validateRegisterInput(req.body);
+  const { errors, isValid } = validateRegisterInput(req.body);
   //Check validation
-  if(!isValid) {
+  if (!isValid) {
     return res.status(400).json(errors)
   }
   //Check if there already is an user with existing email
@@ -60,10 +60,10 @@ router.post("/register", (req, res) => {
 //@desc login user / return jwt token
 //@access Public
 router.post("/login", (req, res) => {
-  console.log(req.body);
-  const {errors, isValid} = validateLoginInput(req.body);
+  console.log(63, req.body);
+  const { errors, isValid } = validateLoginInput(req.body);
   //Check validation
-  if(!isValid) {
+  if (!isValid) {
     return res.status(400).json(errors)
   }
   const email = req.body.email;
@@ -82,10 +82,10 @@ router.post("/login", (req, res) => {
         //token generated here in future
         //user matched
         //komment may have to add other fields
-        const payload = { id: user.id, name: user.username} //create jwt payload
+        const payload = { id: user.id, name: user.username } //create jwt payload
         //Sign token
-        jwt.sign(payload, keys.secretOrKey, {expiresIn: 3600000},
-          (err, token)=>{
+        jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600000 },
+          (err, token) => {
             res.json({
               success: true,
               token: 'Bearer ' + token
@@ -102,7 +102,7 @@ router.post("/login", (req, res) => {
 //@route Get api/users/current
 //@desc return user by token
 //@access User
-router.get('/current', passport.authenticate('user-rules', {session: false}), (req, res)=>{
+router.get('/current', passport.authenticate('user-rule', { session: false }), (req, res) => {
   User.findById(req.user.id).then(user => {
     res.json(user);
   })
@@ -111,7 +111,7 @@ router.get('/current', passport.authenticate('user-rules', {session: false}), (r
 //@route Get api/users/:username
 //@desc return user by username
 //@access Admin
-router.get('/:username', passport.authenticate('admin-rules', {session: false}), (req, res)=>{
+router.get('/:username', passport.authenticate('admin-rule', { session: false }), (req, res) => {
   User.findOne({ username: req.params.username }).then(user => {
     res.json(user);
   })
@@ -120,12 +120,12 @@ router.get('/:username', passport.authenticate('admin-rules', {session: false}),
 //@route Put api/users
 //@desc edit user found by id
 //@access Admin
-router.put('/', passport.authenticate('admin-rule', {session: false}), (req, res)=>{
+router.put('/', passport.authenticate('admin-rule', { session: false }), (req, res) => {
   User.findById(req.body.id).then(user => {
-    if(req.body.username) {
+    if (req.body.username) {
       user.username = req.body.username
     }
-     if (req.body.age) {
+    if (req.body.age) {
       user.age = req.body.age
     } //add other else conditions for user's other details
     user.save()
@@ -139,42 +139,42 @@ router.put('/', passport.authenticate('admin-rule', {session: false}), (req, res
 router.post('/cart', passport.authenticate('user-rule', { session: false }), (req, res) => {
   //Find user by id
   User.findById(req.user.id).then(user => {
-      if (req.body.productId && req.body.quantity) {
-          let index = user.cart.findIndex((prod) => prod.product_id === req.body.productId)
-          if (index > -1) {
-              user.cart.splice(index, 1, {
-                  product_id: req.body.productId,
-                  quantity: req.body.quantity
-              })
-          } else {
-              user.cart.push({
-                  product_id: req.body.productId,
-                  quantity: req.body.quantity
-              })
-          }
+    if (req.body.productId && req.body.quantity) {
+      let index = user.cart.findIndex((prod) => prod.product_id === req.body.productId)
+      if (index > -1) {
+        user.cart.splice(index, 1, {
+          product_id: req.body.productId,
+          quantity: req.body.quantity
+        })
+      } else {
+        user.cart.push({
+          product_id: req.body.productId,
+          quantity: req.body.quantity
+        })
       }
-      if (req.body.productId && !req.body.quantity) {
-          let index = user.cart.findIndex((prod) => prod.product_id === req.body.productId)
-          if (index > -1) {
-              let quantity = user.cart[index].quantity
-              user.cart.splice(index, 1, {
-                  product_id: req.body.productId,
-                  quantity: ++quantity
-              })
-          } else {
-              user.cart.push({
-                  product_id: req.body.productId,
-                  quantity: 1
-              })
-          }
+    }
+    if (req.body.productId && !req.body.quantity) {
+      let index = user.cart.findIndex((prod) => prod.product_id === req.body.productId)
+      if (index > -1) {
+        let quantity = user.cart[index].quantity
+        user.cart.splice(index, 1, {
+          product_id: req.body.productId,
+          quantity: ++quantity
+        })
+      } else {
+        user.cart.push({
+          product_id: req.body.productId,
+          quantity: 1
+        })
+      }
 
-      }
-      if (req.body.delete) {
+    }
+    if (req.body.delete) {
 
-          let indexDelete = user.cart.findIndex((prod) => prod.product_id === req.body.delete)
-          user.cart.splice(indexDelete, 1)
-      }
-      user.save().then(user => res.json(user.cart)).catch(err => res.status(400).json({ msg: 'Error' }))
+      let indexDelete = user.cart.findIndex((prod) => prod.product_id === req.body.delete)
+      user.cart.splice(indexDelete, 1)
+    }
+    user.save().then(user => res.json(user.cart)).catch(err => res.status(400).json({ msg: 'Error' }))
   });
 });
 
@@ -182,7 +182,7 @@ router.post('/cart', passport.authenticate('user-rule', { session: false }), (re
 //@route GET api/users/boughtProducts
 //@desc get products from users broughtProducts
 //@access Admin
-router.get('/boughtProducts/:id', passport.authenticate('admin-rule', {session: false}), (req, res)=>{
+router.get('/boughtProducts/:id', passport.authenticate('admin-rule', { session: false }), (req, res) => {
   User.findById(req.params.id).then(user => {
     res.json(user.boughtProducts);
   })
@@ -194,12 +194,12 @@ router.get('/boughtProducts/:id', passport.authenticate('admin-rule', {session: 
 router.post('/message', passport.authenticate('user-rule', { session: false }), (req, res) => {
   //Find user by id
   User.findById(req.user.id).then(user => {
-      user.inbox.push({
-          sender: user.username,
-          letter: req.body.letter
-      })
-      user.save()
-      res.json(user);
+    user.inbox.push({
+      sender: user.username,
+      letter: req.body.letter
+    })
+    user.save()
+    res.json(user);
   });
 });
 
@@ -208,23 +208,23 @@ router.post('/message', passport.authenticate('user-rule', { session: false }), 
 //@access User
 router.post('/checkout', passport.authenticate('user-rule', { session: false }), (req, res) => {
   User.findById(req.user.id).then(user => {
-      let total = 0
+    let total = 0
 
-      user.cart.map((el) => {
-          // aq mere iqneba price da ara product_id 
-          total += el.product_id * el.quantity
-      })
-
-
-      console.log(user)
-      const cloneCart = user.cart.slice();
-      user.boughtProducts = cloneCart;
-      user.cart = []
-      user.balance -= total
-      console.log(user)
+    user.cart.map((el) => {
+      // aq mere iqneba price da ara product_id 
+      total += el.product_id * el.quantity
+    })
 
 
-    
+    console.log(user)
+    const cloneCart = user.cart.slice();
+    user.boughtProducts = cloneCart;
+    user.cart = []
+    user.balance -= total
+    console.log(user)
+
+
+
     user.save()
     res.json(user);
   });
