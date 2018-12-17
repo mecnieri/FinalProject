@@ -5,16 +5,18 @@ const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys')
 const passport = require('passport');
 
+
 //Load Input Validation
 const validateLoginInput = require('../../validation/login')
 
-
 //Load User model
+const User = require("../../models/User");
+//Load Admin model
 const Admin = require("../../models/Admin");
 
 
-//@route Post api/users-auth/login
-//@desc login user / return jwt toek
+//@route Post api/admin/login
+//@desc login admin / return jwt token
 //@access Public
 router.post("/login", (req, res) => {
   console.log('enters');
@@ -26,7 +28,7 @@ router.post("/login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  //Find user by email
+  //Find admin by email
   Admin.findOne({ email: email }).then(admin => {
     //Check for admin via email
     if (!admin) {
@@ -36,8 +38,6 @@ router.post("/login", (req, res) => {
     //Check Password
     bcrypt.compare(password, admin.password).then(isMatch => {
       if (isMatch) {
-        //token generated here in future
-        //user matched
         //komment may have to add other fields
         const payload = { id: admin.id, name: admin.username} //create jwt payload
         //Sign token
@@ -56,15 +56,18 @@ router.post("/login", (req, res) => {
   });
 });
 
-//@route Get api/users-auth/current
+//@route Post api/admin-auth/
 //@desc return current user
 //@access private
-router.get('/current', passport.authenticate('jwt', {session: false}), (req, res)=>{
-  res.json({
-    id: req.user.id,
-    username: req.user.username,
-    email: req.user.email,
+router.post('/message', passport.authenticate('admin-rule', { session: false }), (req, res) => {
+  // Find user by id
+  User.findOne({ username: req.body.username }).then(user => {
+    user.inbox.push({
+      sender: "admin",
+      letter: req.body.letter
+    })
+    user.save()
+    res.json(user);
   });
-})
-
+});
 module.exports = router;

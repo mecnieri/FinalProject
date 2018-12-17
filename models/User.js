@@ -33,6 +33,9 @@ const UserSchema = new Schema({
   },
   cart: {
     type: Array
+  },
+  boughtProducts: {
+    type: Array
   }
 });
 
