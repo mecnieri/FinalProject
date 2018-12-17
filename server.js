@@ -9,7 +9,12 @@ const adminAuth = require('./routes/api/admin');
 const products = require('./routes/api/products');
 const checkout = require('./routes/api/checkout')
 
+const cors = require('cors');
+
 const app = express();
+app.use( cors('*') )
+app.use( express.json() )
+app.use( express.urlencoded( { extended: true}) )
 
 //Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));

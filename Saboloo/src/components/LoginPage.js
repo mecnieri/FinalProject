@@ -8,7 +8,7 @@ export default class LoginPage extends React.Component {
         super(props)
 
         this.OnSubmitHandler = this.OnSubmitHandler.bind(this);
-        this.username = React.createRef();
+        this.email = React.createRef();
         this.password = React.createRef();
         this.cancel=React.createRef();
 
@@ -22,23 +22,24 @@ export default class LoginPage extends React.Component {
     }
     OnSubmitHandler(event){
         event.preventDefault();
-        // console.log(this.username.current.value, this.password.current.value);
-        this.login(this.username.current.value, this.password.current.value);
+        // console.log(this.email.current.value, this.password.current.value);
+        this.login(this.email.current.value, this.password.current.value);
     }
 
-    login = (username, password) => {
-        fetch('http://localhost:5000/login', {
+    login = (email, password) => {
+        fetch('http://localhost:5000/api/users/login', {
             method:"POST",
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ username, password })
+            body: JSON.stringify({ email, password })
         })
         .then( res => res.json() )
         .then( result => {
-            if( result.auth ){
-                localStorage.setItem('authorized', result.username);
+            console.log("40", result);
+            if( result.success ){
+                localStorage.setItem('authorized', result.email);
                 this.props.showLogin(false);
             }
             else {
@@ -64,8 +65,8 @@ export default class LoginPage extends React.Component {
                         </div>
   
                         <div className="formContainer">
-                            <label ><b>Username</b></label>
-                            <input type="text" placeholder="Enter Username" name="username" ref={this.username} required/>
+                            <label ><b>email</b></label>
+                            <input type="text" placeholder="Enter email" name="email" ref={this.email} required/>
         
                             <label ><b>Password</b></label>
                             <input type="password" placeholder="Enter Password" name="password" ref={this.password} required/>

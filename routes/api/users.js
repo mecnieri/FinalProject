@@ -49,9 +49,9 @@ router.post("/register", (req, res) => {
         });
       });
       console.log(newUser._id);
-      const newCart = new Cart({
-        user: newUser._id, products: [12,13,14]})
-      newCart.save();
+      // const newCart = new Cart({
+      //   user: newUser._id, products: [12,13,14]})
+      // newCart.save();
     }
   });
 });
@@ -60,6 +60,7 @@ router.post("/register", (req, res) => {
 //@desc login user / return jwt token
 //@access Public
 router.post("/login", (req, res) => {
+  console.log(req.body);
   const {errors, isValid} = validateLoginInput(req.body);
   //Check validation
   if(!isValid) {
