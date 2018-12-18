@@ -42,7 +42,6 @@ class App extends Component {
             render={() => (
               <div>
                 <Slider />
-                {/* <Products title={Dat.laptop.name} desc={Dat.laptop.details} url={Dat.laptop.img}/> */}
                 <Products />
               </div>)}
           />
