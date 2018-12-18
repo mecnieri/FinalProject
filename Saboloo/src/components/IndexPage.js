@@ -9,7 +9,7 @@ export const IndexPage = props => {
             <p>
                 {props.desc}
             </p>
-            <img src={props.url} alt="" />
+            <img src={props.url} />
         </div>
     )
 }
