@@ -19,6 +19,9 @@ const ProductSchema = new Schema({
     battery: String,
     size: String,
     brand: String
+  },
+  image: {
+    type: String
   }
 
 });

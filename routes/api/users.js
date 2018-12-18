@@ -198,7 +198,7 @@ router.post('/message', passport.authenticate('user-rule', { session: false }), 
       sender: user.username,
       letter: req.body.letter
     })
-
+    // ----
     Admin.findOne({ email: "admin@gmail.com" }).then(admin => {
       console.log(admin.notifications)
       let index = admin.notifications.findIndex((mess) => mess.from === user.username)
@@ -219,8 +219,7 @@ router.post('/message', passport.authenticate('user-rule', { session: false }), 
       admin.save()
       res.json(admin)
     })
-
-
+    // ----
     user.save()
   });
 });
