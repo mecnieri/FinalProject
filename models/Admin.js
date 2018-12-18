@@ -15,6 +15,9 @@ const AdminSchema = new Schema({
     type: String,
     required: true
   },
+  notifications:{
+    type:Array 
+  }
 });
 
 module.exports = Admin = mongoose.model('admins', AdminSchema);
