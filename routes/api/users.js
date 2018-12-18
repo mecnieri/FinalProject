@@ -221,7 +221,6 @@ router.post('/message', passport.authenticate('user-rule', { session: false }), 
     })
     // ----
     user.save()
-    res.json(user);
   });
 });
 
