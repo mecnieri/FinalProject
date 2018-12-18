@@ -10,7 +10,8 @@ import './Header.css';
 import './Cart.css';
 // import './style.css';
 import Data from './db/data.json';
-import { IndexPage } from './components/IndexPage';
+import  Products  from './components/Products';
+// import { Product } from './components/Product';
 import { ContactPage } from './components/ContactPage';
 import LoginPage from './components/LoginPage';
 import Cart from './components/Cart';
@@ -41,9 +42,8 @@ class App extends Component {
             render={() => (
               <div>
                 <Slider />
-                <IndexPage title={Dat.laptop.name} desc={Dat.laptop.details} url={Dat.laptop.img}/>
-                <IndexPage title={Dat.laptop.name} desc={Dat.laptop.details} url={Dat.laptop.img}/>
-                <IndexPage title={Dat.laptop.name} desc={Dat.laptop.details} url={Dat.laptop.img}/>
+                {/* <Products title={Dat.laptop.name} desc={Dat.laptop.details} url={Dat.laptop.img}/> */}
+                <Products />
               </div>)}
           />
           <Route
