@@ -37,13 +37,12 @@ export default class LoginPage extends React.Component {
         })
         .then( res => res.json() )
         .then( result => {
-            console.log("40", result);
             if( result.success ){
-                localStorage.setItem('authorized', result.email);
+                localStorage.setItem('Authorized', result.token);
                 this.props.showLogin(false);
             }
             else {
-                localStorage.removeItem('authorized');
+                localStorage.removeItem('Authorized');
             }
         })
         .catch(err => console.log(err))

@@ -1,6 +1,7 @@
 import React from 'react';
 
 export const IndexPage = props => {
+    console.log(props);
     return (
         <div className="index">
             <h1 className="index--title">{props.title}</h1>
@@ -8,6 +9,7 @@ export const IndexPage = props => {
             <p>
                 {props.desc}
             </p>
+            <img src={props.url} />
         </div>
     )
 }
