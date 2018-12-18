@@ -28,12 +28,12 @@ export default class Item extends Component {
             <tr>
                 <td>
                     <div className="media">
-                        <a className="thumbnail pull-left" href="#">
+                        <p className="thumbnail pull-left">
                             <img src={img80} alt="item" />
-                        </a>
+                        </p>
                         <div className="media-body">
-                            <h5 className="media-heading"><a href="#">{this.props.name}</a></h5>
-                            <p className="media-heading"> by <a href="#">{this.props.brand}</a></p>
+                            <h5 className="media-heading"><p>{this.props.name}</p></h5>
+                            <h5 className="media-heading"> by <p>{this.props.brand}</p></h5>
                         </div>
                     </div>
                 </td>

@@ -20,9 +20,9 @@ const Footer = () => {
                         <div className="social-icons">
                             <h3>Get in touch</h3>
                             <ul>
-                                <li><a className="fa fa-facebook" href=""></a></li>
-                                <li><a className="fa fa-twitter" href=""></a></li>
-                                <li><a className="fa fa-pinterest" href=""></a></li>
+                                <li><p className="fa fa-facebook" ></p></li>
+                                <li><p className="fa fa-twitter" ></p></li>
+                                <li><p className="fa fa-pinterest" ></p></li>
                             </ul>
                         </div>
                     </div>
@@ -81,11 +81,11 @@ const Footer = () => {
                     </div>
                     <div className="payment-methods">
                         <ul>
-                            <li><img src={visa} width="40" height="29" /></li>
-                            <li><img src={mastercard} width="40" height="29" /></li>
-                            <li><img src={paypal} width="40" height="29" /></li>
-                            <li><img src={skrill} width="40" height="29" /></li>
-                            <li><img src={discover} width="40" height="29" /></li>
+                            <li><img src={visa} width="40" height="29" alt="visa" /></li>
+                            <li><img src={mastercard} width="40" height="29" alt="mastercard" /></li>
+                            <li><img src={paypal} width="40" height="29" alt="paypal" /></li>
+                            <li><img src={skrill} width="40" height="29" alt="skrill" /></li>
+                            <li><img src={discover} width="40" height="29" alt="discover" /></li>
                         </ul>
                     </div>
                 </div>
