@@ -28,21 +28,34 @@ import Dat from './data/item.json';
  
 class App extends Component {
   state = {
-    showLogin: true
+    showLogin: true,
+    products: null
+  }
+
+  searchHandler = (e) => {
+    e.preventDefault();
+    let query = e.target.elements.search2.value;
+    let FETCHURL = `http://localhost:5000/api/products/${query}`;
+    fetch(FETCHURL)
+    .then(res => res.json())
+    .then(products => {
+      this.setState({ products });
+    })
+    .catch(err => console.log(err));
   }
 
   render() {
     return (
       <Router>
         <div className="App">
-          <Header showLogin={this.state.showLogin} />
+          <Header showLogin={this.state.showLogin} searchHandler={this.searchHandler}/>
           <Route
             path="/"
             exact
             render={() => (
               <div>
                 <Slider />
-                <Products />
+                <Products products={this.state.products}/>
               </div>)}
           />
           <Route
