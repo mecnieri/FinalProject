@@ -8,10 +8,12 @@ import Product from "./Product"
 const FETCHURL = "http://localhost:5000/api/products";
 
 export default class Products extends Component {
-  state = {
-    products: null,
-  };
-
+  constructor(props) {
+    super(props)
+    this.state = {
+      products: null,
+    };
+  }
   componentDidMount() {
     fetch(FETCHURL)
       .then(res => res.json())
@@ -24,16 +26,43 @@ export default class Products extends Component {
   render() {
     if (this.state.products) {
       return (
-          //davarendero komponenti propsad gadavcem states
+        //davarendero komponenti propsad gadavcem states
         <div>
-          {this.state.products.slice(0, 10).map(product => (
-            <Product product={product}/>
-          ))}
+          <table>
+            <tbody>
+              <tr>
+                {this.state.products.slice((this.props.number - 1) * 12, (this.props.number - 1) * 12 + 3).map(product => (
+                  <td key={product._id}>
+                    <Product product={product} />
+                  </td>
+                ))}
+
+              </tr>
+              <tr>
+                {this.state.products.slice((this.props.number - 1) * 12 + 4, (this.props.number - 1) * 12 + 7).map(product => (
+                  <td key={product._id}>
+                    <Product product={product} />
+                  </td>
+                ))}
+
+              </tr>
+              <tr>
+                {this.state.products.slice((this.props.number - 1) * 12 + 8, (this.props.number - 1) * 12 + 11).map(product => (
+                  <td key={product._id}>
+                    <Product product={product} />
+                  </td>
+                ))}
+
+              </tr>
+
+            </tbody>
+          </table>
+
         </div>
       );
     } else {
-        return <div/>
-      }
+      return <div />
+    }
   }
 }
 // {users.map(user => (
