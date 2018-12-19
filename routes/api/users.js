@@ -18,6 +18,8 @@ const User = require("../../models/User");
 //@access Public
 router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
+  console.log(req.body);
+  console.log(isValid);
   //Check validation
   if (!isValid) {
     return res.status(400).json(errors)
@@ -34,7 +36,7 @@ router.post("/register", (req, res) => {
         password: req.body.password,
         birthday: req.body.birthday,
         // write a function to repalce req.body.age
-        age: req.body.age,
+        
         balance: req.body.balance
       });
       //encrypt password
@@ -125,9 +127,9 @@ router.put('/', passport.authenticate('admin-rule', { session: false }), (req, r
     if (req.body.username) {
       user.username = req.body.username
     }
-    if (req.body.age) {
-      user.age = req.body.age
-    } //add other else conditions for user's other details
+    // if (req.body.age) {
+    //   user.age = req.body.age
+    // } //add other else conditions for user's other details
     user.save()
     res.json(user);
   })
