@@ -5,33 +5,34 @@ import Product from "./Product"
 // import Company from './components/UserCompany'
 // import "./styles/Users.css"
 
-const FETCHURL = "http://localhost:5000/api/products";
+// const FETCHURL = "http://localhost:5000/api/products";
 
 export default class Products extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      products: null,
-    };
-  }
-  componentDidMount() {
-    fetch(FETCHURL)
-      .then(res => res.json())
-      .then(products => {
-        this.setState({ products });
-      })
-      .catch(err => console.log(err));
-    console.log("mounted");
-  }
+  // constructor(props) {
+  //   super(props)
+  //   // this.state = {
+  //   //   products: null,
+  //   // };
+  // }
+  // componentDidMount() {
+  //   fetch(FETCHURL)
+  //     .then(res => res.json())
+  //     .then(products => {
+  //       this.setState({ products });
+  //     })
+  //     .catch(err => console.log(err));
+  //   console.log("mounted");
+  // }
   render() {
-    if (this.state.products) {
+    // this.props.number = 1; 
+    if (this.props.products) {
       return (
         //davarendero komponenti propsad gadavcem states
         <div>
           <table>
             <tbody>
               <tr>
-                {this.state.products.slice((this.props.number - 1) * 12, (this.props.number - 1) * 12 + 3).map(product => (
+                {this.props.products.slice((this.props.number - 1) * 12, (this.props.number - 1) * 12 + 3).map(product => (
                   <td key={product._id}>
                     <Product product={product} />
                   </td>
@@ -39,7 +40,7 @@ export default class Products extends Component {
 
               </tr>
               <tr>
-                {this.state.products.slice((this.props.number - 1) * 12 + 4, (this.props.number - 1) * 12 + 7).map(product => (
+                {this.props.products.slice((this.props.number - 1) * 12 + 4, (this.props.number - 1) * 12 + 7).map(product => (
                   <td key={product._id}>
                     <Product product={product} />
                   </td>
@@ -47,7 +48,7 @@ export default class Products extends Component {
 
               </tr>
               <tr>
-                {this.state.products.slice((this.props.number - 1) * 12 + 8, (this.props.number - 1) * 12 + 11).map(product => (
+                {this.props.products.slice((this.props.number - 1) * 12 + 8, (this.props.number - 1) * 12 + 11).map(product => (
                   <td key={product._id}>
                     <Product product={product} />
                   </td>

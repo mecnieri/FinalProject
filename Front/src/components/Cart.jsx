@@ -5,6 +5,9 @@ import _ from '../../node_modules/underscore/underscore';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
 
+// const FETCHURL = " http://localhost:5000/api/products"
+
+
 export default class Cart extends Component {
     constructor(props) {
         super(props);
@@ -19,9 +22,16 @@ export default class Cart extends Component {
         };
     }
 
-    componentDidMount() {
-        this.handleSubTotal();
-    }
+    // componentDidMount() {
+    //     fetch(FETCHURL)
+    //     .then(res => res.json())
+    //     .then(products => {
+    //       this.setState({ products });
+    //     })
+    //     .catch(err => console.log(err));
+    //   console.log("mounted");
+    //     this.handleSubTotal();
+    // }
 
     changeQty = (itemId, qty) => {
         let item = _.find(this.state.items, item => item.id === itemId);
