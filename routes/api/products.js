@@ -74,7 +74,7 @@ router.put(
 //@access public
 router.get("/", (req, res) => {
   // get all the users
-  Product.find({}, function(err, products) {
+  Product.find({}, function (err, products) {
     if (err) throw err;
     res.json(products);
   });
@@ -87,8 +87,8 @@ router.get("/:name", (req, res) => {
   // get all the users
   console.log(req.params.name);
   Product.find(
-    { $or: [{ productName: req.params.name }, { category: req.params.name }] },
-    function(err, products) {
+    { $or: [{ brand: req.params.name }, { model: req.params.name }, { category: req.params.name }] },
+    function (err, products) {
       if (err) throw err;
       // object of all the users
       res.json(products);
@@ -101,7 +101,7 @@ router.get("/:name", (req, res) => {
 //@access public
 router.get("/category/:category", (req, res) => {
   // get all the users
-  Product.find({ category: req.params.category }, function(err, products) {
+  Product.find({ category: req.params.category }, function (err, products) {
     if (err) throw err;
     // object of all the users
     res.json(products);

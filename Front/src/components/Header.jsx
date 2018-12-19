@@ -73,7 +73,7 @@ const Header = (props) => {
                 </div>
 
 
-                <form className="search" action="">
+                <form className="search" action="" onSubmit={props.searchHandler}>
                     <div className="inputAndAll">
 
                         <input className="search-input" type="text" placeholder="Search for products" name="search2" />
