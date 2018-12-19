@@ -15,15 +15,16 @@ router.post(
   passport.authenticate("admin-rule", { session: false }),
   (req, res) => {
     const newProduct = new Product({
-      productName: req.body.productName,
-      price: req.body.price,
       category: req.body.category,
+      price: req.body.price,
+      brand: req.body.brand,
+      model: req.body.model,
+      price: Number(req.body.price),
       details: {
-        battery: req.body.battery,
+        weight: req.body.weight,
         size: req.body.size,
-        brand: req.body.brand
       },
-      image: "https://picsum.photos/200/200/?random"
+      image: "https://source.unsplash.com/random/"
     });
     newProduct.save().then(product => res.json(product));
   }
