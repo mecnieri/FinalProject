@@ -37,7 +37,15 @@ class App extends Component {
     }
     this.handlePageChange = this.handlePageChange.bind(this)
   }
-
+  componentDidMount() {
+    const FETCHURL = "http://localhost:5000/api/products";
+    fetch(FETCHURL)
+      .then(res => res.json())
+      .then(products => {
+        this.setState({ products });
+      })
+      .catch(err => console.log(err));
+  }
   handlePageChange(pageNumber) {
     this.setState({ activePage: pageNumber })
   }
