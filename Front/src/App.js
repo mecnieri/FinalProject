@@ -10,7 +10,7 @@ import './Header.css';
 import './Cart.css';
 // import './style.css';
 import Data from './db/data.json';
-import  Products  from './components/Products';
+import Products from './components/Products';
 // import { Product } from './components/Product';
 import { ContactPage } from './components/ContactPage';
 import LoginPage from './components/LoginPage';
@@ -25,12 +25,23 @@ import './Checkout.css';
 import './css/Description.css'
 import Description from './components/Description';
 import Dat from './data/item.json';
- 
+import Pagination from "../node_modules/react-js-pagination";
+
 class App extends Component {
-  state = {
-    showLogin: true
+  constructor(props) {
+    super(props)
+    this.state = {
+      showLogin: true,
+      activePage: 1
+    }
+
+    this.handlePageChange = this.handlePageChange.bind(this)
   }
 
+  handlePageChange(pageNumber) {
+    console.log(`active page is ${pageNumber}`);
+    this.setState({ activePage: pageNumber });
+  }
   render() {
     return (
       <Router>
@@ -42,7 +53,16 @@ class App extends Component {
             render={() => (
               <div>
                 <Slider />
-                <Products />
+                <Products number={this.state.activePage} />
+                <div>
+                  <Pagination
+                    activePage={this.state.activePage}
+                    itemsCountPerPage={10}
+                    totalItemsCount={450}
+                    pageRangeDisplayed={5}
+                    onChange={this.handlePageChange}
+                  />
+                </div>
               </div>)}
           />
           <Route
