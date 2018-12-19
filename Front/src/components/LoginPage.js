@@ -37,7 +37,6 @@ export default class LoginPage extends React.Component {
         })
         .then( res => res.json() )
         .then( result => {
-            console.log("40", result);
             if( result.success ){
                 localStorage.setItem('Authorized', result.token);
                 this.props.showLogin(false);

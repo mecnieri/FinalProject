@@ -22,7 +22,8 @@ router.post(
         battery: req.body.battery,
         size: req.body.size,
         brand: req.body.brand
-      }
+      },
+      image: "https://picsum.photos/200/200/?random"
     });
     newProduct.save().then(product => res.json(product));
   }

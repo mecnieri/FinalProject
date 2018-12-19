@@ -1,7 +1,8 @@
 {
     "index": {
         "title": "Techub Academy",
-        "desc": "Techub Academy Index Page"
+        "desc": "Techub Academy Index Page",
+        "url": "http://placekitten.com/200/300"
     },
     "contact": {
         "title": "Techub Academy Contact",
