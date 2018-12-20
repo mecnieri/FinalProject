@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Product from "./Product"
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
 // import Details from './components/UserDetails'
 // import Address from './components/UserAddress'
 // import Company from './components/UserCompany'
@@ -29,17 +31,17 @@ export default class Products extends Component {
       return (
         //davarendero komponenti propsad gadavcem states
         <div>
-          <table>
+          <table className="table list-table">
             <tbody>
-              <tr>
+              <tr className="first-row">
                 {this.props.products.slice((this.props.number - 1) * 12, (this.props.number - 1) * 12 + 3).map(product => (
-                  <td key={product._id}>
+                  <td key={product._id} >
                     <Product product={product} />
                   </td>
                 ))}
 
               </tr>
-              <tr>
+              <tr className="second-row">
                 {this.props.products.slice((this.props.number - 1) * 12 + 4, (this.props.number - 1) * 12 + 7).map(product => (
                   <td key={product._id}>
                     <Product product={product} />
@@ -47,7 +49,7 @@ export default class Products extends Component {
                 ))}
 
               </tr>
-              <tr>
+              <tr className="third-row">
                 {this.props.products.slice((this.props.number - 1) * 12 + 8, (this.props.number - 1) * 12 + 11).map(product => (
                   <td key={product._id}>
                     <Product product={product} />

@@ -67,7 +67,7 @@ export default class Cart extends Component {
     render() {
         const { grandTotal: total } = this.state;
         if (total === 0) {
-            return <h2>You have no Items in the Cart</h2>
+            return <h2 className="empty-cart">You have no Items in the Cart</h2>
         }
         return (
             <div className="cart">

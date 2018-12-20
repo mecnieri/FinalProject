@@ -30,10 +30,10 @@ h2:hover{
     
     width: 60%;
 }
-th{
+.user-container th{
     color:#59B210;
 }
-th, td{
+.user-container th, .user-container td{
     padding: 20px;
     border: 1px solid grey;
     box-shadow: black;
