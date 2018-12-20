@@ -6,7 +6,7 @@ function Product(props) {
             <h2>{props.product.model}</h2>
             <img src={props.product.image} alt={props.product.productName} width="300px" height="300px" />
             {/* <img src={`${props.product.image}`} /> */}
-            <h2>{props.product.price} $</h2>
+            <h3>{props.product.price} $</h3>
             <hr />
         </div>
     )

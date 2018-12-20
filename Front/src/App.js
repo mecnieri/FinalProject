@@ -26,6 +26,7 @@ import "./css/Description.css";
 import Description from "./components/Description";
 import Dat from "./data/item.json";
 import Pagination from "../node_modules/react-js-pagination";
+import './css/Home-List.css';
 
 class App extends Component {
   constructor(props) {
@@ -46,7 +47,15 @@ class App extends Component {
       })
       .catch(err => console.log(err));
   }
-
+  componentDidMount() {
+    const FETCHURL = "http://localhost:5000/api/products";
+    fetch(FETCHURL)
+      .then(res => res.json())
+      .then(products => {
+        this.setState({ products });
+      })
+      .catch(err => console.log(err));
+  }
   handlePageChange(pageNumber) {
     this.setState({ activePage: pageNumber });
   }

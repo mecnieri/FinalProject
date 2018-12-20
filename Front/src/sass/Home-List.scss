@@ -1,0 +1,123 @@
+$color-primary: #5D5D5D;
+$color-background: #3d3d3d;
+$color-backgroundWhite: #f7f8f9;
+$color-white: #fff;
+$color-green: #59B210;
+$color-fonts: #434343;
+$color-prize: #301c53;
+$color-table: #747474;
+$color-navHover: #54a90f;
+$color-backTextarea: #EFEEED;
+$color-borderHover: #c7c6c6;
+$color-sale:#F8484A;
+$color-names: #1257ab;
+.list-table{
+    & .first-row div{
+        position: relative;
+    }
+    & .first-row td:nth-child(2)::before{
+        content: 'Sale';
+        background-color:$color-sale; 
+        color: $color-white;
+        font-size: 11px;
+        letter-spacing: 3px;
+        padding: 5px 12px 5px 12px;
+        line-height: 20px;
+        text-transform: uppercase;
+        font-weight: 700;
+        clip-path: polygon(75% 0%, 100% 0, 79% 100%, 0% 100%, 0 49%, 0% 0%);
+    }
+    & .first-row td:nth-child(1)> div, .first-row td:nth-child(3)> div{
+        margin-top: 24.4px;
+    }
+    & .first-row td:nth-child(2)::after{
+        position: absolute;
+        transform: translate(100%,-160%);
+        content: '799$';
+        font-size: 28px;
+        font-weight: 600;
+        color: $color-prize;
+        text-decoration: line-through;
+    }
+    & .second-row td:nth-child(3)::before{
+        content: 'Sale';
+        background-color:$color-sale; 
+        color: $color-white;
+        font-size: 11px;
+        letter-spacing: 3px;
+        padding: 5px 12px 5px 12px;
+        line-height: 20px;
+        text-transform: uppercase;
+        font-weight: 700;
+        clip-path: polygon(75% 0%, 100% 0, 79% 100%, 0% 100%, 0 49%, 0% 0%);
+    }
+    & .second-row td:nth-child(1)> div, .second-row td:nth-child(2)> div{
+        margin-top: 24.4px;
+    }
+    & .second-row td:nth-child(3)::after{
+        position: absolute;
+        transform: translate(100%,-160%);
+        content: '899$';
+        font-size: 28px;
+        font-weight: 600;
+        color: $color-prize;
+        text-decoration: line-through;
+    }
+    & .third-row td:nth-child(1)::before{
+        content: 'Sale';
+        background-color:$color-sale; 
+        color: $color-white;
+        font-size: 11px;
+        letter-spacing: 3px;
+        padding: 5px 12px 5px 12px;
+        line-height: 20px;
+        text-transform: uppercase;
+        font-weight: 700;
+        clip-path: polygon(75% 0%, 100% 0, 79% 100%, 0% 100%, 0 49%, 0% 0%);
+    }
+    & .third-row td:nth-child(2)> div, .third-row td:nth-child(3)> div{
+        margin-top: 24.4px;
+    }
+    & .third-row td:nth-child(1)::after{
+        position: absolute;
+        transform: translate(100%,-160%);
+        content: '599$';
+        font-size: 28px;
+        font-weight: 600;
+        color: $color-prize;
+        text-decoration: line-through;
+    }
+    & td{
+        margin-right: 20px;
+        width: 25%;
+        &:hover{
+            border: 2px solid $color-borderHover;
+            transition: transform 2.5s;
+        }
+        & div > img{
+            display: block;
+            margin: auto;
+            padding: 5%;
+            transition: transform .5s;
+            &:hover{
+                transform: scale(1.2);
+            }
+        }
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    & h1, h2{
+        text-align: center;
+        text-transform: capitalize;
+        color: $color-names;
+    }
+    & h3{
+        text-align: right;
+        font-weight: 700;
+        color: $color-prize;
+        font-size: 28px;
+        letter-spacing: -2px;
+        margin-right: 10%;
+    }
+}
