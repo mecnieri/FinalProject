@@ -139,6 +139,7 @@ router.put('/', passport.authenticate('admin-rule', { session: false }), (req, r
 //@desc put product in the cart
 //@access User
 router.post('/cart', passport.authenticate('user-rule', { session: false }), (req, res) => {
+  console.log('req.received', req.body);
   //Find user by id
   User.findById(req.user.id).then(user => {
     if (req.body.productId && req.body.quantity) {
@@ -253,6 +254,15 @@ router.post('/checkout', passport.authenticate('user-rule', { session: false }),
   });
 
 });
+
+//@route GET api/users/boughtProducts
+//@desc get products from users broughtProducts
+//@access Admin
+router.post('/getcart', passport.authenticate('user-rule', { session: false }), (req, res) => {
+  User.findById(req.user.id).then(user => {
+    res.json(user.cart);
+  })
+})
 
 
 

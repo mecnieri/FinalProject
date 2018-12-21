@@ -1,66 +1,122 @@
-import React from 'react';
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import '../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
-import Tabs from './Tabs';
-
-
+import React from "react";
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
+import Tabs from "./Tabs";
 
 class Description extends React.Component {
-       render() {
-        return (
-            <section className="item" >
-                <div className="container">
-                    <div className="image-and-description">
-                        <div className="image">
-                        </div>
-                        <div className="description">
-                            <div className="description--rating"></div>
-                            <div className="description--title">
-                                {
-                                    this.props.Data.map(item => (
-                                        <p key={item.id} className="item-title"> {item.name}</p>
-                                    ))
-                                }
-                            </div>
-                            <div className="description--details">
-                                {
-                                    this.props.Data.map(item => (
-                                        <p key={item.id}> {item.details}</p>
-                                    ))
-                                }
-                            </div>
-                            <div className="description--item-price">
-                                {
-                                    this.props.Data.map(item => (
-                                        <p key={item.id} className="price"> {item.price}$</p>
-                                    ))
-                                }
-                            </div>
-                            <div className="description--cart">
-                                <input type="number" className="quantity" />
-                                <button className="btn btn-success btn-cart">Add To Cart</button>
-                            </div>
-                        </div>
-                    </div>
-                    <Tabs>
-                        <div label="Description">
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius provident mollitia optio soluta eveniet, alias doloribus? Pariatur, nihil dolores ab illum, sit, sint nostrum commodi praesentium ad autem sunt aut!
+  constructor(props) {
+    super(props);
+    this.state = {
+      product: null
+      //   quantity: 1
+    };
+    this.addHandler = this.addHandler.bind(this);
+  }
+  addHandler() {
+      let quantity = document.getElementById("quant").value;
+      let productId = this.state.product._id;
+    fetch('http://localhost:5000/api/users/cart', {
+        method:"POST",
+        headers: new Headers({
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            'Authorization': localStorage.getItem("Authorized")
+          }),
+        body: JSON.stringify({ quantity, productId })
+    })
+    .then( res => res.json() )
+    // let data = {
+    //   quantity: document.getElementById("quant").value,
+    //   productId: this.state.product._id
+    // };
+    // console.log(data);
+    // const url = "http://localhost:5000/api/users/cart";
+    // let fetchData = {
+    //   method: "POST",
+    //   body: JSON.stringify(data),
+    //   headers: new Headers({
+    //     Authorization: localStorage.getItem("Authorized")
+    //   })
+    // };
 
-                        </p>
-                        </div>
-                        <div label="Additional Information">
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus quam maiores architecto cumque corrupti exercitationem, consequuntur quasi laborum eaque itaque, et consequatur ratione quae voluptatem eum soluta culpa, expedita fugiat.</p>
-                        </div>
-                        <div label="Features">
-                            <p>Processor: I7-9700U</p>
-                            <p>RAM: 8GB </p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ratione delectus repellat recusandae similique excepturi nihil! Repellendus recusandae, excepturi nihil quae, molestiae cupiditate officia dignissimos consequatur non soluta hic nulla!
-                        </div>
-                    </Tabs>
+    // fetch(url, fetchData).then(function() {
+    //   // Handle response you get from the server
+    // });
+    // fetch("http://localhost:5000/api/users/cart", {
+    //     method: 'POST',
+    //     body: {
+    //         productId: id,
+    //         quantity: quantity
+    //     },
+    //     headers: new Headers({
+    //       'Authorization': localStorage.getItem("Authorized")
+    //     })
+    //   })
+    //     .then(res => res.json())
+    //     .then(test => console.log(test))
+    //     .catch(err => console.log(err))
+  }
+  componentDidMount() {
+    console.log("mounted");
+    fetch(
+      `http://localhost:5000/api/products/product/${
+        this.props.location.myCustomProps
+      }`,
+      {
+        method: "get"
+      }
+    )
+      .then(res => res.json())
+      .then(product => {
+        this.setState({ product });
+        //   console.log(22, this.state.product)
+      })
+      .catch(err => console.log(err));
+  }
+
+  render() {
+    console.log(10, this.props.location.myCustomProps);
+    if ((30, this.state.product)) {
+      return (
+        <section className="item">
+          <div className="container">
+            <div className="image-and-description">
+              <img src={this.state.product.image} height="300" width="300" />
+              <div className="description">
+                <div className="description--title">
+                  <p className="item-title"> {this.state.product.brand}</p>
                 </div>
-            </section>
-        );
+                <div className="description--details">
+                  <p>{this.state.product.model}</p>
+                </div>
+                <div className="description--item-price">
+                  <p className="price"> {this.state.product.price}$</p>
+                </div>
+                {/* <div className="description--cart"> */}
+                <p>quantity</p>
+                <input type="number" defaultValue="1" id="quant" />
+                <button
+                  className="btn btn-success btn-cart"
+                  onClick={this.addHandler}
+                >
+                  Add To Cart
+                </button>
+                {/* </div> */}
+              </div>
+            </div>
+            <div label="Description">
+              <p>
+                {this.state.product.description}
+                {console.log(this.state.product)}
+              </p>
+            </div>
+          </div>
+        </section>
+      );
+    } else {
+      return <div />;
     }
+  }
 }
 
 export default Description;

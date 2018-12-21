@@ -46,16 +46,20 @@ class App extends Component {
         this.setState({ products });
       })
       .catch(err => console.log(err));
-  }
-  componentDidMount() {
-    const FETCHURL = "http://localhost:5000/api/products";
-    fetch(FETCHURL)
-      .then(res => res.json())
-      .then(products => {
-        this.setState({ products });
+
+      fetch("http://localhost:5000/api/users/getcart", {
+        method: 'post',
+        headers: new Headers({
+          'Authorization': localStorage.getItem("Authorized")
+        })
       })
-      .catch(err => console.log(err));
+        .then(res => res.json())
+        .then(cart => {
+          this.setState({ cart });
+        })
+        .catch(err => console.log(err))
   }
+
   handlePageChange(pageNumber) {
     this.setState({ activePage: pageNumber });
   }
@@ -141,7 +145,7 @@ class App extends Component {
           <Route path="/test1" render={() => <UserPanel />} />
           <Route path="/cart" render={() => <Cart />} />
           <Route path="/checkoutTest" render={() => <Checkout />} />
-          <Route path="/item" render={() => <Description Data={Dat} />} />
+          <Route path="/item" component={Description } />
 
           <ProtectedRoute path="/userpanel" component={UserPanel} />
 

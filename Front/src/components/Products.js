@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Product from "./Product"
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
+import { BrowserRouter as Router, Route, Link, RouteHandler, Redirect } from "react-router-dom";
 // import Details from './components/UserDetails'
 // import Address from './components/UserAddress'
 // import Company from './components/UserCompany'
@@ -36,7 +37,7 @@ export default class Products extends Component {
               <tr className="first-row">
                 {this.props.products.slice((this.props.number - 1) * 12, (this.props.number - 1) * 12 + 3).map(product => (
                   <td key={product._id} >
-                    <Product product={product} />
+                  <Link to={{pathname: '/item', myCustomProps: product._id}}><Product product={product} /></Link>
                   </td>
                 ))}
 
@@ -44,7 +45,7 @@ export default class Products extends Component {
               <tr className="second-row">
                 {this.props.products.slice((this.props.number - 1) * 12 + 4, (this.props.number - 1) * 12 + 7).map(product => (
                   <td key={product._id}>
-                    <Product product={product} />
+                  <Link to="/item3"><Product product={product} /></Link>
                   </td>
                 ))}
 
@@ -52,7 +53,7 @@ export default class Products extends Component {
               <tr className="third-row">
                 {this.props.products.slice((this.props.number - 1) * 12 + 8, (this.props.number - 1) * 12 + 11).map(product => (
                   <td key={product._id}>
-                    <Product product={product} />
+                  <Link to="/item2"><Product product={product} /></Link>
                   </td>
                 ))}
 

@@ -6,10 +6,10 @@ const Header = (props) => {
     return (
         <header className ="header">
             <div className="top">
-
                 <div className="menu">
                     <ul className="left">
                         <li className="menu--item">
+                        <input type="number" defaultValue="1"></input>
                             <Link to="/">Home</Link>
                         </li>
                         <li className="menu--item">
