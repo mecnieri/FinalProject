@@ -63,7 +63,8 @@ export default class LoginPage extends React.Component {
                 <div id="id01" ref="id01" style={{display: this.state.cancel ? 'none' : 'block' }} className="modal">                    
                     <form className="modal-content animate" onSubmit={this.OnSubmitHandler} >
                         <div className="imgcontainer">
-                            <span  className="close" onClick={this.cancelFunc} title="Close Modal">&times;</span>
+                            <span  className="close" onClick={this.goTo} title="Close Modal">
+                            <Link to="/">&times;</Link></span>
                                 <img src="./images/admin.png" alt="Icon" className="avatar"/>
                         </div>
   

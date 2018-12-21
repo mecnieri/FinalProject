@@ -1,38 +1,58 @@
 import React, { Component } from 'react';
 
 export default class Item extends Component {
-    constructor(props) {
-        super(props);
+   constructor(props) {
+       super(props);
 
-        this.state = {
-            itemTotal: (this.props.quantity * this.props.price) + this.props.shipping,
-        };
-    }
+       this.state = {
+           itemTotal: (this.props.quantity * this.props.price) + this.props.shipping,
+           product: null
+       };
+       console.log(20, this.props.product_id);
+   }
 
-    getInitialState() {
-        this.setState({ itemTotal: this.props.quantity * this.props.price });
-    }
+//    componentDidMount()
 
-    componentWillUnmount() {
-        this.props.handleSubTotal();
-    }
+   getInitialState() {
+       this.setState({ itemTotal: this.props.quantity * this.props.price });
+   }
 
-    handleChange = (itemId, e) => {
-        this.setState({ itemTotal: e.target.value * this.props.price });
-        this.props.changeQty(itemId, e.target.value);
-    }
+   componentDidMount() {       
+           fetch(`http://localhost:5000/api/products/product/${this.props.product_id}`, {
+             method: 'get',
+           })
+             .then(res => res.json())
+             .then(product => {
+                this.setState({product})
+             })
+             .catch(err => console.log(err))
+       
+       console.log(33, this.state.product);
+    // console.log(34, this.props.product_id);
 
-    render() {
+}
+
+componentWillUnmount() {
+       this.props.handleSubTotal();
+   }
+
+   handleChange = (itemId, e) => {
+       this.setState({ itemTotal: e.target.value * this.props.price });
+       this.props.changeQty(itemId, e.target.value);
+   }
+
+   render() {
+       if(this.state.product) {
         return (
             <tr>
                 <td>
                     <div className="media">
                         <p className="thumbnail pull-left">
-                            <img src={this.props.image} alt="item" width="80" height="80" />
+                            <img src={this.state.product.image} alt="item" width="80" height="80" />
                         </p>
                         <div className="media-body">
-                            <h5 className="media-heading"><p>{this.props.name}</p></h5>
-                            <h5 className="media-heading"> by <p>{this.props.brand}</p></h5>
+                            <h5 className="media-heading"><p>{this.state.product.model}</p></h5>
+                            <h5 className="media-heading"> by <p>{this.state.product.brand}</p></h5>
                         </div>
                     </div>
                 </td>
@@ -40,7 +60,7 @@ export default class Item extends Component {
                     <input type="number" className="form-control" min="1" max={this.props.limit} value={this.props.quantity} onChange={this.handleChange.bind(this, this.props.id)} />
                 </td>
                 <td>
-                    {/* <strong className="itemPrice">${this.props.price.toFixed(2)}</strong> */}
+                    <strong className="itemPrice">${this.state.product.price.toFixed(2)}</strong>
                 </td>
                 <td>
                     {/* <strong className="shipping">${this.props.shipping.toFixed(2)}</strong> */}
@@ -55,5 +75,9 @@ export default class Item extends Component {
                 </td>
             </tr>
         );
-    }
+       } else {
+           return <tr></tr>
+       }
+      
+   }
 }

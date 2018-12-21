@@ -1,5 +1,5 @@
 import React from 'react';
-import {Redirect } from 'react-router-dom';
+import {Redirect, Link } from 'react-router-dom';
 
 
 export default class LoginPage extends React.Component {
@@ -19,6 +19,9 @@ export default class LoginPage extends React.Component {
     }
     cancelFunc=()=>{
         this.setState({cancel:true});
+    }
+    goTo=()=>{
+        return <Redirect to="/"/>;
     }
     OnSubmitHandler(event){
         event.preventDefault();
@@ -59,8 +62,9 @@ export default class LoginPage extends React.Component {
                 <div id="id01" ref="id01" style={{display: this.state.cancel ? 'none' : 'block' }} className="modal">                    
                     <form className="modal-content animate" onSubmit={this.OnSubmitHandler} >
                         <div className="imgcontainer">
-                            <span  className="close" onClick={this.cancelFunc} title="Close Modal">&times;</span>
-                                <img src="./images/user-group-icon.png" alt="Icon" className="avatar"/>
+                            <span  className="close" onClick={this.goTo} title="Close Modal">
+                            <Link to="/">&times;</Link></span>
+                                <img src="./images/user.png" alt="Icon" className="avatar"/>
                         </div>
   
                         <div className="formContainer">
@@ -73,7 +77,8 @@ export default class LoginPage extends React.Component {
                             <button type="submit">Login</button>
                             <button type="button" ref="cancel" className="cancelbtn" 
                             
-                            onClick={this.cancelFunc}>Cancel</button>
+                            onClick={this.goTo}>
+                            <Link style={{color:'#fff',textDecoration:'none'}} to="/">Cancel</Link></button>
                         </div>
                     </form>
                 </div>
