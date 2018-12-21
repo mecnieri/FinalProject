@@ -1,0 +1,9 @@
+{
+    "laptop": {
+        "id": 0,
+        "name": "Asus X556",
+        "details": "This gaming laptop ion keeps you centered on the maps — so you’ll rank high, and take out targets with absolute precision!",
+        "price": 2999,
+        "img": "http://placekitten.com/200/300"
+    }
+}
