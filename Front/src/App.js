@@ -9,10 +9,8 @@ import './login.css';
 import './Header.css';
 import './Cart.css';
 // import './style.css';
-import Data from './db/data.json';
 import Products from './components/Products';
 // import { Product } from './components/Product';
-import { ContactPage } from './components/ContactPage';
 import LoginPage from './components/LoginPage';
 import Cart from './components/Cart';
 import SignupPage from './components/SignupPage';
@@ -20,6 +18,7 @@ import UserPanel from './components/UserPanel';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Slider from './components/Slider';
+import Contact from './components/Contact';
 import Checkout from './components/Checkout';
 import './Checkout.css';
 import './css/Description.css'
@@ -27,6 +26,9 @@ import Description from './components/Description';
 import Dat from './data/item.json';
 import Pagination from "../node_modules/react-js-pagination";
 import './css/Home-List.css';
+import './css/responsive.css';
+import './css/Messenger.css'
+import './css/Contact.css'
 
 class App extends Component {
   constructor(props) {
@@ -75,7 +77,7 @@ class App extends Component {
               <div>
                 <Slider />
                 <Products products={this.state.products} number={this.state.activePage} />
-                <div>
+                <div className="page-turner">
                   <Pagination
                     activePage={this.state.activePage}
                     itemsCountPerPage={10}
@@ -86,10 +88,12 @@ class App extends Component {
                 </div>
               </div>)}
           />
-          <Route
-            path="/contact"
-            render={() => (<ContactPage title={Data.contact.title} desc={Data.contact.desc} />)}
-          />
+          <Route path="/contact" render={
+            () => (
+              <Contact />
+            )
+          } />
+          } />
           <Route
             path="/login"
             render={

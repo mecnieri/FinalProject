@@ -18,6 +18,7 @@
   },
   "scripts": {
     "compile:sass-homelist": "node-sass src/sass/Home-List.scss src/css/Home-List.css -w",
+    "compile:sass-responsive": "node-sass src/sass/responsive.scss src/css/responsive.css -w",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

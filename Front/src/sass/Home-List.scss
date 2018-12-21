@@ -11,113 +11,146 @@ $color-backTextarea: #EFEEED;
 $color-borderHover: #c7c6c6;
 $color-sale:#F8484A;
 $color-names: #1257ab;
+$color-lightBlue:#5084d8;
+$color-darkBlue:#225bb7
 .list-table{
-    & .first-row div{
-        position: relative;
+    display: flex;
+    flex-direction: column;
+    .image-container{
+        text-align: center;
     }
-    & .first-row td:nth-child(2)::before{
-        content: 'Sale';
-        background-color:$color-sale; 
-        color: $color-white;
-        font-size: 11px;
-        letter-spacing: 3px;
-        padding: 5px 12px 5px 12px;
-        line-height: 20px;
-        text-transform: uppercase;
-        font-weight: 700;
-        clip-path: polygon(75% 0%, 100% 0, 79% 100%, 0% 100%, 0 49%, 0% 0%);
-    }
-    & .first-row td:nth-child(1)> div, .first-row td:nth-child(3)> div{
-        margin-top: 24.4px;
-    }
-    & .first-row td:nth-child(2)::after{
-        position: absolute;
-        transform: translate(100%,-160%);
-        content: '799$';
-        font-size: 28px;
-        font-weight: 600;
-        color: $color-prize;
-        text-decoration: line-through;
-    }
-    & .second-row td:nth-child(3)::before{
-        content: 'Sale';
-        background-color:$color-sale; 
-        color: $color-white;
-        font-size: 11px;
-        letter-spacing: 3px;
-        padding: 5px 12px 5px 12px;
-        line-height: 20px;
-        text-transform: uppercase;
-        font-weight: 700;
-        clip-path: polygon(75% 0%, 100% 0, 79% 100%, 0% 100%, 0 49%, 0% 0%);
-    }
-    & .second-row td:nth-child(1)> div, .second-row td:nth-child(2)> div{
-        margin-top: 24.4px;
-    }
-    & .second-row td:nth-child(3)::after{
-        position: absolute;
-        transform: translate(100%,-160%);
-        content: '899$';
-        font-size: 28px;
-        font-weight: 600;
-        color: $color-prize;
-        text-decoration: line-through;
-    }
-    & .third-row td:nth-child(1)::before{
-        content: 'Sale';
-        background-color:$color-sale; 
-        color: $color-white;
-        font-size: 11px;
-        letter-spacing: 3px;
-        padding: 5px 12px 5px 12px;
-        line-height: 20px;
-        text-transform: uppercase;
-        font-weight: 700;
-        clip-path: polygon(75% 0%, 100% 0, 79% 100%, 0% 100%, 0 49%, 0% 0%);
-    }
-    & .third-row td:nth-child(2)> div, .third-row td:nth-child(3)> div{
-        margin-top: 24.4px;
-    }
-    & .third-row td:nth-child(1)::after{
-        position: absolute;
-        transform: translate(100%,-160%);
-        content: '599$';
-        font-size: 28px;
-        font-weight: 600;
-        color: $color-prize;
-        text-decoration: line-through;
-    }
-    & td{
-        margin-right: 20px;
-        width: 25%;
-        &:hover{
-            border: 2px solid $color-borderHover;
-            transition: transform 2.5s;
-        }
-        & div > img{
-            display: block;
+    & .first-row .each-product div,& .second-row .each-product div,& .third-row .each-product div{
+        & img{
             margin: auto;
-            padding: 5%;
+            padding: 7%;
             transition: transform .5s;
             &:hover{
                 transform: scale(1.2);
+                cursor: pointer;
             }
         }
-        &:hover{
-            cursor: pointer;
+            & h1, h2{
+                text-align: center;
+                text-transform: capitalize;
+                color: $color-names;
+                text-align: center;
+                text-transform: capitalize;
+            }
+            & h3{
+                text-align: right;
+                font-weight: 700;
+                color: $color-prize;
+                font-size: 28px;
+                letter-spacing: -2px;
+                margin-right: 10%;
+                text-transform: capitalize;
+            }
+    }
+    & .first-row{
+        padding: 5%;
+        display: flex;
+        justify-content: space-between;
+        & .each-product:nth-child(2) > div::before{
+            content: 'Sale';
+            background-color:$color-sale; 
+            position: absolute;
+            transform: translate(-230%,30%);
+            color: $color-white;
+            font-size: 11px;
+            letter-spacing: 3px;
+            padding: 5px 12px 5px 12px;
+            line-height: 20px;
+            text-transform: uppercase;
+            display: inline-block;
+            font-weight: 700;
+            clip-path: polygon(75% 0%, 100% 0, 79% 100%, 0% 100%, 0 49%, 0% 0%);
+        }
+        & .each-product:nth-child(2) > div::after{
+            position: absolute;
+            transform: translate(-160%,-160%);
+            content: '999$';
+            font-size: 28px;
+            font-weight: 600;
+            color: $color-prize;
+            text-decoration: line-through;
+            letter-spacing: 7px;
         }
     }
-    & h1, h2{
-        text-align: center;
-        text-transform: capitalize;
-        color: $color-names;
+    & .second-row{
+        padding: 5%;
+        display: flex;
+        justify-content: space-between;
+        & .each-product:nth-child(3) > div::before{
+            content: 'Sale';
+            background-color:$color-sale; 
+            color: $color-white;
+            position: absolute;
+            transform: translate(-230%,30%);
+            font-size: 11px;
+            letter-spacing: 3px;
+            padding: 5px 12px 5px 12px;
+            line-height: 20px;
+            text-transform: uppercase;
+            display: inline-block;
+            font-weight: 700;
+            clip-path: polygon(75% 0%, 100% 0, 79% 100%, 0% 100%, 0 49%, 0% 0%);
+        }
+        & .each-product:nth-child(3) > div::after{
+            position: absolute;
+            transform: translate(-160%,-160%);
+            content: '599$';
+            font-size: 28px;
+            font-weight: 600;
+            color: $color-prize;
+            text-decoration: line-through;
+            letter-spacing: 7px;
+        }
     }
-    & h3{
-        text-align: right;
-        font-weight: 700;
-        color: $color-prize;
-        font-size: 28px;
-        letter-spacing: -2px;
-        margin-right: 10%;
+    & .third-row{
+        padding: 5%;
+        display: flex;
+        justify-content: space-between;
+        & .each-product:nth-child(1) > div::before{
+            content: 'Sale';
+            background-color:$color-sale; 
+            color: $color-white;
+            position: absolute;
+            transform: translate(-230%,30%);
+            font-size: 11px;
+            letter-spacing: 3px;
+            padding: 5px 12px 5px 12px;
+            line-height: 20px;
+            text-transform: uppercase;
+            display: inline-block;
+            font-weight: 700;
+            clip-path: polygon(75% 0%, 100% 0, 79% 100%, 0% 100%, 0 49%, 0% 0%);
+        }
+        & .each-product:nth-child(1) > div::after{
+            position: absolute;
+            transform: translate(-160%,-160%);
+            content: '699$';
+            font-size: 28px;
+            font-weight: 600;
+            color: $color-prize;
+            text-decoration: line-through;
+            letter-spacing: 7px;
+        }
+    }
+}
+.page-turner{
+    position: relative;
+    height: 15vh;
+    & .pagination{
+        position: absolute;
+        left: 50%;
+        top:50%;
+        transform: translate(-50%,-50%);
+        & li{
+            letter-spacing: 8px;
+            & a{
+                color: $color-navHover;
+                font-weight: 500;
+            }
+        }
     }
 }
