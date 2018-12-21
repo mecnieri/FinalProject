@@ -87,7 +87,7 @@ router.get("/:name", (req, res) => {
   // get all the users
   console.log(req.params.name);
   Product.find(
-    { $or: [{ brand: req.params.name }, { model: req.params.name }, { category: req.params.name }] },
+    { $or: [{ brand: req.params.name }, { model: req.params.name }, { category: req.params.name }, {_id: req.params.id}] },
     function (err, products) {
       if (err) throw err;
       // object of all the users
@@ -99,13 +99,12 @@ router.get("/:name", (req, res) => {
 //@route GET api/products/:category
 //@desc get product by category
 //@access public
-router.get("/category/:category", (req, res) => {
+router.get("/product/:id", (req, res) => {
   // get all the users
-  Product.find({ category: req.params.category }, function (err, products) {
+  Product.findById(req.params.id, function (err, product) {
     if (err) throw err;
-    // object of all the users
-    res.json(products);
+    res.json(product);
   });
-});
+ });
 
 module.exports = router;

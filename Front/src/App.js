@@ -48,17 +48,17 @@ class App extends Component {
       })
       .catch(err => console.log(err));
 
-      fetch("http://localhost:5000/api/users/getcart", {
-        method: 'post',
-        headers: new Headers({
-          'Authorization': localStorage.getItem("Authorized")
-        })
+    fetch("http://localhost:5000/api/users/getcart", {
+      method: 'post',
+      headers: new Headers({
+        'Authorization': localStorage.getItem("Authorized")
       })
-        .then(res => res.json())
-        .then(cart => {
-          this.setState({ cart });
-        })
-        .catch(err => console.log(err))
+    })
+      .then(res => res.json())
+      .then(cart => {
+        this.setState({ cart });
+      })
+      .catch(err => console.log(err))
 
 
   }
@@ -66,17 +66,22 @@ class App extends Component {
     this.setState({ activePage: pageNumber })
   }
 
-  searchHandler = (e) => {
+  searchHandler = e => {
     e.preventDefault();
-    let query = e.target.elements.search2.value;
+    let query;
+    if (e.target.tagName === "LI") {
+     query = e.target.textContent.slice(0, -1).toLowerCase();
+    } else {
+     query = e.target.elements.search2.value.toLowerCase();
+    }
     let FETCHURL = `http://localhost:5000/api/products/${query}`;
     fetch(FETCHURL)
-      .then(res => res.json())
-      .then(products => {
-        this.setState({ products });
-      })
-      .catch(err => console.log(err));
-  }
+     .then(res => res.json())
+     .then(products => {
+      this.setState({ products });
+     })
+     .catch(err => console.log(err));
+   };
 
   render() {
     return (
@@ -130,7 +135,7 @@ class App extends Component {
             path="/cart"
             render={
               () => (
-                <Cart cart={this.state.cart}/>
+                <Cart cart={this.state.cart} />
               )
             } />
           <Route
@@ -142,11 +147,8 @@ class App extends Component {
             } />
           <Route
             path="/item"
-            render={
-              () => (
-                <Description Data={Dat} />
-              )
-            } />
+            component={Description}
+             />
 
           <ProtectedRoute path="/userpanel" component={UserPanel} />
 

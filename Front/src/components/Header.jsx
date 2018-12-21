@@ -103,12 +103,12 @@ const Header = (props) => {
             <div className="nav-bar">
                 <div className="nav-bar_container">
                     <ul className="nav-bar_container--list">
-                        <li>Laptops</li>
-                        <li>Phones</li>
-                        <li>Fridges</li>
-                        <li>Accessories</li>
-                        <li>Tv</li>
-                        <li>Games</li>
+                    <li onClick={props.searchHandler}>Laptops</li>
+                       <li onClick={props.searchHandler}>Mobiles</li>
+                       <li onClick={props.searchHandler}>Tablets</li>
+                       <li onClick={props.searchHandler}>Cameras</li>
+                       <li onClick={props.searchHandler}>Consoles</li>
+                       <li onClick={props.searchHandler}>TVs</li>
                     </ul>
                 </div>
             </div>
