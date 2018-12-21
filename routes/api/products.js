@@ -105,6 +105,6 @@ router.get("/product/:id", (req, res) => {
     if (err) throw err;
     res.json(product);
   });
-});
+ });
 
 module.exports = router;

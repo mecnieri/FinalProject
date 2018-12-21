@@ -32,36 +32,35 @@ export default class Products extends Component {
       return (
         //davarendero komponenti propsad gadavcem states
         <div>
-          <table className="table list-table">
-            <tbody>
-              <tr className="first-row">
-                {this.props.products.slice((this.props.number - 1) * 12, (this.props.number - 1) * 12 + 3).map(product => (
-                  <td key={product._id} >
-                  <Link to={{pathname: '/item', myCustomProps: product._id}}><Product product={product} /></Link>
-                  </td>
-                ))}
+          <div className="table list-table">
+            <div className="first-row">
+              {this.props.products.slice((this.props.number - 1) * 12, (this.props.number - 1) * 12 + 4).map(product => (
+                <div key={product._id} className="each-product one">
+                <Link to={{pathname: '/item', myCustomProps: product._id}}><Product product={product} /></Link>
+                  <button className="btn btn-sucess">Add To Cart</button>
+                </div>
+              ))}
 
-              </tr>
-              <tr className="second-row">
-                {this.props.products.slice((this.props.number - 1) * 12 + 4, (this.props.number - 1) * 12 + 7).map(product => (
-                  <td key={product._id}>
-                  <Link to="/item3"><Product product={product} /></Link>
-                  </td>
-                ))}
+            </div>
+            <div className="second-row">
+              {this.props.products.slice((this.props.number - 1) * 12 + 4, (this.props.number - 1) * 12 + 8).map(product => (
+                <div key={product._id} className="each-product two">
+                <Link to={{pathname: '/item', myCustomProps: product._id}}><Product product={product} /></Link>
+                  <button className="btn btn-sucess">Add To Cart</button>
+                </div>
+              ))}
 
-              </tr>
-              <tr className="third-row">
-                {this.props.products.slice((this.props.number - 1) * 12 + 8, (this.props.number - 1) * 12 + 11).map(product => (
-                  <td key={product._id}>
-                  <Link to="/item2"><Product product={product} /></Link>
-                  </td>
-                ))}
+            </div>
+            <div className="third-row">
+              {this.props.products.slice((this.props.number - 1) * 12 + 8, (this.props.number - 1) * 12 + 12).map(product => (
+                <div key={product._id} className="each-product">
+                <Link to={{pathname: '/item', myCustomProps: product._id}}><Product product={product} /></Link>
+                  <button className="btn btn-sucess">Add To Cart</button>
+                </div>
+              ))}
 
-              </tr>
-
-            </tbody>
-          </table>
-
+            </div>
+          </div>
         </div>
       );
     } else {

@@ -36,7 +36,7 @@ router.post("/register", (req, res) => {
         password: req.body.password,
         birthday: req.body.birthday,
         // write a function to repalce req.body.age
-        
+
         balance: req.body.balance
       });
       //encrypt password
@@ -135,6 +135,11 @@ router.put('/', passport.authenticate('admin-rule', { session: false }), (req, r
   })
 })
 
+router.post('/getcart', passport.authenticate('user-rule', { session: false }), (req, res) => {
+  User.findById(req.user.id).then(user => {
+    res.json(user.cart);
+  })
+})
 //@route Post api/users/cart
 //@desc put product in the cart
 //@access User
@@ -181,6 +186,15 @@ router.post('/cart', passport.authenticate('user-rule', { session: false }), (re
   });
 });
 
+//@route GET api/users/cart
+//@desc get products from users cart
+//@access user
+// router.get('/cart', passport.authenticate('user-rule', { session: false }), (req, res) => {
+//   console.log(187)
+//   User.findById(req.user.id).then(user => {
+//     res.json(user.cart)
+//    })
+// });
 
 //@route GET api/users/boughtProducts
 //@desc get products from users broughtProducts

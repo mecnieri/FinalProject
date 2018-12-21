@@ -1,103 +1,121 @@
-.list-table .first-row div {
-  position: relative; }
-
-.list-table .first-row td:nth-child(2)::before {
-  content: 'Sale';
-  background-color: #F8484A;
-  color: #fff;
-  font-size: 11px;
-  letter-spacing: 3px;
-  padding: 5px 12px 5px 12px;
-  line-height: 20px;
-  text-transform: uppercase;
-  font-weight: 700;
-  clip-path: polygon(75% 0%, 100% 0, 79% 100%, 0% 100%, 0 49%, 0% 0%); }
-
-.list-table .first-row td:nth-child(1) > div, .list-table .first-row td:nth-child(3) > div {
-  margin-top: 24.4px; }
-
-.list-table .first-row td:nth-child(2)::after {
-  position: absolute;
-  transform: translate(100%, -160%);
-  content: '799$';
-  font-size: 28px;
-  font-weight: 600;
-  color: #301c53;
-  text-decoration: line-through; }
-
-.list-table .second-row td:nth-child(3)::before {
-  content: 'Sale';
-  background-color: #F8484A;
-  color: #fff;
-  font-size: 11px;
-  letter-spacing: 3px;
-  padding: 5px 12px 5px 12px;
-  line-height: 20px;
-  text-transform: uppercase;
-  font-weight: 700;
-  clip-path: polygon(75% 0%, 100% 0, 79% 100%, 0% 100%, 0 49%, 0% 0%); }
-
-.list-table .second-row td:nth-child(1) > div, .list-table .second-row td:nth-child(2) > div {
-  margin-top: 24.4px; }
-
-.list-table .second-row td:nth-child(3)::after {
-  position: absolute;
-  transform: translate(100%, -160%);
-  content: '899$';
-  font-size: 28px;
-  font-weight: 600;
-  color: #301c53;
-  text-decoration: line-through; }
-
-.list-table .third-row td:nth-child(1)::before {
-  content: 'Sale';
-  background-color: #F8484A;
-  color: #fff;
-  font-size: 11px;
-  letter-spacing: 3px;
-  padding: 5px 12px 5px 12px;
-  line-height: 20px;
-  text-transform: uppercase;
-  font-weight: 700;
-  clip-path: polygon(75% 0%, 100% 0, 79% 100%, 0% 100%, 0 49%, 0% 0%); }
-
-.list-table .third-row td:nth-child(2) > div, .list-table .third-row td:nth-child(3) > div {
-  margin-top: 24.4px; }
-
-.list-table .third-row td:nth-child(1)::after {
-  position: absolute;
-  transform: translate(100%, -160%);
-  content: '599$';
-  font-size: 28px;
-  font-weight: 600;
-  color: #301c53;
-  text-decoration: line-through; }
-
-.list-table td {
-  margin-right: 20px;
-  width: 25%; }
-  .list-table td:hover {
-    border: 2px solid #c7c6c6;
-    transition: transform 2.5s; }
-  .list-table td div > img {
-    display: block;
+.list-table {
+  display: flex;
+  flex-direction: column; }
+  .list-table .image-container {
+    text-align: center; }
+  .list-table .first-row .each-product div img, .list-table .second-row .each-product div img, .list-table .third-row .each-product div img {
     margin: auto;
-    padding: 5%;
+    padding: 7%;
     transition: transform .5s; }
-    .list-table td div > img:hover {
-      transform: scale(1.2); }
-  .list-table td:hover {
-    cursor: pointer; }
+    .list-table .first-row .each-product div img:hover, .list-table .second-row .each-product div img:hover, .list-table .third-row .each-product div img:hover {
+      transform: scale(1.2);
+      cursor: pointer; }
+  .list-table .first-row .each-product div h1, .list-table .first-row .each-product div h2, .list-table .second-row .each-product div h1, .list-table .second-row .each-product div h2, .list-table .third-row .each-product div h1, .list-table .third-row .each-product div h2 {
+    text-align: center;
+    text-transform: capitalize;
+    color: #1257ab;
+    text-align: center;
+    text-transform: capitalize; }
+  .list-table .first-row .each-product div h3, .list-table .second-row .each-product div h3, .list-table .third-row .each-product div h3 {
+    text-align: right;
+    font-weight: 700;
+    color: #301c53;
+    font-size: 28px;
+    letter-spacing: -2px;
+    margin-right: 10%;
+    text-transform: capitalize; }
+  .list-table .first-row {
+    padding: 5%;
+    display: flex;
+    justify-content: space-between; }
+    .list-table .first-row .each-product:nth-child(2) > div::before {
+      content: 'Sale';
+      background-color: #F8484A;
+      position: absolute;
+      transform: translate(-230%, 30%);
+      color: #fff;
+      font-size: 11px;
+      letter-spacing: 3px;
+      padding: 5px 12px 5px 12px;
+      line-height: 20px;
+      text-transform: uppercase;
+      display: inline-block;
+      font-weight: 700;
+      clip-path: polygon(75% 0%, 100% 0, 79% 100%, 0% 100%, 0 49%, 0% 0%); }
+    .list-table .first-row .each-product:nth-child(2) > div::after {
+      position: absolute;
+      transform: translate(-160%, -160%);
+      content: '999$';
+      font-size: 28px;
+      font-weight: 600;
+      color: #301c53;
+      text-decoration: line-through;
+      letter-spacing: 7px; }
+  .list-table .second-row {
+    padding: 5%;
+    display: flex;
+    justify-content: space-between; }
+    .list-table .second-row .each-product:nth-child(3) > div::before {
+      content: 'Sale';
+      background-color: #F8484A;
+      color: #fff;
+      position: absolute;
+      transform: translate(-230%, 30%);
+      font-size: 11px;
+      letter-spacing: 3px;
+      padding: 5px 12px 5px 12px;
+      line-height: 20px;
+      text-transform: uppercase;
+      display: inline-block;
+      font-weight: 700;
+      clip-path: polygon(75% 0%, 100% 0, 79% 100%, 0% 100%, 0 49%, 0% 0%); }
+    .list-table .second-row .each-product:nth-child(3) > div::after {
+      position: absolute;
+      transform: translate(-160%, -160%);
+      content: '599$';
+      font-size: 28px;
+      font-weight: 600;
+      color: #301c53;
+      text-decoration: line-through;
+      letter-spacing: 7px; }
+  .list-table .third-row {
+    padding: 5%;
+    display: flex;
+    justify-content: space-between; }
+    .list-table .third-row .each-product:nth-child(1) > div::before {
+      content: 'Sale';
+      background-color: #F8484A;
+      color: #fff;
+      position: absolute;
+      transform: translate(-160%, -160%);
+      font-size: 11px;
+      letter-spacing: 3px;
+      padding: 5px 12px 5px 12px;
+      line-height: 20px;
+      text-transform: uppercase;
+      display: inline-block;
+      font-weight: 700;
+      clip-path: polygon(75% 0%, 100% 0, 79% 100%, 0% 100%, 0 49%, 0% 0%); }
+    .list-table .third-row .each-product:nth-child(1) > div::after {
+      position: absolute;
+      transform: translate(-160%, -160%);
+      content: '699$';
+      font-size: 28px;
+      font-weight: 600;
+      color: #301c53;
+      text-decoration: line-through;
+      letter-spacing: 7px; }
 
-.list-table h1, .list-table h2 {
-  text-align: center;
-  text-transform: capitalize;
-  color: #1257ab; }
-
-.list-table h3 {
-  text-align: right;
-  font-weight: 700;
-  color: #301c53;
-  font-size: 28px;
-  letter-spacing: -2px;
-  margin-right: 10%; }
+.page-turner {
+  position: relative;
+  height: 15vh; }
+  .page-turner .pagination {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); }
+    .page-turner .pagination li {
+      letter-spacing: 8px; }
+      .page-turner .pagination li a {
+        color: #54a90f;
+        font-weight: 500; }

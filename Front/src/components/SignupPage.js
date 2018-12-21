@@ -37,12 +37,10 @@ export default class SignupPage extends React.Component {
           },
           body: JSON.stringify({username, email, password,password2,birthday,balance})
       })
-      .then( res => console.log(res.json()) )
+      .then( res => res.json() )
       .then( result => {
-          if( result.success ){
-              localStorage.setItem('Registered', result.token);
-          }
-
+        localStorage.setItem('Registered', result.token);
+        this.props.registered(true);
       })
       .catch(err => console.log(err))
   }

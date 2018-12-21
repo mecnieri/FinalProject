@@ -22,7 +22,7 @@ export default class Cart extends Component {
         };
     }
 
-    // componentDidMount() {
+    componentDidMount() {
     //     fetch(FETCHURL)
     //     .then(res => res.json())
     //     .then(products => {
@@ -30,11 +30,15 @@ export default class Cart extends Component {
     //     })
     //     .catch(err => console.log(err));
     //   console.log("mounted");
-    //     this.handleSubTotal();
-    // }
+        this.handleSubTotal();
+    }
 
     changeQty = (itemId, qty) => {
-        let item = _.find(this.state.items, item => item.id === itemId);
+        console.log(37, this.state.items)
+        console.log(39, this.props.cart)
+        let item = _.find(this.props.cart, item => item._id === itemId);
+        console.log(38, item)
+        item.quantity = 1;
         item.quantity = qty;
 
         this.setState({ qtyTotal: this.state.qtyTotal + item.quantity });
@@ -86,18 +90,18 @@ export default class Cart extends Component {
                                     </tr>
                                 </thead>
                                 <List
-                                    items={this.state.items}
+                                    items={this.props.cart}
                                     removeItem={this.removeItem}
                                     changeQty={this.changeQty}
                                     handleSubTotal={this.handleSubTotal}
                                 />
                                 <tfoot>
                                     <tr>
-                                        {/* <td>
+                                        <td>
                                             <h5>Subtotal:</h5></td>
                                         <td className="text-right">
-                                            <h5><strong>${this.state.subTotal.toFixed(2)}</strong></h5>
-                                        </td> */}
+                                            {/* <h5><strong>${this.state.subTotal.toFixed(2)}</strong></h5> */}
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td></td>
@@ -116,7 +120,8 @@ export default class Cart extends Component {
                                         <td>
                                             <h3>Total</h3></td>
                                         <td className="text-right">
-                                            <h3><strong>${this.state.grandTotal.toFixed(2)}</strong></h3></td>
+                                            {/* <h3><strong>${this.state.grandTotal.toFixed(2)}</strong></h3> */}
+                                            </td>
                                     </tr>
                                     <tr>
                                         <td></td>
@@ -128,10 +133,10 @@ export default class Cart extends Component {
                                                 </button>
                                         </td>
                                         <td>
-                                            <button disabled={!this.state.grandTotal > 0}
+                                            {/* <button disabled={!this.state.grandTotal > 0}
                                                 className="btn btn-success">
                                                 Checkout
-                                                </button>
+                                                </button> */}
                                         </td>
                                     </tr>
                                 </tfoot>
