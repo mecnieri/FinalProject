@@ -23,13 +23,7 @@ export default class Cart extends Component {
     }
 
     componentDidMount() {
-        //     fetch(FETCHURL)
-        //     .then(res => res.json())
-        //     .then(products => {
-        //       this.setState({ products });
-        //     })
-        //     .catch(err => console.log(err));
-        //   console.log("mounted");
+
         console.log(34, "item", this.state);
         this.handleSubTotal();
     }
