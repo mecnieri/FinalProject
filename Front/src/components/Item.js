@@ -40,7 +40,7 @@ export default class Item extends Component {
                     <input type="number" className="form-control" min="1" max={this.props.limit} value={this.props.quantity} onChange={this.handleChange.bind(this, this.props.id)} />
                 </td>
                 <td>
-                    <strong className="itemPrice">${this.props.price.toFixed(2)}</strong>
+                    {/* <strong className="itemPrice">${this.props.price.toFixed(2)}</strong> */}
                 </td>
                 <td>
                     {/* <strong className="shipping">${this.props.shipping.toFixed(2)}</strong> */}

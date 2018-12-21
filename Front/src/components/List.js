@@ -5,7 +5,7 @@ import _ from '../../node_modules/underscore/underscore';
 export default class List extends Component {
     renderItems() {
         const props = _.omit(this.props, 'items');
-
+        console.log(this.props.items)
         return _.map(this.props.items, (item, index) => <Item key={index} {...item} {...props} />);
     }
 
