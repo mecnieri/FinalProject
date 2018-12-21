@@ -11,7 +11,6 @@ export default class Item extends Component {
        console.log(20, this.props.product_id);
    }
 
-//    componentDidMount()
 
    getInitialState() {
        this.setState({ itemTotal: this.props.quantity * this.props.price });
@@ -28,7 +27,6 @@ export default class Item extends Component {
              .catch(err => console.log(err))
        
        console.log(33, this.state.product);
-    // console.log(34, this.props.product_id);
 
 }
 
@@ -63,15 +61,15 @@ componentWillUnmount() {
                     <strong className="itemPrice">${this.state.product.price.toFixed(2)}</strong>
                 </td>
                 <td>
-                    {/* <strong className="shipping">${this.props.shipping.toFixed(2)}</strong> */}
+                    {/* <strong className="shipping">${this.state.shipping.toFixed(2)}</strong> */}
                 </td>
                 <td>
-                    {/* <strong className="itemTotal">${this.state.itemTotal.toFixed(2)}</strong> */}
+                    <strong className="itemTotal">${this.state.itemTotal.toFixed(2)}</strong>
                 </td>
                 <td>
-                    {/* <button type="button" className="btn btn-danger" onClick={this.props.removeItem.bind(this, this.props.id)}>
+                    <button type="button" className="btn btn-danger" onClick={this.props.removeItem.bind(this, this.props.id)}>
                         Remove
-                    </button> */}
+                    </button>
                 </td>
             </tr>
         );
