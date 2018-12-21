@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Product from "./Product"
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
+import { BrowserRouter as Router, Route, Link, RouteHandler, Redirect } from "react-router-dom";
 // import Details from './components/UserDetails'
 // import Address from './components/UserAddress'
 // import Company from './components/UserCompany'
@@ -35,7 +36,7 @@ export default class Products extends Component {
             <div className="first-row">
               {this.props.products.slice((this.props.number - 1) * 12, (this.props.number - 1) * 12 + 4).map(product => (
                 <div key={product._id} className="each-product one">
-                  <Product product={product} />
+                <Link to={{pathname: '/item', myCustomProps: product._id}}><Product product={product} /></Link>
                 </div>
               ))}
 
@@ -43,7 +44,7 @@ export default class Products extends Component {
             <div className="second-row">
               {this.props.products.slice((this.props.number - 1) * 12 + 4, (this.props.number - 1) * 12 + 8).map(product => (
                 <div key={product._id} className="each-product two">
-                  <Product product={product} />
+                <Link to={{pathname: '/item', myCustomProps: product._id}}><Product product={product} /></Link>
                 </div>
               ))}
 
@@ -51,9 +52,10 @@ export default class Products extends Component {
             <div className="third-row">
               {this.props.products.slice((this.props.number - 1) * 12 + 8, (this.props.number - 1) * 12 + 12).map(product => (
                 <div key={product._id} className="each-product">
-                  <Product product={product} />
+                <Link to={{pathname: '/item', myCustomProps: product._id}}><Product product={product} /></Link>
                 </div>
               ))}
+
             </div>
           </div>
         </div>

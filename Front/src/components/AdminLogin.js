@@ -1,11 +1,11 @@
 import React from 'react';
-import {Redirect, Link } from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 
 
 export default class LoginPage extends React.Component {
 
     constructor(props){
-        super(props)
+        super(props);
 
         this.OnSubmitHandler = this.OnSubmitHandler.bind(this);
         this.email = React.createRef();
@@ -21,7 +21,7 @@ export default class LoginPage extends React.Component {
         this.setState({cancel:true});
     }
     goTo=()=>{
-        return <Redirect to="/"/>;
+        return <Redirect to={'/'}/>;
     }
     OnSubmitHandler(event){
         event.preventDefault();
@@ -30,7 +30,7 @@ export default class LoginPage extends React.Component {
     }
 
     login = (email, password) => {
-        fetch('http://localhost:5000/api/users/login', {
+        fetch('http://localhost:5000/api/admin/login', {
             method:"POST",
             headers: {
                 "Accept": "application/json",
@@ -38,11 +38,11 @@ export default class LoginPage extends React.Component {
             },
             body: JSON.stringify({ email, password })
         })
-        .then( res => res.json() )
+        .then( res => res.json())
         .then( result => {
             if( result.success ){
                 localStorage.setItem('Authorized', result.token);
-                this.props.showLogin(false);
+                this.props.adminLog(true);
             }
             else {
                 localStorage.removeItem('Authorized');
@@ -53,8 +53,9 @@ export default class LoginPage extends React.Component {
 
     render() {
         const {isLoggedIn} = this.state;
+        //console.log(isLoggedIn);
         if( isLoggedIn ){
-            return <Redirect to={`/userpanel`} />
+            return <Redirect to={`/adminpanel`} />
         }
         else {
             return (
@@ -64,21 +65,23 @@ export default class LoginPage extends React.Component {
                         <div className="imgcontainer">
                             <span  className="close" onClick={this.goTo} title="Close Modal">
                             <Link to="/">&times;</Link></span>
-                                <img src="./images/user.png" alt="Icon" className="avatar"/>
+                                <img src="./images/admin.png" alt="Icon" className="avatar"/>
                         </div>
   
                         <div className="formContainer">
-                            <label ><b>email</b></label>
+                            <label ><b>Admin Email</b></label>
                             <input type="text" placeholder="Enter email" name="email" ref={this.email} required/>
         
-                            <label ><b>Password</b></label>
+                            <label ><b>Admin Password</b></label>
                             <input type="password" placeholder="Enter Password" name="password" ref={this.password} required/>
                 
                             <button type="submit">Login</button>
                             <button type="button" ref="cancel" className="cancelbtn" 
                             
                             onClick={this.goTo}>
-                            <Link style={{color:'#fff',textDecoration:'none'}} to="/">Cancel</Link></button>
+                            <Link style={{color:'#fff',textDecoration:'none'}} to="/">Cancel</Link>
+                            </button>
+                            
                         </div>
                     </form>
                 </div>

@@ -1,8 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Link, Redirect } from 'react-router-dom'
 import logo from '../images/5921100ld.jpg'
 
-const Header = (props) => {
+class Header extends Component {
+
+    render(props){
     return (
         <header className ="header">
             <div className="top">
@@ -18,29 +20,25 @@ const Header = (props) => {
                         <li className="menu--item">
                             <Link to="/about">About</Link>
                         </li>
-                        <li className="menu--item">
-                            <Link to="/test1">Test1</Link>
-                        </li>
+                       
                         {/* <li className="menu--item">
                             <Link to="/cartTest">Cart Test</Link>
                         </li> */}
-                        <li className="menu--item">
-                            <Link to="/checkoutTest">ch Test</Link>
-                        </li>
+                        
 
                     </ul>
 
                     <ul className="right">
                         { 
-                        props.showLogin &&  ( 
+                        this.props.showLogin &&  ( 
                             <li className="menu--item">
-                            <Link to="/login">Login</Link>
+                            <Link to="/login"  style={{display: this.props.adminLog ? 'none' : 'block' }}>Login</Link>
                             </li>
                         )
                         }
                     
                         {
-                        !props.showLogin && (
+                        !this.props.showLogin && (
                         <li className="menu--item">
                             <Link to="/userpanel">User Profile</Link>
                         </li>
@@ -48,22 +46,36 @@ const Header = (props) => {
                         }
 
                         { 
-                        props.showLogin &&  ( 
+                        this.props.showLogin &&  ( 
                             <li className="menu--item">
-                            <Link to="/signUp">Sign  Up</Link>
+                            <Link to="/signUp" style={{display: this.props.adminLog ? 'none' : 'block' }}>Sign  Up</Link>
                             </li>
                         )
                         }
-
-                        
-
-                        <li className="menu--item">
-                            <Link to="/profile">My Account</Link>
+                        {
+                        !this.props.showLogin &&(<li className="menu--item">
+                            <Link to="/checkoutTest">Checkout</Link>
                         </li>
-
+                        )
+                        }
                         <li className="menu--item">
+                        <i className="fas fa-shopping-cart"></i>
                             <Link to="/cart">Cart</Link>
                         </li>
+                        {
+                        !this.props.showLogin &&(<li onClick={<Redirect to={'/'} /> } className="menu--item">
+                            
+                            <Link to="/">Log Out</Link>
+                        </li>
+                        )
+                        }
+                        {
+                         this.props.adminLog &&(<li onClick={<Redirect to="/"/>} className="menu--item">
+                            <Link to="/">Log Out</Link>
+                        </li>
+                        )
+                        }
+                      
                     </ul>
                 </div>
             </div>
@@ -73,7 +85,7 @@ const Header = (props) => {
                 </div>
 
 
-                <form className="search" action="" onSubmit={props.searchHandler}>
+                <form className="search" action="" onSubmit={this.props.searchHandler}>
                     <div className="inputAndAll">
 
                         <input className="search-input" type="text" placeholder="Search for products" name="search2" />
@@ -103,17 +115,18 @@ const Header = (props) => {
             <div className="nav-bar">
                 <div className="nav-bar_container">
                     <ul className="nav-bar_container--list">
-                        <li>Laptops</li>
-                        <li>Phones</li>
-                        <li>Fridges</li>
-                        <li>Accessories</li>
-                        <li>Tv</li>
-                        <li>Games</li>
+                    <li onClick={this.props.searchHandler}>Laptops</li>
+                       <li onClick={this.props.searchHandler}>Mobiles</li>
+                       <li onClick={this.props.searchHandler}>Tablets</li>
+                       <li onClick={this.props.searchHandler}>Cameras</li>
+                       <li onClick={this.props.searchHandler}>Consoles</li>
+                       <li onClick={this.props.searchHandler}>TVs</li>
                     </ul>
                 </div>
             </div>
         </header>
     )
+}
 }
 
 export default Header;

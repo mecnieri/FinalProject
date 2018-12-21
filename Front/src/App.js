@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { ProtectedRoute } from './routes/ProtectedRoute';
 
+
 import 'bootstrap';
 import './App.css';
 // import './user.css';
@@ -9,21 +10,24 @@ import './login.css';
 import './Header.css';
 import './Cart.css';
 // import './style.css';
+import Data from './db/data.json';
 import Products from './components/Products';
 // import { Product } from './components/Product';
 import LoginPage from './components/LoginPage';
+import AdminLogin from './components/AdminLogin';
+import AdminPanel from './components/AdminPanel';
 import Cart from './components/Cart';
 import SignupPage from './components/SignupPage';
 import UserPanel from './components/UserPanel';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Slider from './components/Slider';
-import Contact from './components/Contact';
 import Checkout from './components/Checkout';
 import './Checkout.css';
 import './css/Description.css'
 import Description from './components/Description';
 import Dat from './data/item.json';
+import Contact from './components/Contact';
 import Pagination from "../node_modules/react-js-pagination";
 import './css/Home-List.css';
 import './css/responsive.css';
@@ -48,14 +52,33 @@ class App extends Component {
         this.setState({ products });
       })
       .catch(err => console.log(err));
+
+    fetch("http://localhost:5000/api/users/getcart", {
+      method: 'post',
+      headers: new Headers({
+        'Authorization': localStorage.getItem("Authorized")
+      })
+    })
+      .then(res => res.json())
+      .then(cart => {
+        this.setState({ cart });
+      })
+      .catch(err => console.log(err))
+
+
   }
   handlePageChange(pageNumber) {
     this.setState({ activePage: pageNumber })
   }
 
-  searchHandler = (e) => {
+  searchHandler = e => {
     e.preventDefault();
-    let query = e.target.elements.search2.value;
+    let query;
+    if (e.target.tagName === "LI") {
+      query = e.target.textContent.slice(0, -1).toLowerCase();
+    } else {
+      query = e.target.elements.search2.value.toLowerCase();
+    }
     let FETCHURL = `http://localhost:5000/api/products/${query}`;
     fetch(FETCHURL)
       .then(res => res.json())
@@ -63,13 +86,13 @@ class App extends Component {
         this.setState({ products });
       })
       .catch(err => console.log(err));
-  }
+  };
 
   render() {
     return (
       <Router>
         <div className="App">
-          <Header showLogin={this.state.showLogin} searchHandler={this.searchHandler} />
+          <Header showLogin={this.state.showLogin} searchHandler={this.searchHandler} adminLog={this.state.adminLog} />
           <Route
             path="/"
             exact
@@ -93,7 +116,6 @@ class App extends Component {
               <Contact />
             )
           } />
-          } />
           <Route
             path="/login"
             render={
@@ -105,21 +127,21 @@ class App extends Component {
             path="/signUp"
             render={
               () => (
-                <SignupPage />
+                <SignupPage registered={(change) => { this.setState({ registered: change }) }} />
               )
             } />
           <Route
-            path="/test1"
+            path="/admin"
             render={
               () => (
-                <UserPanel />
+                <AdminLogin adminLog={(change) => { this.setState({ adminLog: change }) }} />
               )
             } />
           <Route
             path="/cart"
             render={
               () => (
-                <Cart />
+                <Cart cart={this.state.cart} />
               )
             } />
           <Route
@@ -131,15 +153,15 @@ class App extends Component {
             } />
           <Route
             path="/item"
-            render={
-              () => (
-                <Description Data={Dat} />
-              )
-            } />
+            component={Description}
+          />
 
           <ProtectedRoute path="/userpanel" component={UserPanel} />
+          <ProtectedRoute path="/adminpanel" component={AdminPanel} />
+          {this.state.registered && (<Redirect to={'/'} />)}
 
           {!this.state.showLogin && (<Redirect to={`/userpanel`} />)}
+          {this.state.adminLog && (<Redirect to={`/adminpanel`} />)}
 
           <Footer />
         </div>
