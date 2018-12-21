@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import logo from '../images/5921100ld.jpg'
 
 const Header = (props) => {
@@ -18,15 +18,11 @@ const Header = (props) => {
                         <li className="menu--item">
                             <Link to="/about">About</Link>
                         </li>
-                        <li className="menu--item">
-                            <Link to="/test1">Test1</Link>
-                        </li>
+                       
                         {/* <li className="menu--item">
                             <Link to="/cartTest">Cart Test</Link>
                         </li> */}
-                        <li className="menu--item">
-                            <Link to="/checkoutTest">ch Test</Link>
-                        </li>
+                        
 
                     </ul>
 
@@ -54,16 +50,30 @@ const Header = (props) => {
                             </li>
                         )
                         }
-
-                        
-
-                        <li className="menu--item">
-                            <Link to="/profile">My Account</Link>
+                        {
+                        !props.showLogin &&(<li className="menu--item">
+                            <Link to="/checkoutTest">Checkout</Link>
                         </li>
-
+                        )
+                        }
                         <li className="menu--item">
+                        <i className="fas fa-shopping-cart"></i>
                             <Link to="/cart">Cart</Link>
                         </li>
+                        {
+                        !props.showLogin &&(<li onClick={<Redirect to={'/'} /> } className="menu--item">
+                            
+                            <Link to="/">Log Out</Link>
+                        </li>
+                        )
+                        }
+                        {
+                         props.adminLog &&(<li onClick={<Redirect to="/"/>} className="menu--item">
+                            <Link to="/">Log Out</Link>
+                        </li>
+                        )
+                        }
+                      
                     </ul>
                 </div>
             </div>

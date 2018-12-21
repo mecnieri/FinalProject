@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { ProtectedRoute } from './routes/ProtectedRoute';
 
+
 import 'bootstrap';
 import './App.css';
 // import './user.css';
@@ -14,6 +15,8 @@ import Products from './components/Products';
 // import { Product } from './components/Product';
 import { ContactPage } from './components/ContactPage';
 import LoginPage from './components/LoginPage';
+import AdminLogin from './components/AdminLogin';
+import AdminPanel from './components/AdminPanel';
 import Cart from './components/Cart';
 import SignupPage from './components/SignupPage';
 import UserPanel from './components/UserPanel';
@@ -87,7 +90,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Header showLogin={this.state.showLogin} searchHandler={this.searchHandler} />
+          <Header showLogin={this.state.showLogin} searchHandler={this.searchHandler} adminLog={this.state.adminLog}/>
           <Route
             path="/"
             exact
@@ -121,14 +124,14 @@ class App extends Component {
             path="/signUp"
             render={
               () => (
-                <SignupPage />
+                <SignupPage registered={(change) => { this.setState({ registered: change }) }}/>
               )
             } />
           <Route
-            path="/test1"
+            path="/admin"
             render={
               () => (
-                <UserPanel />
+                <AdminLogin adminLog={(change) => { this.setState({ adminLog: change }) }} />
               )
             } />
           <Route
@@ -151,8 +154,11 @@ class App extends Component {
              />
 
           <ProtectedRoute path="/userpanel" component={UserPanel} />
-
+          <ProtectedRoute path="/adminpanel" component={AdminPanel} />
+          {this.state.registered &&(<Redirect to={'/'}/>)}
+        
           {!this.state.showLogin && (<Redirect to={`/userpanel`} />)}
+          {this.state.adminLog && (<Redirect to={`/adminpanel`} />)}
 
           <Footer />
         </div>
