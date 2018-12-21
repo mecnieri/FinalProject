@@ -27,6 +27,7 @@ import Description from './components/Description';
 import Dat from './data/item.json';
 import Pagination from "../node_modules/react-js-pagination";
 import './css/Home-List.css';
+import './css/responsive.css';
 
 class App extends Component {
   constructor(props) {
@@ -46,6 +47,20 @@ class App extends Component {
         this.setState({ products });
       })
       .catch(err => console.log(err));
+
+      fetch("http://localhost:5000/api/users/getcart", {
+        method: 'post',
+        headers: new Headers({
+          'Authorization': localStorage.getItem("Authorized")
+        })
+      })
+        .then(res => res.json())
+        .then(cart => {
+          this.setState({ cart });
+        })
+        .catch(err => console.log(err))
+
+
   }
   handlePageChange(pageNumber) {
     this.setState({ activePage: pageNumber })
@@ -75,7 +90,7 @@ class App extends Component {
               <div>
                 <Slider />
                 <Products products={this.state.products} number={this.state.activePage} />
-                <div>
+                <div className="page-turner">
                   <Pagination
                     activePage={this.state.activePage}
                     itemsCountPerPage={10}
@@ -115,7 +130,7 @@ class App extends Component {
             path="/cart"
             render={
               () => (
-                <Cart />
+                <Cart cart={this.state.cart}/>
               )
             } />
           <Route

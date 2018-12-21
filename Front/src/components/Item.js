@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import img80 from './../img-80.png';
 
 export default class Item extends Component {
     constructor(props) {
@@ -29,7 +28,7 @@ export default class Item extends Component {
                 <td>
                     <div className="media">
                         <p className="thumbnail pull-left">
-                            <img src={img80} alt="item" />
+                            <img src={this.props.image} alt="item" width="80" height="80" />
                         </p>
                         <div className="media-body">
                             <h5 className="media-heading"><p>{this.props.name}</p></h5>
@@ -44,15 +43,15 @@ export default class Item extends Component {
                     <strong className="itemPrice">${this.props.price.toFixed(2)}</strong>
                 </td>
                 <td>
-                    <strong className="shipping">${this.props.shipping.toFixed(2)}</strong>
+                    {/* <strong className="shipping">${this.props.shipping.toFixed(2)}</strong> */}
                 </td>
                 <td>
-                    <strong className="itemTotal">${this.state.itemTotal.toFixed(2)}</strong>
+                    {/* <strong className="itemTotal">${this.state.itemTotal.toFixed(2)}</strong> */}
                 </td>
                 <td>
-                    <button type="button" className="btn btn-danger" onClick={this.props.removeItem.bind(this, this.props.id)}>
+                    {/* <button type="button" className="btn btn-danger" onClick={this.props.removeItem.bind(this, this.props.id)}>
                         Remove
-                    </button>
+                    </button> */}
                 </td>
             </tr>
         );
