@@ -96,11 +96,13 @@ router.get("/:name", (req, res) => {
   );
 });
 
+
+
+
 //@route GET api/products/:category
 //@desc get product by category
 //@access public
 router.get("/product/:id", (req, res) => {
-  // get all the users
   Product.findById(req.params.id, function (err, product) {
     if (err) throw err;
     res.json(product);

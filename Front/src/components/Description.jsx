@@ -25,6 +25,7 @@ class Description extends React.Component {
         body: JSON.stringify({ quantity, productId })
     })
     .then( res => res.json() )
+    .then(()=>{this.props.handleStateChange()})
     // let data = {
     //   quantity: document.getElementById("quant").value,
     //   productId: this.state.product._id
@@ -75,7 +76,7 @@ class Description extends React.Component {
   }
 
   render() {
-    console.log(10, this.props.location.myCustomProps);
+    // console.log(10, this.props.location.myCustomProps);
     if ((30, this.state.product)) {
       return (
         <section className="item">
