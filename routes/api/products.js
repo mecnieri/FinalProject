@@ -14,6 +14,7 @@ router.post(
   "/",
   passport.authenticate("admin-rule", { session: false }),
   (req, res) => {
+    console.log(17, "product", req.body);
     const newProduct = new Product({
       category: req.body.category,
       price: req.body.price,
@@ -87,7 +88,7 @@ router.get("/:name", (req, res) => {
   // get all the users
   console.log(req.params.name);
   Product.find(
-    { $or: [{ brand: req.params.name }, { model: req.params.name }, { category: req.params.name }, {_id: req.params.id}] },
+    { $or: [{ brand: req.params.name }, { model: req.params.name }, { category: req.params.name }, { _id: req.params.id }] },
     function (err, products) {
       if (err) throw err;
       // object of all the users
@@ -105,6 +106,6 @@ router.get("/product/:id", (req, res) => {
     if (err) throw err;
     res.json(product);
   });
- });
+});
 
 module.exports = router;
