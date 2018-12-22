@@ -75,15 +75,6 @@ export default class AdminPanel extends React.Component {
   }
   componentDidMount() {
   }
-  logic=()=>{
-    if(this.state.username==null){
-      return <h1>User Not Found!</h1>;
-    }
-    else{
-      return <h1>{this.state.username}</h1>
-    }
-  }
-
 
   render() {
     console.log(this.state)
