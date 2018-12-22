@@ -65,7 +65,7 @@ export default class Item extends Component {
                         <strong className="itemPrice">${this.state.product.price.toFixed(2)}</strong>
                     </td>
                     <td>
-                        {/* <strong className="shipping">${this.state.shipping.toFixed(2)}</strong> */}
+                        <strong className="shipping">${this.state.product.shipping.toFixed(2)}</strong>
                     </td>
                     <td>
                         <strong className="itemTotal">${this.state.itemTotal.toFixed(2)}</strong>

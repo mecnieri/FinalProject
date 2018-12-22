@@ -49,7 +49,8 @@ export default class Cart extends Component {
     handleSubTotal = (itemTotal = 0) => {
 
         _.each(this.state.items, function (item) {
-            itemTotal += (item.price * item.quantity) + item.shipping;
+            // itemTotal += (item.price * item.quantity) + item.shipping;
+            itemTotal += item.price * item.quantity;
         });
 
         this.setState({ subTotal: itemTotal });
