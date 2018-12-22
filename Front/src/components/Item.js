@@ -42,8 +42,8 @@ export default class Item extends Component {
     }
 
     render() {
-        console.log(43, this.state);
-        console.log(44, this.state.product);
+        console.log(43, this.state)
+        console.log(44, this.state.product)
         if (this.state.product) {
             return (
                 <tr>
