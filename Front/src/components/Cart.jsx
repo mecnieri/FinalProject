@@ -11,6 +11,7 @@ import '../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
 export default class Cart extends Component {
     constructor(props) {
         super(props);
+        console.log("14", props.cart)
         this.state = {
             items: items,
             qtyTotal: 0,
