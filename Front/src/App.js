@@ -27,10 +27,12 @@ import Checkout from './components/Checkout';
 import './Checkout.css';
 import './css/Description.css'
 import Description from './components/Description';
+import Contact from './components/Contact';
 import Dat from './data/item.json';
 import Pagination from "../node_modules/react-js-pagination";
 import './css/Home-List.css';
 import './css/responsive.css';
+import './css/Contact.css';
 
 class App extends Component {
   constructor(props) {
@@ -111,7 +113,7 @@ class App extends Component {
           />
           <Route
             path="/contact"
-            render={() => (<ContactPage title={Data.contact.title} desc={Data.contact.desc} />)}
+            render={() => (<Contact />)}
           />
           <Route
             path="/login"
@@ -124,7 +126,7 @@ class App extends Component {
             path="/signUp"
             render={
               () => (
-                <SignupPage registered={(change) => { this.setState({ registered: change }) }}/>
+                <SignupPage registered={(change) => { this.setState({ registered: change }) }} />
               )
             } />
           <Route
