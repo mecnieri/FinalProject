@@ -38,6 +38,7 @@ router.delete(
   "/",
   passport.authenticate("admin-rule", { session: false }),
   (req, res) => {
+
     Product.findOneAndDelete({ _id: ObjectId(req.body.Oid) }).then(product =>
       res.json(product)
     );
@@ -74,7 +75,6 @@ router.put(
 //@desc get all the products
 //@access public
 router.get("/", (req, res) => {
-  // get all the users
   Product.find({}, function (err, products) {
     if (err) throw err;
     res.json(products);

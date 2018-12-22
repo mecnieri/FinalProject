@@ -1,9 +1,9 @@
 import React from 'react';
 // import {Redirect } from 'react-router-dom';
+import Tabs from './Tabs';
 import './../user.css';
-
+// import '../css/Tabs.css';
 export default class AdminPanel extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -15,13 +15,9 @@ export default class AdminPanel extends React.Component {
     }
     this.handleUserSearch = this.handleUserSearch.bind(this);
   }
-
-
-
   handleUserSearch(e) {
     e.preventDefault();
     let query;
-
     query = e.target.children[0].childNodes[1].value;
     let FETCHURL = `http://localhost:5000/api/users/${query}`;
     fetch(FETCHURL, {
@@ -42,13 +38,27 @@ export default class AdminPanel extends React.Component {
       .catch(err => console.log(err))
   }
 
+  handleEditUser(e) {
+    e.preventDefault()
+    let FETCHURL = `http://localhost:5000/api/users`;
+debugger
+    console.log(username)
+     let username = e.target.children[0].value
+    fetch(FETCHURL, {
+      method: 'put',
+      headers: new Headers({
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        'Authorization': localStorage.getItem("Authorized")
+      }),
+      body: JSON.stringify({ username })
+    })
+  }
+
 
   handleAddProduct(e) {
     e.preventDefault()
     let FETCHURL = `http://localhost:5000/api/products`;
-
-
-
     let category = e.target.children[0].childNodes[1].value
     let price = e.target.children[0].childNodes[3].value
     let model = e.target.children[0].childNodes[5].value
@@ -58,7 +68,6 @@ export default class AdminPanel extends React.Component {
     // let image = e.target.children[0].childNodes[13].value
     console.log(category, price, model, brand, weight, size
     )
-
     fetch(FETCHURL, {
       method: 'post',
       headers: new Headers({
@@ -68,67 +77,59 @@ export default class AdminPanel extends React.Component {
       }),
       body: JSON.stringify({ category, price, model, brand, weight, size })
     })
-
-
-
-
   }
   componentDidMount() {
   }
-
   render() {
     console.log(this.state)
     console.log(this.state.username)
     return (
       <div className="co">
         <div className="user-container">
-
           <h2><i className="fas fa-user-tie"></i> Admin Panel</h2>
           {/* <h3><i className="fas fa-shopping-cart"></i>Cart</h3> */}
+          <Tabs className="admin-panel--tabs">
+            <div label="User Search">
+              <form onSubmit={this.handleUserSearch}>
+                <label className="admin-panel label">
+                  Name:  <input type="text" className="name-input" />
+                </label>
+                <input type="submit" value="Submit" className="submit-input" />
+              </form>
+              <form onSubmit={this.handleEditUser}>
 
+                <input type="text" placeholder={this.state.username} /><br />
+                <input type="text" placeholder={this.state.balance} /><br />
+                <input type="text" placeholder={this.state.email} /><br />
 
-          <h1>User search</h1>
+                <h1>
+                  {this.state.cart > 0 && <h1> cart is active</h1>}
+                  {this.state.cart == 0 && <h1> user has no cart</h1>}
+                </h1>
+                <input type="submit" value="Submit" />
+              </form>
+            </div>
+            <div label="Product Add">
+              <form onSubmit={this.handleAddProduct}>
+                <label>
+                  category:  <input type="text" name="category" />
+                  price:  <input type="text" name="price" />
+                  model:  <input type="text" name="model" />
+                  weight:  <input type="text" name="weight" />
+                  size:  <input type="text" name="size" />
+                  image:  <input type="text" name="image" />
+                </label>
+                <input type="submit" value="Submit" />
+              </form>
+            </div>
+            <div label="Edit User">
 
+            </div>
+          </Tabs>
           <div>
-            <form onSubmit={this.handleUserSearch}>
-              <label>
-                Name:  <input type="text" />
-              </label>
-              <input type="submit" value="Submit" />
-            </form>
           </div>
-
-          <h1>
-            {this.logic}
-          </h1>
-
-          <h1>
-            {this.state.email}
-          </h1>
-          <h1>
-            {this.state.balance}
-          </h1>
-          <h1>
-            {this.state.cart > 0 && <h1> cart is active</h1>}
-            {this.state.cart == 0 && <h1> user has no cart</h1>}
-          </h1>
-
-
-          <h1>Product search</h1>
-          <form onSubmit={this.handleAddProduct}>
-            <label>
-              category:  <input type="text" name="category" />
-              price:  <input type="text" name="price" />
-              model:  <input type="text" name="model" />
-              weight:  <input type="text" name="weight" />
-              size:  <input type="text" name="size" />
-              image:  <input type="text" name="image" />
-            </label>
-            <input type="submit" value="Submit" />
-          </form>
         </div>
       </div>
     )
   }
-
 }
