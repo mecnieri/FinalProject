@@ -42,7 +42,8 @@ class App extends Component {
       products: null,
       activePage: 1
     }
-    this.handlePageChange = this.handlePageChange.bind(this)
+    this.handlePageChange = this.handlePageChange.bind(this);
+    this.handleStateChange = this.handleStateChange.bind(this);
   }
   componentDidMount() {
     const FETCHURL = "http://localhost:5000/api/products";
@@ -69,6 +70,20 @@ class App extends Component {
   }
   handlePageChange(pageNumber) {
     this.setState({ activePage: pageNumber })
+  }
+  handleStateChange() {
+    console.log(75, 'fired')
+    fetch("http://localhost:5000/api/users/getcart", {
+      method: 'post',
+      headers: new Headers({
+        'Authorization': localStorage.getItem("Authorized")
+      })
+    })
+      .then(res => res.json())
+      .then(cart => {
+        this.setState({ cart });
+      })
+      .catch(err => console.log(err))
   }
 
   searchHandler = e => {
@@ -152,7 +167,11 @@ class App extends Component {
             } />
           <Route
             path="/item"
-            component={Description}
+            render={
+              (props) => (
+                <Description {...props} handleStateChange={this.handleStateChange} />
+              )
+            }
           />
 
           <ProtectedRoute path="/userpanel" component={UserPanel} />

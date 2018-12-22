@@ -5,7 +5,8 @@ export default class Item extends Component {
         super(props);
 
         this.state = {
-            itemTotal: (this.props.quantity * this.props.price) + this.props.shipping,
+            // itemTotal: (this.props.quantity * this.props.price) + this.props.shipping,
+            itemTotal: this.props.quantity * this.props.price,
             product: null
         };
         console.log(20, this.props.product_id);
@@ -59,16 +60,16 @@ export default class Item extends Component {
                         </div>
                     </td>
                     <td>
-                        <input type="number" className="form-control" min="1" max={this.props.limit} value={this.props.quantity} onChange={this.handleChange.bind(this, this.props.id)} />
+                        <input type="number" className="form-control" min="1" value={this.state.product.quantity} onChange={this.handleChange.bind(this, this.props.id)} />
                     </td>
                     <td>
                         <strong className="itemPrice">${this.state.product.price.toFixed(2)}</strong>
                     </td>
                     <td>
-                        <strong className="shipping">${this.state.product.shipping.toFixed(2)}</strong>
+                        <strong className="shipping">${this.state.product.shipping}</strong>
                     </td>
                     <td>
-                        <strong className="itemTotal">${this.state.itemTotal.toFixed(2)}</strong>
+                        <strong className="itemTotal">${this.state.itemTotal}</strong>
                     </td>
                     <td>
                         <button type="button" className="btn btn-danger" onClick={this.props.removeItem.bind(this, this.props.id)}>

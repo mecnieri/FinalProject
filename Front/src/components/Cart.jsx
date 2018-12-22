@@ -4,12 +4,10 @@ import items from '../items';
 import _ from '../../node_modules/underscore/underscore';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
-
 // const FETCHURL = " http://localhost:5000/api/products"
-
-
 export default class Cart extends Component {
     constructor(props) {
+        console.log("13new", props.cart)
         super(props);
         this.state = {
             items: items,
@@ -21,23 +19,18 @@ export default class Cart extends Component {
             grandTotal: 0
         };
     }
-
     componentDidMount() {
-
-        console.log(34, "item", this.state);
+        console.log(34, "item", this.props.cart);
         this.handleSubTotal();
     }
-
     changeQty = (itemId, qty) => {
         let item = _.find(this.props.cart, item => item._id === itemId);
         item.quantity = 1;
         item.quantity = qty;
-
         this.setState({ qtyTotal: this.state.qtyTotal + item.quantity });
         this.setState({ priceTotal: this.state.priceTotal + item.price });
         this.handleSubTotal();
     }
-
     removeItem = (itemId) => {
         let items = _.without(this.state.items, _.findWhere(this.state.items, {
             id: itemId
@@ -45,27 +38,22 @@ export default class Cart extends Component {
         this.setState({ items: items });
         this.handleSubTotal();
     }
-
     handleSubTotal = (itemTotal = 0) => {
-
         _.each(this.state.items, function (item) {
             // itemTotal += (item.price * item.quantity) + item.shipping;
-            itemTotal += item.price * item.quantity;
+            itemTotal += item.price;
         });
-
         this.setState({ subTotal: itemTotal });
         this.handleGrandTotal(itemTotal);
     }
-
     handleGrandTotal = (subTotal) => {
         this.setState({ grandTotal: (this.state.tax * subTotal) + subTotal });
     }
-
     render() {
-        const { grandTotal: total } = this.state;
-        if (total === 0) {
-            return <h2 className="empty-cart">You have no Items in the Cart</h2>
-        }
+        // const { grandTotal: total } = this.state;
+        // if (total === 0) {
+        //     return <h2 className="empty-cart">You have no Items in the Cart</h2>
+        // }
         return (
             <div className="cart">
                 <div className="container">
@@ -85,7 +73,7 @@ export default class Cart extends Component {
                                 <List
                                     items={this.props.cart}
                                     removeItem={this.removeItem}
-                                    changeQty={this.changeQty}
+                                    // changeQty={this.changeQty}
                                     handleSubTotal={this.handleSubTotal}
                                 />
                                 <tfoot>
@@ -141,4 +129,3 @@ export default class Cart extends Component {
         );
     }
 }
-

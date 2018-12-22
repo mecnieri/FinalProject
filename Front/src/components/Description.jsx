@@ -13,18 +13,19 @@ class Description extends React.Component {
     this.addHandler = this.addHandler.bind(this);
   }
   addHandler() {
-      let quantity = document.getElementById("quant").value;
-      let productId = this.state.product._id;
+    let quantity = document.getElementById("quant").value;
+    let productId = this.state.product._id;
     fetch('http://localhost:5000/api/users/cart', {
-        method:"POST",
-        headers: new Headers({
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-            'Authorization': localStorage.getItem("Authorized")
-          }),
-        body: JSON.stringify({ quantity, productId })
+      method: "POST",
+      headers: new Headers({
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        'Authorization': localStorage.getItem("Authorized")
+      }),
+      body: JSON.stringify({ quantity, productId })
     })
-    .then( res => res.json() )
+      .then(res => res.json())
+      .then(() => { this.props.handleStateChange() })
     // let data = {
     //   quantity: document.getElementById("quant").value,
     //   productId: this.state.product._id
@@ -60,7 +61,7 @@ class Description extends React.Component {
     console.log("mounted");
     fetch(
       `http://localhost:5000/api/products/product/${
-        this.props.location.myCustomProps
+      this.props.location.myCustomProps
       }`,
       {
         method: "get"
@@ -75,7 +76,7 @@ class Description extends React.Component {
   }
 
   render() {
-    console.log(10, this.props.location.myCustomProps);
+    // console.log(10, this.props.location.myCustomProps);
     if ((30, this.state.product)) {
       return (
         <section className="item">
