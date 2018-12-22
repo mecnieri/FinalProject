@@ -22,7 +22,6 @@ const properties = {
 
 const Slideshow = () => {
   return (
-    localStorage.removeItem("Authorized"),
     localStorage.removeItem("Registered"),
     <Slide {...properties}>
       <div className="each-slide">
