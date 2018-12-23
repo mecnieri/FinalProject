@@ -76,7 +76,7 @@ class Description extends React.Component {
   }
 
   render() {
-    // console.log(10, this.props.location.myCustomProps);
+    console.log(10, this.props.location.myCustomProps);
     if ((30, this.state.product)) {
       return (
         <section className="item">

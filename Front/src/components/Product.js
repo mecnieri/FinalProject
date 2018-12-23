@@ -7,6 +7,11 @@ function Product(props) {
             <img src={props.product.image} alt={props.product.productName} width="300px" height="300px" />
             {/* <img src={`${props.product.image}`} /> */}
             <h3>{props.product.price} $</h3>
+<<<<<<< HEAD
+=======
+            <button className="btn btn-sucess">Add To Cart</button>
+
+>>>>>>> origin/master
             <hr />
         </div>
     )

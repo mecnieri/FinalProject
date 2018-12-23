@@ -1,17 +1,17 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-import { ProtectedRoute } from "./routes/ProtectedRoute";
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { ProtectedRoute } from './routes/ProtectedRoute';
 
 
 import 'bootstrap';
 import './App.css';
 // import './user.css';
-import "./login.css";
-import "./Header.css";
-import "./Cart.css";
+import './login.css';
+import './Header.css';
+import './Cart.css';
 // import './style.css';
-import Data from "./db/data.json";
-import Products from "./components/Products";
+import Data from './db/data.json';
+import Products from './components/Products';
 // import { Product } from './components/Product';
 import { ContactPage } from './components/ContactPage';
 import LoginPage from './components/LoginPage';
@@ -27,22 +27,22 @@ import Checkout from './components/Checkout';
 import './Checkout.css';
 import './css/Description.css'
 import Description from './components/Description';
+import Contact from './components/Contact';
 import Dat from './data/item.json';
 import Pagination from "../node_modules/react-js-pagination";
 import './css/Home-List.css';
 import './css/responsive.css';
+import './css/Contact.css';
 
 class App extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       showLogin: true,
       products: null,
       activePage: 1
-    };
-    this.handlePageChange = this.handlePageChange.bind(this);
-    // change
-    this.handleStateChange = this.handleStateChange.bind(this);
+    }
+    this.handlePageChange = this.handlePageChange.bind(this)
   }
   componentDidMount() {
     const FETCHURL = "http://localhost:5000/api/products";
@@ -124,18 +124,11 @@ class App extends Component {
                     onChange={this.handlePageChange}
                   />
                 </div>
-              </div>
-            )}
+              </div>)}
           />
           <Route
             path="/contact"
-            render={() => (
-              <ContactPage
-                title={Data.contact.title}
-                // change
-                // desc={Data.contact.desc}
-              />
-            )}
+            render={() => (<Contact />)}
           />
           <Route
             path="/login"
@@ -148,7 +141,7 @@ class App extends Component {
             path="/signUp"
             render={
               () => (
-                <SignupPage registered={(change) => { this.setState({ registered: change }) }}/>
+                <SignupPage registered={(change) => { this.setState({ registered: change }) }} />
               )
             } />
           <Route
@@ -192,7 +185,7 @@ class App extends Component {
 
           <Footer />
         </div>
-      </Router>
+      </Router >
     );
   }
 }

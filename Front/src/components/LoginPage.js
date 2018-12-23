@@ -1,5 +1,9 @@
 import React from 'react';
+<<<<<<< HEAD
 import {Redirect } from 'react-router-dom';
+=======
+import {Redirect, Link } from 'react-router-dom';
+>>>>>>> origin/master
 
 
 export default class LoginPage extends React.Component {
@@ -20,6 +24,12 @@ export default class LoginPage extends React.Component {
     cancelFunc=()=>{
         this.setState({cancel:true});
     }
+<<<<<<< HEAD
+=======
+    goTo=()=>{
+        return <Redirect to="/"/>;
+    }
+>>>>>>> origin/master
     OnSubmitHandler(event){
         event.preventDefault();
         // console.log(this.email.current.value, this.password.current.value);
@@ -59,8 +69,14 @@ export default class LoginPage extends React.Component {
                 <div id="id01" ref="id01" style={{display: this.state.cancel ? 'none' : 'block' }} className="modal">                    
                     <form className="modal-content animate" onSubmit={this.OnSubmitHandler} >
                         <div className="imgcontainer">
+<<<<<<< HEAD
                             <span  className="close" onClick={this.cancelFunc} title="Close Modal">&times;</span>
                                 <img src="./images/user-group-icon.png" alt="Icon" className="avatar"/>
+=======
+                            <span  className="close" onClick={this.goTo} title="Close Modal">
+                            <Link to="/">&times;</Link></span>
+                                <img src="./images/user.png" alt="Icon" className="avatar"/>
+>>>>>>> origin/master
                         </div>
   
                         <div className="formContainer">
@@ -73,7 +89,12 @@ export default class LoginPage extends React.Component {
                             <button type="submit">Login</button>
                             <button type="button" ref="cancel" className="cancelbtn" 
                             
+<<<<<<< HEAD
                             onClick={this.cancelFunc}>Cancel</button>
+=======
+                            onClick={this.goTo}>
+                            <Link style={{color:'#fff',textDecoration:'none'}} to="/">Cancel</Link></button>
+>>>>>>> origin/master
                         </div>
                     </form>
                 </div>

@@ -123,15 +123,17 @@ router.get('/:username', passport.authenticate('admin-rule', { session: false })
 //@desc edit user found by id
 //@access Admin
 router.put('/', passport.authenticate('admin-rule', { session: false }), (req, res) => {
+  console.log(126, "users", req.body.username)
   User.findById(req.body.id).then(user => {
     if (req.body.username) {
       user.username = req.body.username
     }
     // if (req.body.age) {
-    //   user.age = req.body.age
-    // } //add other else conditions for user's other details
-    user.save()
-    res.json(user);
+      //   user.age = req.body.age
+      // } //add other else conditions for user's other details
+      user.save()
+      res.json(user);
+      console.log(136, "users", req.body.username)
   })
 })
 
@@ -144,7 +146,6 @@ router.post('/getcart', passport.authenticate('user-rule', { session: false }), 
 //@desc put product in the cart
 //@access User
 router.post('/cart', passport.authenticate('user-rule', { session: false }), (req, res) => {
-  console.log('req.received', req.body);
   //Find user by id
   User.findById(req.user.id).then(user => {
     if (req.body.productId && req.body.quantity) {

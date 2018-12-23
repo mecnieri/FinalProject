@@ -22,6 +22,10 @@ const properties = {
 
 const Slideshow = () => {
   return (
+<<<<<<< HEAD
+=======
+    localStorage.removeItem("Registered"),
+>>>>>>> origin/master
     <Slide {...properties}>
       <div className="each-slide">
         <img src={img2} alt="img2" width="500" height="400" />
