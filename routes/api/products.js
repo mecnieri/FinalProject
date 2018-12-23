@@ -108,5 +108,15 @@ router.get("/product/:id", (req, res) => {
     res.json(product);
   });
  });
+//@route GET api/products/:category
+//@desc get product by category
+//@access public
+router.post("/getArray", (req, res) => {
+  console.log(115, req.body);
+  Product.find({'_id': { $in: req.body} }, function (err, products) {
+    if (err) throw err;
+    res.json(products);
+  });
+ });
 
 module.exports = router;

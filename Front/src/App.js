@@ -161,8 +161,9 @@ class App extends Component {
           <Route
             path="/cart"
             render={
-              () => (
-                <Cart cart={this.state.cart} />
+              (props) => (
+                // change
+                <Cart {...props} cart={this.state.cart} />
               )
             } />
           <Route
