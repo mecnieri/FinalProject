@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[{
-=======
 {
->>>>>>> origin/master
     "laptop": {
         "id": 0,
         "name": "Asus X556",
@@ -10,8 +6,4 @@
         "price": 2999,
         "img": "http://placekitten.com/200/300"
     }
-<<<<<<< HEAD
-}]
-=======
 }
->>>>>>> origin/master

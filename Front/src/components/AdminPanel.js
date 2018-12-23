@@ -1,20 +1,5 @@
 import React from 'react';
 // import {Redirect } from 'react-router-dom';
-<<<<<<< HEAD
-import './../user.css';
-const FETCHURL = 'http://localhost:5000/api/admin/message';
-
-export default class AdminPanel extends React.Component {
-
-  
-  state = {
-    username: null,
-    email: null,
-    balance: null,
-    birthday: null
-  }
-  componentDidMount() {
-=======
 import Tabs from './Tabs';
 import './../user.css';
 // import '../css/Tabs.css';
@@ -35,71 +20,24 @@ export default class AdminPanel extends React.Component {
     let query;
     query = e.target.children[0].childNodes[1].value;
     let FETCHURL = `http://localhost:5000/api/users/${query}`;
->>>>>>> origin/master
     fetch(FETCHURL, {
       method: 'get',
       headers: new Headers({
         'Authorization': localStorage.getItem("Authorized")
       })
     })
-<<<<<<< HEAD
-    .then(res => res.json())
-    .then(user => {
-=======
       .then(res => res.json())
       .then(user => {
->>>>>>> origin/master
         this.setState({
           username: user.username,
           email: user.email,
           balance: user.balance,
-<<<<<<< HEAD
-=======
           cart: user.cart.length
->>>>>>> origin/master
         })
       })
       .catch(err => console.log(err))
   }
 
-<<<<<<< HEAD
-
-  render() {
-    return (
-    <div className="co">
-        <div className="user-container">
-          
-          <h2><i className="fas fa-user-tie"></i> Admin Panel</h2>
-           {/* <h3><i className="fas fa-shopping-cart"></i>Cart</h3> */}
-          <table className="table">
-          <tbody>
-            <tr>
-              <th>User List</th>
-              <th>Cart</th>
-              <th>Bought Product</th>
-              <th>Contact</th>
-            </tr>
-            <tr>
-              <td>{this.state.username}</td>
-              <td>{this.state.email}</td>
-              <td>{this.state.balance}</td>
-              <td className="message"><i className="fas fa-file-signature"></i></td>
-            </tr>
-            </tbody>
-          </table>
-        
-      
-        <form className="textarea">
-          <textarea></textarea>
-          <button className="btn btn-success">Send Message</button>
-        </form>
-    </div>
-    </div>
-        )
-    }
-}
-    
-=======
   handleEditUser(e) {
     e.preventDefault()
     let FETCHURL = `http://localhost:5000/api/users`;
@@ -195,4 +133,3 @@ debugger
     )
   }
 }
->>>>>>> origin/master
