@@ -1,7 +1,23 @@
-body {font-family: Arial, Helvetica, sans-serif;}
+:root {
+  --color-blue: #3c78d8; 
+  --color-blue-Hover:#2964c4;
+ --color-primary: #5D5D5D;
+ --color-background: #3d3d3d;
+ --color-backgroundWhite: #f7f8f9;
+ --color-white: #fff;
+ --color-green: #59B210;
+ --color-fonts: #434343;
+ --color-prize: #301c53;
+ --color-table: #747474;
+ --color-navHover: #54a90f;
+ --color-backTextarea: #EFEEED;
+ --color-borderHover: #c7c6c6;
+ --color-sale:#F8484A;
+ --color-names: #1257ab;
+}
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+.modal input[type=text], input[type=password] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -11,8 +27,8 @@ input[type=text], input[type=password] {
 }
 
 /* Set a style for all buttons */
-button {
-  background-color: #59b210;
+.modal button {
+  background-color: var(--color-blue);
   color: white;
   padding: 15px;
   margin: 8px 0;
@@ -21,7 +37,7 @@ button {
   width: auto;
 }
 
-button:hover {
+.modal button:hover {
   opacity: 0.8;
 }
 
@@ -38,7 +54,7 @@ button:hover {
   position: relative;
 }
 
-img.avatar {
+.modal img.avatar {
   width: 20%;
 }
 
@@ -48,7 +64,7 @@ img.avatar {
   width:50%;
 }
 
-span.psw {
+.modal span.psw {
   float: right;
   padding-top: 16px;
 }
@@ -69,11 +85,11 @@ span.psw {
 }
 
 /* Modal Content/Box */
-.modal-content {
+.login-page {
   background-color: #fefefe;
   margin:auto; /* 5% from the top, 15% from the bottom and centered */
   border: 1px solid #888;
-  width: 60%; /* Could be more or less, depending on screen size */
+  width: 50% !important; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button (x) */
@@ -91,13 +107,18 @@ span.psw {
   color: red;
   cursor: pointer;
 }
+.close a{
+  font-size: 30px;
+}
 
 /* Add Zoom Animation */
 .animate {
   -webkit-animation: animatezoom 0.6s;
   animation: animatezoom 0.6s
 }
-
+.submitBtn{
+  margin-right: 5% !important;
+}
 @-webkit-keyframes animatezoom {
   from {-webkit-transform: scale(0)} 
   to {-webkit-transform: scale(1)}

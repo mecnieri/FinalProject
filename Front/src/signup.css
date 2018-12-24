@@ -1,7 +1,11 @@
-h4 {
-  color: #7ed321;
+:root {
+  --color-blue: #3c78d8; 
+  --color-blue-Hover:#2964c4;
 }
-input,
+.cont h4 {
+  color: var(--color-blue);
+}
+.cont input,
 input[type="radio"] + label,
 input[type="checkbox"] + label:before
  {
@@ -12,20 +16,20 @@ input[type="checkbox"] + label:before
   border: 1px solid #e5e5e5;
   border-radius: 3px;
 }
-input:focus {
+.cont input:focus {
  
-  border-color: #59B210;
+  border-color: var(--color-blue);
 }
-input:focus + .input-icon i {
-  color: #59B210;
+.cont input:focus + .input-icon i {
+  color: var(--color-blue);
 }
-input:focus + .input-icon:after {
-  border-right-color: #59B210;
+.cont input:focus + .input-icon:after {
+  border-right-color: var(--color-blue);
 }
-input[type="radio"] {
+.cont input[type="radio"] {
   display: none;
 }
-input[type="radio"] + label,
+.cont input[type="radio"] + label,
 select {
   display: inline-block;
   width: 50%;
@@ -35,7 +39,7 @@ select {
 }
 
 
-input[type="checkbox"] + label:after {
+.cont input[type="checkbox"] + label:after {
   position: absolute;
   top: 0.45em;
   left: 0.2em;
@@ -43,7 +47,7 @@ input[type="checkbox"] + label:after {
   color: #fff;
   
 }
-input:checked + label:after {
+.cont input:checked + label:after {
   opacity: 1;
 }
 
@@ -60,9 +64,9 @@ input:checked + label:after {
 
 
 .sign-up{
-  background-color: #59B210;
+  background-color: var(--color-blue);
   padding:10px;
-  border:1px solid #59B210;
+  border:1px solid var(--color-blue);
   border-radius: 5px;
   color: #fff;
   font-weight: bolder;
@@ -85,7 +89,7 @@ input:checked + label:after {
   text-align: center;
 
 }
-form{
+.cont form{
   max-width: 400px;
 }
 

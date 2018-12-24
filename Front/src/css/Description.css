@@ -1,3 +1,20 @@
+:root {
+  --color-blue: #3c78d8; 
+  --color-blue-Hover:#2964c4;
+ --color-primary: #5D5D5D;
+ --color-background: #3d3d3d;
+ --color-backgroundWhite: #f7f8f9;
+ --color-white: #fff;
+ --color-green: #59B210;
+ --color-fonts: #434343;
+ --color-prize: #301c53;
+ --color-table: #747474;
+ --color-navHover: #54a90f;
+ --color-backTextarea: #EFEEED;
+ --color-borderHover: #c7c6c6;
+ --color-sale:#F8484A;
+ --color-names: #1257ab;
+}
 .tab-list {
   border-bottom: 1px solid #EFEEED;
   padding-left: 0; }
@@ -18,10 +35,10 @@
   line-height: 30px; }
   .tab-list-item:hover {
     cursor: pointer;
-    background-color: #54a90f; }
+    background-color: var(--color-blue); }
 
 .tab-list-active {
-  background-color: #59B210;
+  background-color: var(--color-blue-Hover);
   transition: 0.1s;
   border: #f7f8f9;
   border-width: 1px 1px 0 1px;
@@ -40,7 +57,8 @@
     .item .container .image-and-description {
       display: flex;
       width: 100%;
-      padding: 20px; }
+      padding: 20px; 
+    justify-content: space-between;}
       .item .container .image-and-description .image {
         width: 30%;
         height: 300px;
@@ -48,11 +66,40 @@
         background-size: cover;
         display: inline-block;
         margin-right: 5%; }
+        .quantity-add{
+          width: 25%;
+          display: flex;
+          justify-content: space-between;
+        }
+        .quantity-add .quantity-choose{
+          width: 30%;
+          padding-left: 10%;
+        }
+        .table-description tbody tr td:first-child{
+          font-weight: 700;
+          padding-left: 3%;
+          width: 40%;
+        }
+        .table-description tbody tr td:nth-child(2){
+          text-transform: capitalize;
+        }
+        .table-description tbody tr:nth-child(2) td:nth-child(2){
+          color: var(--color-blue);
+          font-weight: 500;
+        }
+        .prod-description{
+          font-size: 18px;
+        }
+        .instructions{
+          font-size: 18px;
+        }
       .item .container .image-and-description .description {
         width: 65%;
         height: 70vh;
         display: inline-block;
-        justify-content: space-between; }
+        justify-content: space-between; 
+        text-transform: capitalize;
+      }
         .item .container .image-and-description .description--title .item-title {
           font-size: 30px;
           color: #3D3D3D;
@@ -73,6 +120,6 @@
             width: 25%;
             padding-left: 5%; }
           .item .container .image-and-description .description--cart .btn-cart {
-            background-color: #59B210; }
+            background-color: var(--color-blue); }
             .item .container .image-and-description .description--cart .btn-cart:hover {
-              background-color: #54a90f; }
+              background-color: var(--color-blue-Hover); }

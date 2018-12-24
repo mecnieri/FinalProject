@@ -1,9 +1,13 @@
+:root {
+  --color-blue: #3c78d8; 
+  --color-blue-Hover:#2964c4;
+}
 .header {
     background-color: #f7f8f9;
     font-family: 'Open Sans', sans-serif; }
   
   .nav-bar {
-    background-color: #59B210;
+    background-color: var(--color-blue);
     position: relative;
     width: 100%;
     /* margin: 33px 0 0 0; */
@@ -34,7 +38,6 @@
         .nav-bar_container ul li:nth-child(1) {
           border-left: 1px #5D5D5D solid; }
         .nav-bar_container ul li:hover {
-          background-color: #54a90f;
-          cursor: pointer;
-          color: #5D5D5D; }
+          background-color: var(--color-blue-Hover);
+          cursor: pointer; }
           

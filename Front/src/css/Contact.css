@@ -84,7 +84,7 @@
   background-color: #4f87e2;
 }
 
-form {
+.input form {
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -92,7 +92,7 @@ form {
   margin: 0 auto 40px;
 }
 
-input {
+.input input {
   padding: 5px;
   font-size: 16px;
   border-radius: 8px;

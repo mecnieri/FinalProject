@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../images/logo.png';
+import logo from '../images/logo2.png';
 import visa from '../images/visa.png';
 import mastercard from '../images/mastercard.png';
 import skrill from '../images/skrill.png';
@@ -20,9 +20,9 @@ const Footer = () => {
                         <div className="social-icons">
                             <h3>Get in touch</h3>
                             <ul>
-                                <li><p className="fa fa-facebook" ></p></li>
-                                <li><p className="fa fa-twitter" ></p></li>
-                                <li><p className="fa fa-pinterest" ></p></li>
+                                <li><p className="fab fa-facebook" ></p></li>
+                                <li><p className="fab fa-twitter" ></p></li>
+                                <li><p className="fab fa-pinterest"></p></li>
                             </ul>
                         </div>
                     </div>

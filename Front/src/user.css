@@ -1,4 +1,20 @@
-
+:root {
+    --color-blue: #3c78d8; 
+    --color-blue-Hover:#2964c4;
+   --color-primary: #5D5D5D;
+   --color-background: #3d3d3d;
+   --color-backgroundWhite: #f7f8f9;
+   --color-white: #fff;
+   --color-green: #59B210;
+   --color-fonts: #434343;
+   --color-prize: #301c53;
+   --color-table: #747474;
+   --color-navHover: #54a90f;
+   --color-backTextarea: #EFEEED;
+   --color-borderHover: #c7c6c6;
+   --color-sale:#F8484A;
+   --color-names: #1257ab;
+  }
 .co{
     display:flex;
     margin: 40px;
@@ -9,21 +25,21 @@
     float: right;
     font-size: 2em;
     cursor: pointer;
-    color: #59B210;
+    color: var(--color-blue);
 }
 .user-container h2{
     float:left;
     font-size: 20px;
     
-    color: #59B210;
+    color: var(--color-blue);
 }
-i:hover{
+.user-container i:hover{
     color: grey;
 }
-h3:hover{
+.user-container h3:hover{
     color: grey;
 }
-h2:hover{
+.user-container h2:hover{
     color: grey;
 }
 .user-container{
@@ -31,7 +47,7 @@ h2:hover{
     width: 60%;
 }
 .user-container th{
-    color:#59B210;
+    color:var(--color-blue);
 }
 .user-container th, .user-container td{
     padding: 20px;
@@ -43,21 +59,21 @@ h2:hover{
     display: flex;
     justify-content: center;
 }
-i{
-    color:#59B210;
+.user-container i{
+    color:var(--color-blue);
     cursor: pointer;
     margin: auto;
    
 }
 
-table{
+.user-container table{
     border-spacing: 0;
 }
 .textarea{
     width: 50%;
     margin-top:30px;
 }
-textarea {
+.user-container textarea {
     width: 100%;
     height: 150px;
     padding: 12px 20px;
