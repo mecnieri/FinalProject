@@ -119,6 +119,13 @@
 .submitBtn{
   margin-right: 5% !important;
 }
+.admin-login{
+  width: 50% !important;
+  margin: auto;
+}
+.login-btn{
+  margin-right: 5% !important;
+}
 @-webkit-keyframes animatezoom {
   from {-webkit-transform: scale(0)} 
   to {-webkit-transform: scale(1)}

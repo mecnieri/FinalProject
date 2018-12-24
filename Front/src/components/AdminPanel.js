@@ -45,8 +45,9 @@ export default class AdminPanel extends React.Component {
   handleEditUser(e) {
     e.preventDefault()
     let FETCHURL = `http://localhost:5000/api/users`;
-    let username = e.target.children[0].value
+    let username = e.target.children[0].childNodes[1].value
     let userId = this.state.id
+    console.log(username);
     fetch(FETCHURL, {
       method: 'put',
       headers: new Headers({
@@ -62,7 +63,6 @@ export default class AdminPanel extends React.Component {
   }
   handleDeleteUser(e) {
     e.preventDefault()
-    debugger
     let userId = this.state.id
     let FETCHURL = `http://localhost:5000/api/users/`;
     fetch(FETCHURL, {
@@ -80,12 +80,18 @@ export default class AdminPanel extends React.Component {
   handleAddProduct(e) {
     e.preventDefault()
     let FETCHURL = `http://localhost:5000/api/products`;
-    let category = e.target.children[0].childNodes[1].value
-    let price = e.target.children[0].childNodes[3].value
-    let model = e.target.children[0].childNodes[5].value
-    let brand = e.target.children[0].childNodes[7].value
-    let weight = e.target.children[0].childNodes[9].value
-    let size = e.target.children[0].childNodes[11].value
+
+    let category = e.target.elements.category.value
+    let price = e.target.elements.price.value
+    let brand = e.target.elements.brand.value
+    let model = e.target.elements.model.value
+    let weight = e.target.elements.weight.value
+    let size = e.target.elements.size.value
+    // let price = e.target.children[0].childNodes[3].value
+    // let model = e.target.children[0].childNodes[5].value
+    // let brand = e.target.children[0].childNodes[7].value
+    // let weight = e.target.children[0].childNodes[9].value
+    // let size = e.target.children[0].childNodes[11].value
     fetch(FETCHURL, {
       method: 'post',
       headers: new Headers({
@@ -106,37 +112,71 @@ export default class AdminPanel extends React.Component {
           {/* <h3><i className="fas fa-shopping-cart"></i>Cart</h3> */}
           <Tabs className="admin-panel--tabs">
             <div label="User Search">
-              <form onSubmit={this.handleUserSearch}>
-                <label className="admin-panel label">
-                  Name:  <input type="text" className="name-input" />
-                </label>
-                <input type="submit" value="Submit" className="submit-input" />
-              </form>
-              <form onSubmit={this.handleEditUser}>
-                <input type="text" placeholder={this.state.username} /><br />
-                <input type="text" placeholder={this.state.balance} /><br />
-                <input type="text" placeholder={this.state.email} /><br />
-                <input type="text" placeholder={this.state.birthday} /><br />
-                <button onClick={this.handleDeleteUser} value="X" /><br />
-                <h1>
-                  {this.state.cart > 0 && <h1> cart is active</h1>}
-                  {this.state.cart == 0 && <h1> user has no cart</h1>}
-                </h1>
-                <input type="submit" value="Submit" />
-              </form>
+              <div className="user-find">
+                <form onSubmit={this.handleUserSearch} className="search-user-form ">
+                  <label className="admin-panel label search-user"><p>Search Username:</p>
+                    <input type="text" className="name-input form-control" placeholder="Search for user by name" />
+                  </label>
+                  <input type="submit" value="Search" className="submit-input btn btn-primary" />
+                </form>
+                <form onSubmit={this.handleEditUser} className="edit-user">
+                  <div className="user-username"><p>Username:</p>
+                    <input type="text" placeholder={this.state.username} className="form-control" /><br />
+                  </div>
+                  <div className="user-balance"><p>Email:</p>
+                    <input type="text" placeholder={this.state.balance} className="form-control" /><br />
+                  </div>
+                  <div className="user-birthday"><p>Birthday:</p>
+                    <input type="text" placeholder={this.state.birthday} className="form-control" /><br />
+                  </div>
+                  <h1>
+                    {this.state.cart > 0 && <h1> User Has an Active Cart</h1>}
+                    {this.state.cart == 0 && <h1 className="empty-cart"> User's Cart is empty</h1>}
+                  </h1>
+                  {/* <button onClick={this.handleDeleteUser} value="Delete User" className="btn btn-danger" /> */}
+                  <input type="submit" value="Save Changes" className=" btn btn-primary change-user-btn" />
+                  <button onClick={this.handleDeleteUser} value="X" className="btn btn-danger delete-user-btn">Delete User</button>
+                  {console.log(this.state.username)}
+                </form>
+              </div>
+
             </div>
             <div label="Product Add">
-              <form onSubmit={this.handleAddProduct} className="add-product-form">
-                <label>
-                  category:  <input type="text" name="category" />
-                  price:  <input type="text" name="price" />
-                  model:  <input type="text" name="model" />
-                  weight:  <input type="text" name="weight" />
-                  size:  <input type="text" name="size" />
-                  image:  <input type="text" name="image" />
-                </label>
-                <input type="submit" value="Submit" />
-              </form>
+              <div className="product-add">
+                <form onSubmit={this.handleAddProduct} className="add-product-form">
+                  <label>
+                    <div className="product-add-inputs">
+                      <p>Category:</p>
+                      <input type="text" name="category" className="form-control" />
+                    </div>
+                    <div className="product-add-inputs">
+                      <p>Price:</p>
+                      <input type="text" name="price" className="form-control" />
+                    </div>
+                    <div className="product-add-inputs">
+                      <p>Brand:</p>
+                      <input type="text" name="brand" className="form-control" />
+                    </div>
+                    <div className="product-add-inputs">
+                      <p>Model:</p>
+                      <input type="text" name="model" className="form-control" />
+                    </div>
+                    <div className="product-add-inputs">
+                      <p>Weight:</p>
+                      <input type="text" name="weight" className="form-control" />
+                    </div>
+                    <div className="product-add-inputs">
+                      <p>Size:</p>
+                      <input type="text" name="size" className="form-control" />
+                    </div>
+                    <div className="product-add-inputs">
+                      <p>Image (url):</p>
+                      <input type="text" name="image" className="form-control" />
+                    </div>
+                  </label>
+                  <input type="submit" value="Add Product" className="btn btn-primary add-product-btn" />
+                </form>
+              </div>
             </div>
           </Tabs>
           <div>

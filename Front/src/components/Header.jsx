@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom'
 import logo from '../images/logo2.png'
-import Sidebar from "react-sidebar";
+// import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 
 const mql = window.matchMedia(`(min-width: 800px)`);
 
