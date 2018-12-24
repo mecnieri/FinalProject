@@ -269,8 +269,7 @@ img.logoImg {
     flex-direction: column;
     align-self: center;
     align-items: center;
-    width: 25%;
-}
+ }
 .categories {
     width: 40%;
     padding: 10px 0 10px 0;

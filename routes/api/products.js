@@ -52,7 +52,7 @@ router.put(
   (req, res) => {
     // console.log(req.body.Oid);
     // Product.findOneAndUpdate({"_id" : ObjectId(req.body.Oid)}, {productName: req.body.productName, productPrice: req.body.price, category: req.body.category, details: {battery: req.body.battery, size: req.body.size, brand: req.body.brand}}).then(product => res.json(product))
-
+    console.log(req.body.Oid);
     Product.findById(req.body.Oid).then(product => {
       if (req.body.productName) {
         product.productName = req.body.productName;
@@ -87,7 +87,7 @@ router.get("/:name", (req, res) => {
   // get all the users
   console.log(req.params.name);
   Product.find(
-    { $or: [{ brand: req.params.name }, { model: req.params.name }, { category: req.params.name }, {_id: req.params.id}] },
+    { $or: [{ brand: req.params.name }, { model: req.params.name }, { category: req.params.name }, { _id: req.params.id }] },
     function (err, products) {
       if (err) throw err;
       // object of all the users
@@ -105,6 +105,6 @@ router.get("/product/:id", (req, res) => {
     if (err) throw err;
     res.json(product);
   });
- });
+});
 
 module.exports = router;
