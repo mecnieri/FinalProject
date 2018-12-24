@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import logo from '../images/logo2.png'
-// import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 
 const mql = window.matchMedia(`(min-width: 800px)`);
 
@@ -9,29 +9,6 @@ class Header extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            sidebarDocked: mql.matches,
-            sidebarOpen: false
-        };
-
-        this.mediaQueryChanged = this.mediaQueryChanged.bind(this);
-        this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
-    }
-
-    componentWillMount() {
-        mql.addListener(this.mediaQueryChanged);
-    }
-
-    componentWillUnmount() {
-        this.state.mql.removeListener(this.mediaQueryChanged);
-    }
-
-    onSetSidebarOpen(open) {
-        this.setState({ sidebarOpen: open });
-    }
-
-    mediaQueryChanged() {
-        this.setState({ sidebarDocked: mql.matches, sidebarOpen: false });
     }
     render(props) {
         return (
@@ -136,7 +113,17 @@ class Header extends Component {
                 <div className="nav-bar">
                     <div className="nav-bar_container">
                         <ul className="nav-bar_container--list">
-                            <li onClick={this.props.searchHandler}>Laptops</li>
+                            {/* <li onClick={this.props.searchHandler}>Laptops</li> */}
+                            <Link
+                                activeClass="active"
+                                className="productList"
+                                to="productList"
+                                spy={true}
+                                smooth={true}
+                                duration={500}
+                            >
+                                <li>Laptops</li>
+                            </Link>
                             <li onClick={this.props.searchHandler}>Mobiles</li>
                             <li onClick={this.props.searchHandler}>Tablets</li>
                             <li onClick={this.props.searchHandler}>Cameras</li>
