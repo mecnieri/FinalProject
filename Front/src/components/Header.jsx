@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom'
 import logo from '../images/logo2.png'
-import Sidebar from "react-sidebar";
+// import Sidebar from "react-sidebar";
 
 const mql = window.matchMedia(`(min-width: 800px)`);
 
