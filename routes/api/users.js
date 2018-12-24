@@ -119,6 +119,17 @@ router.get('/:username', passport.authenticate('admin-rule', { session: false })
   })
 })
 
+
+
+//@route Delete api/users/:username
+//@desc delete user by username
+//@access Admin
+
+router.delete('/', passport.authenticate('admin-rule', { session: false }), (req, res) => {
+  User.findOne({ _id: req.body.id }).remove().exec()
+})
+
+
 //@route Put api/users
 //@desc edit user found by id
 //@access Admin
@@ -127,9 +138,21 @@ router.put('/', passport.authenticate('admin-rule', { session: false }), (req, r
     if (req.body.username) {
       user.username = req.body.username
     }
-    // if (req.body.age) {
-    //   user.age = req.body.age
-    // } //add other else conditions for user's other details
+    if (req.body.birthday) {
+      user.birthday = req.body.birthday
+    }
+    if (req.body.email) {
+      user.email = req.body.email
+    }
+    if (req.body.balance) {
+      user.balance = req.body.balance
+    }
+    if (req.body.password) {
+      user.password = req.body.password
+    }
+
+
+    //add other else conditions for user's other details
     user.save()
     res.json(user);
   })

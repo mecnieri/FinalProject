@@ -33,6 +33,7 @@ import Pagination from "../node_modules/react-js-pagination";
 import './css/Home-List.css';
 import './css/responsive.css';
 import './css/Contact.css';
+import './css/Admin-Panel.css';
 
 class App extends Component {
   constructor(props) {
@@ -75,24 +76,24 @@ class App extends Component {
     e.preventDefault();
     let query;
     if (e.target.tagName === "LI") {
-     query = e.target.textContent.slice(0, -1).toLowerCase();
+      query = e.target.textContent.slice(0, -1).toLowerCase();
     } else {
-     query = e.target.elements.search2.value.toLowerCase();
+      query = e.target.elements.search2.value.toLowerCase();
     }
     let FETCHURL = `http://localhost:5000/api/products/${query}`;
     fetch(FETCHURL)
-     .then(res => res.json())
-     .then(products => {
-      this.setState({ products });
-     })
-     .catch(err => console.log(err));
-   };
+      .then(res => res.json())
+      .then(products => {
+        this.setState({ products });
+      })
+      .catch(err => console.log(err));
+  };
 
   render() {
     return (
       <Router>
         <div className="App">
-          <Header showLogin={this.state.showLogin} searchHandler={this.searchHandler} adminLog={this.state.adminLog}/>
+          <Header showLogin={this.state.showLogin} searchHandler={this.searchHandler} adminLog={this.state.adminLog} />
           <Route
             path="/"
             exact
@@ -153,12 +154,12 @@ class App extends Component {
           <Route
             path="/item"
             component={Description}
-             />
+          />
 
           <ProtectedRoute path="/userpanel" component={UserPanel} />
           <ProtectedRoute path="/adminpanel" component={AdminPanel} />
-          {this.state.registered &&(<Redirect to={'/'}/>)}
-        
+          {this.state.registered && (<Redirect to={'/'} />)}
+
           {!this.state.showLogin && (<Redirect to={`/userpanel`} />)}
           {this.state.adminLog && (<Redirect to={`/adminpanel`} />)}
 

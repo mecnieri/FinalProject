@@ -4,3 +4,6 @@
 .admin-panel .user-search {
   display: flex;
   flex-direction: column; }
+
+.user-input {
+  display: flex; }

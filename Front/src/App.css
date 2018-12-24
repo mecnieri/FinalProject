@@ -284,9 +284,6 @@ img.logoImg {
     flex-direction: row;
     width: 100%;
 }
-.form-control{
-    width: 25% !important;
-}
 form.search input[type=text] {
     padding-left: 2%;
     width: 90%;

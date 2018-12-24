@@ -9,6 +9,7 @@
     "popper.js": "^1.14.6",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-image-zoom": "^0.7.0",
     "react-js-pagination": "^3.0.2",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
@@ -20,6 +21,7 @@
   "scripts": {
     "compile:sass-homelist": "node-sass src/sass/Home-List.scss src/css/Home-List.css -w",
     "compile:sass-responsive": "node-sass src/sass/responsive.scss src/css/responsive.css -w",
+    "compile:sass-adminPanel": "node-sass src/sass/Admin-Panel.scss src/css/Admin-Panel.css -w",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

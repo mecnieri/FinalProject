@@ -2,6 +2,8 @@ import React from "react";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
 import Tabs from "./Tabs";
+import ReactDOM from 'react-dom';
+import ReactImageZoom from 'react-image-zoom';
 
 class Description extends React.Component {
   constructor(props) {
@@ -81,7 +83,7 @@ class Description extends React.Component {
         <section className="item">
           <div className="container">
             <div className="image-and-description">
-              <img src={this.state.product.image} height="300" width="300" />
+              {/* <img src={this.state.product.image} height="300" width="300" /> */}
               <div className="description">
                 <div className="description--title">
                   <p className="item-title"> {this.state.product.brand}</p>

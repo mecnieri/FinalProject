@@ -14,6 +14,9 @@ export default class AdminPanel extends React.Component {
       cart: null
     }
     this.handleUserSearch = this.handleUserSearch.bind(this);
+    this.handleEditUser = this.handleEditUser.bind(this);
+    this.handleDeleteUser = this.handleDeleteUser.bind(this);
+    this.handleAddProduct = this.handleAddProduct.bind(this);
   }
   handleUserSearch(e) {
     e.preventDefault();
@@ -32,18 +35,18 @@ export default class AdminPanel extends React.Component {
           username: user.username,
           email: user.email,
           balance: user.balance,
-          cart: user.cart.length
+          cart: user.cart.length,
+          birthday: user.birthday,
+          id: user._id
         })
       })
       .catch(err => console.log(err))
   }
-
   handleEditUser(e) {
     e.preventDefault()
     let FETCHURL = `http://localhost:5000/api/users`;
-debugger
-    console.log(username)
-     let username = e.target.children[0].value
+    let username = e.target.children[0].value
+    let userId = this.state.id
     fetch(FETCHURL, {
       method: 'put',
       headers: new Headers({
@@ -51,11 +54,29 @@ debugger
         "Content-Type": "application/json",
         'Authorization': localStorage.getItem("Authorized")
       }),
-      body: JSON.stringify({ username })
+      body: JSON.stringify({
+        id: userId,
+        username: username
+      })
     })
   }
-
-
+  handleDeleteUser(e) {
+    e.preventDefault()
+    debugger
+    let userId = this.state.id
+    let FETCHURL = `http://localhost:5000/api/users/`;
+    fetch(FETCHURL, {
+      method: 'delete',
+      headers: new Headers({
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        'Authorization': localStorage.getItem("Authorized")
+      }),
+      body: JSON.stringify({
+        id: userId
+      })
+    })
+  }
   handleAddProduct(e) {
     e.preventDefault()
     let FETCHURL = `http://localhost:5000/api/products`;
@@ -65,9 +86,6 @@ debugger
     let brand = e.target.children[0].childNodes[7].value
     let weight = e.target.children[0].childNodes[9].value
     let size = e.target.children[0].childNodes[11].value
-    // let image = e.target.children[0].childNodes[13].value
-    console.log(category, price, model, brand, weight, size
-    )
     fetch(FETCHURL, {
       method: 'post',
       headers: new Headers({
@@ -81,8 +99,6 @@ debugger
   componentDidMount() {
   }
   render() {
-    console.log(this.state)
-    console.log(this.state.username)
     return (
       <div className="co">
         <div className="user-container">
@@ -97,11 +113,11 @@ debugger
                 <input type="submit" value="Submit" className="submit-input" />
               </form>
               <form onSubmit={this.handleEditUser}>
-
                 <input type="text" placeholder={this.state.username} /><br />
                 <input type="text" placeholder={this.state.balance} /><br />
                 <input type="text" placeholder={this.state.email} /><br />
-
+                <input type="text" placeholder={this.state.birthday} /><br />
+                <button onClick={this.handleDeleteUser} value="X" /><br />
                 <h1>
                   {this.state.cart > 0 && <h1> cart is active</h1>}
                   {this.state.cart == 0 && <h1> user has no cart</h1>}
@@ -110,7 +126,7 @@ debugger
               </form>
             </div>
             <div label="Product Add">
-              <form onSubmit={this.handleAddProduct}>
+              <form onSubmit={this.handleAddProduct} className="add-product-form">
                 <label>
                   category:  <input type="text" name="category" />
                   price:  <input type="text" name="price" />
@@ -121,9 +137,6 @@ debugger
                 </label>
                 <input type="submit" value="Submit" />
               </form>
-            </div>
-            <div label="Edit User">
-
             </div>
           </Tabs>
           <div>
