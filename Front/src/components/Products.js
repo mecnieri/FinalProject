@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import Product from "./Product"
+import { Link, Redirect } from 'react-router-dom'
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
-import { BrowserRouter as Router, Route, RouteHandler, Redirect } from "react-router-dom";
-import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+// import { BrowserRouter as Router, Route, RouteHandler, Redirect } from "react-router-dom";
+import { Link as LinkFromScroll, Element, Events, animateScroll as scroll, scrollSpy } from 'react-scroll'
 // import Details from './components/UserDetails'
 // import Address from './components/UserAddress'
 // import Company from './components/UserCompany'

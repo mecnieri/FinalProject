@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import logo from '../images/logo2.png'
-import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+import { Link as LinkFromScroll, Element, Events, animateScroll as scroll, scrollSpy } from 'react-scroll'
 
 const mql = window.matchMedia(`(min-width: 800px)`);
 
@@ -114,7 +114,7 @@ class Header extends Component {
                     <div className="nav-bar_container">
                         <ul className="nav-bar_container--list">
                             {/* <li onClick={this.props.searchHandler}>Laptops</li> */}
-                            <Link
+                            <LinkFromScroll
                                 activeClass="active"
                                 className="productList"
                                 to="productList"
@@ -123,7 +123,7 @@ class Header extends Component {
                                 duration={500}
                             >
                                 <li>Laptops</li>
-                            </Link>
+                            </LinkFromScroll>
                             <li onClick={this.props.searchHandler}>Mobiles</li>
                             <li onClick={this.props.searchHandler}>Tablets</li>
                             <li onClick={this.props.searchHandler}>Cameras</li>
