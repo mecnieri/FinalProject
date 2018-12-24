@@ -74,6 +74,7 @@ class App extends Component {
 
   searchHandler = e => {
     e.preventDefault();
+    
     let query;
     if (e.target.tagName === "LI") {
       query = e.target.textContent.slice(0, -1).toLowerCase();
