@@ -14,6 +14,7 @@ router.post(
   "/",
   passport.authenticate("admin-rule", { session: false }),
   (req, res) => {
+    console.log(17, "product", req.body);
     const newProduct = new Product({
       category: req.body.category,
       price: req.body.price,
@@ -37,6 +38,7 @@ router.delete(
   "/",
   passport.authenticate("admin-rule", { session: false }),
   (req, res) => {
+
     Product.findOneAndDelete({ _id: ObjectId(req.body.Oid) }).then(product =>
       res.json(product)
     );
@@ -73,10 +75,38 @@ router.put(
 //@desc get all the products
 //@access public
 router.get("/", (req, res) => {
-  // get all the users
   Product.find({}, function (err, products) {
     if (err) throw err;
     res.json(products);
+  });
+});
+
+//@route GET api/products/:name
+//@desc get product by name or category
+//@access public
+router.get("/:name", (req, res) => {
+  // get all the users
+  console.log(req.params.name);
+  Product.find(
+    { $or: [{ brand: req.params.name }, { model: req.params.name }, { category: req.params.name }, { _id: req.params.id }] },
+    function (err, products) {
+      if (err) throw err;
+      // object of all the users
+      res.json(products);
+    }
+  );
+});
+
+
+
+
+//@route GET api/products/:category
+//@desc get product by category
+//@access public
+router.get("/product/:id", (req, res) => {
+  Product.findById(req.params.id, function (err, product) {
+    if (err) throw err;
+    res.json(product);
   });
 });
 
@@ -106,6 +136,16 @@ router.get("/product/:id", (req, res) => {
   Product.findById(req.params.id, function (err, product) {
     if (err) throw err;
     res.json(product);
+  });
+ });
+//@route GET api/products/:category
+//@desc get product by category
+//@access public
+router.post("/getArray", (req, res) => {
+  console.log(115, req.body);
+  Product.find({'_id': { $in: req.body} }, function (err, products) {
+    if (err) throw err;
+    res.json(products);
   });
  });
 

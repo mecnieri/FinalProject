@@ -252,6 +252,14 @@ footer .footer-copyright-container ul li {
     justify-content: center;
 }
 
+<<<<<<< HEAD
+=======
+.left li a, .right li a{
+    color: #59B210;
+    font-size: 16px;
+}
+
+>>>>>>> origin/master
 .menu--item {
     width: 100px;
     text-align: center;

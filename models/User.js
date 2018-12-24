@@ -1,6 +1,5 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
 
 //Create Schema
 const UserSchema = new Schema({
@@ -31,12 +30,8 @@ const UserSchema = new Schema({
   inbox: {
     type: Array
   },
-  cart: {
-    type: Array
-  },
-  boughtProducts: {
-    type: Array
-  }
+  cart: [{ product_id: String, quantity: String }],
+  boughtProducts: [{ product_id: String, quantity: String }]
 });
 
-module.exports = User = mongoose.model('users', UserSchema)
+module.exports = User = mongoose.model("users", UserSchema);

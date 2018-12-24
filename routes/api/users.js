@@ -123,15 +123,17 @@ router.get('/:username', passport.authenticate('admin-rule', { session: false })
 //@desc edit user found by id
 //@access Admin
 router.put('/', passport.authenticate('admin-rule', { session: false }), (req, res) => {
+  console.log(126, "users", req.body.username)
   User.findById(req.body.id).then(user => {
     if (req.body.username) {
       user.username = req.body.username
     }
     // if (req.body.age) {
-    //   user.age = req.body.age
-    // } //add other else conditions for user's other details
-    user.save()
-    res.json(user);
+      //   user.age = req.body.age
+      // } //add other else conditions for user's other details
+      user.save()
+      res.json(user);
+      console.log(136, "users", req.body.username)
   })
 })
 
@@ -140,62 +142,32 @@ router.post('/getcart', passport.authenticate('user-rule', { session: false }), 
     res.json(user.cart);
   })
 })
+
+
+
+//@route Put api/users/cart
+//@desc update quantity in cart
+//@access User
+router.put('/cart', passport.authenticate('user-rule', { session: false }), (req, res) => {
+  User.findById(req.user.id).then(user => { 
+    let item = user.cart.find((prod) => prod.product_id === req.body.productId)
+    item.quantity = req.body.quantity;
+    user.save()
+    res.json(user.cart);
+  })
+});
+
 //@route Post api/users/cart
 //@desc put product in the cart
 //@access User
-router.post('/cart', passport.authenticate('user-rule', { session: false }), (req, res) => {
-  console.log('req.received', req.body);
-  //Find user by id
-  User.findById(req.user.id).then(user => {
-    if (req.body.productId && req.body.quantity) {
-      let index = user.cart.findIndex((prod) => prod.product_id === req.body.productId)
-      if (index > -1) {
-        user.cart.splice(index, 1, {
-          product_id: req.body.productId,
-          quantity: req.body.quantity
-        })
-      } else {
-        user.cart.push({
-          product_id: req.body.productId,
-          quantity: req.body.quantity
-        })
-      }
-    }
-    if (req.body.productId && !req.body.quantity) {
-      let index = user.cart.findIndex((prod) => prod.product_id === req.body.productId)
-      if (index > -1) {
-        let quantity = user.cart[index].quantity
-        user.cart.splice(index, 1, {
-          product_id: req.body.productId,
-          quantity: ++quantity
-        })
-      } else {
-        user.cart.push({
-          product_id: req.body.productId,
-          quantity: 1
-        })
-      }
-
-    }
-    if (req.body.delete) {
-
-      let indexDelete = user.cart.findIndex((prod) => prod.product_id === req.body.delete)
-      user.cart.splice(indexDelete, 1)
-    }
-    user.save().then(user => res.json(user.cart)).catch(err => res.status(400).json({ msg: 'Error' }))
-  });
+router.delete('/cart', passport.authenticate('user-rule', { session: false }), (req, res) => {
+  User.findById(req.user.id).then(user => { 
+    console.log(205, "req body", req.body);
+    user.cart = user.cart.filter((prod) => prod.product_id !== req.body.productId)
+    user.save()
+    res.json(user.cart);
+  })
 });
-
-//@route GET api/users/cart
-//@desc get products from users cart
-//@access user
-// router.get('/cart', passport.authenticate('user-rule', { session: false }), (req, res) => {
-//   console.log(187)
-//   User.findById(req.user.id).then(user => {
-//     res.json(user.cart)
-//    })
-// });
-
 //@route GET api/users/boughtProducts
 //@desc get products from users broughtProducts
 //@access Admin
@@ -244,24 +216,19 @@ router.post('/message', passport.authenticate('user-rule', { session: false }), 
 //@route POST api/users/checkout
 //@desc checkout logic
 //@access User
-router.post('/checkout', passport.authenticate('user-rule', { session: false }), (req, res) => {
+router.get('/checkout', passport.authenticate('user-rule', { session: false }), (req, res) => {
   User.findById(req.user.id).then(user => {
     let total = 0
 
     user.cart.map((el) => {
-      // aq mere iqneba price da ara product_id 
+      //line below should fail
       total += el.product_id * el.quantity
     })
 
-
-    console.log(user)
     const cloneCart = user.cart.slice();
     user.boughtProducts = cloneCart;
     user.cart = []
     user.balance -= total
-    console.log(user)
-
-
 
     user.save()
     res.json(user);

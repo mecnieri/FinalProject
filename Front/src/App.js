@@ -27,10 +27,12 @@ import Checkout from './components/Checkout';
 import './Checkout.css';
 import './css/Description.css'
 import Description from './components/Description';
+import Contact from './components/Contact';
 import Dat from './data/item.json';
 import Pagination from "../node_modules/react-js-pagination";
 import './css/Home-List.css';
 import './css/responsive.css';
+import './css/Contact.css';
 
 class App extends Component {
   constructor(props) {
@@ -38,11 +40,11 @@ class App extends Component {
     this.state = {
       showLogin: true,
       products: null,
-      activePage: 1
-    };
-    this.handlePageChange = this.handlePageChange.bind(this);
-    // change
-    this.handleStateChange = this.handleStateChange.bind(this);
+      activePage: 1,
+      adminLog:false,
+      registered:false
+    }
+    this.handlePageChange = this.handlePageChange.bind(this)
   }
   componentDidMount() {
     const FETCHURL = "http://localhost:5000/api/products";
@@ -90,18 +92,18 @@ class App extends Component {
     e.preventDefault();
     let query;
     if (e.target.tagName === "LI") {
-     query = e.target.textContent.slice(0, -1).toLowerCase();
+    query = e.target.textContent.slice(0, -1).toLowerCase();
     } else {
-     query = e.target.elements.search2.value.toLowerCase();
+    query = e.target.elements.search2.value.toLowerCase();
     }
     let FETCHURL = `http://localhost:5000/api/products/${query}`;
     fetch(FETCHURL)
-     .then(res => res.json())
-     .then(products => {
+    .then(res => res.json())
+    .then(products => {
       this.setState({ products });
-     })
-     .catch(err => console.log(err));
-   };
+    })
+    .catch(err => console.log(err));
+  };
 
   render() {
     return (
@@ -129,13 +131,7 @@ class App extends Component {
           />
           <Route
             path="/contact"
-            render={() => (
-              <ContactPage
-                title={Data.contact.title}
-                // change
-                // desc={Data.contact.desc}
-              />
-            )}
+            render={() => (<Contact />)}
           />
           <Route
             path="/login"
@@ -148,7 +144,7 @@ class App extends Component {
             path="/signUp"
             render={
               () => (
-                <SignupPage registered={(change) => { this.setState({ registered: change }) }}/>
+                <SignupPage registered={(change) => { this.setState({ registered: change }) }} />
               )
             } />
           <Route
@@ -161,8 +157,9 @@ class App extends Component {
           <Route
             path="/cart"
             render={
-              () => (
-                <Cart cart={this.state.cart} />
+              (props) => (
+                // change
+                <Cart {...props} cart={this.state.cart} />
               )
             } />
           <Route
@@ -180,13 +177,13 @@ class App extends Component {
                 <Description {...props} handleStateChange={this.handleStateChange}/>
               )
             }/>
-             />
+            />
 
           <ProtectedRoute path="/userpanel" component={UserPanel} />
           <ProtectedRoute path="/adminpanel" component={AdminPanel} />
           {this.state.registered &&(<Redirect to={'/'}/>)}
         
-          {!this.state.showLogin && (<Redirect to={`/userpanel`} />)}
+          {!this.state.showLogin && (<Redirect to={`/`} />)}
           {this.state.adminLog && (<Redirect to={`/adminpanel`} />)}
 
           <Footer />
