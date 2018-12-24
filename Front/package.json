@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.1.3",
+    "bootstrap": "^4.2.1",
     "jquery": "^3.3.1",
     "node-sass": "^4.11.0",
     "popper.js": "^1.14.6",
@@ -13,11 +13,13 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
     "react-scroll-up-button": "^1.6.4",
+    "react-sidebar": "^3.0.2",
     "react-slideshow-image": "^1.0.9",
     "underscore": "^1.9.1"
   },
   "scripts": {
     "compile:sass-homelist": "node-sass src/sass/Home-List.scss src/css/Home-List.css -w",
+    "compile:sass-responsive": "node-sass src/sass/responsive.scss src/css/responsive.css -w",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

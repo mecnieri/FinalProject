@@ -1,0 +1,6 @@
+.tabs {
+  margin-top: 5%; }
+
+.admin-panel .user-search {
+  display: flex;
+  flex-direction: column; }

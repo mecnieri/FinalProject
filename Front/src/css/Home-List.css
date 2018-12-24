@@ -28,12 +28,12 @@
     padding: 5%;
     display: flex;
     justify-content: space-between; }
-    .list-table .first-row .each-product:nth-child(2) > div::before {
+    .list-table .first-row .each-product:nth-child(1) .image-container::before {
       content: 'Sale';
       background-color: #F8484A;
+      color: #fff;
       position: absolute;
       transform: translate(-230%, 30%);
-      color: #fff;
       font-size: 11px;
       letter-spacing: 3px;
       padding: 5px 12px 5px 12px;
@@ -42,20 +42,20 @@
       display: inline-block;
       font-weight: 700;
       clip-path: polygon(75% 0%, 100% 0, 79% 100%, 0% 100%, 0 49%, 0% 0%); }
-    .list-table .first-row .each-product:nth-child(2) > div::after {
+    .list-table .first-row .each-product:nth-child(1) .image-container::after {
       position: absolute;
-      transform: translate(-160%, -160%);
+      transform: translate(-160%, -270%);
       content: '999$';
       font-size: 28px;
       font-weight: 600;
-      color: #301c53;
+      color: #F8484A;
       text-decoration: line-through;
       letter-spacing: 7px; }
   .list-table .second-row {
     padding: 5%;
     display: flex;
     justify-content: space-between; }
-    .list-table .second-row .each-product:nth-child(3) > div::before {
+    .list-table .second-row .each-product:nth-child(3) .image-container::before {
       content: 'Sale';
       background-color: #F8484A;
       color: #fff;
@@ -69,20 +69,20 @@
       display: inline-block;
       font-weight: 700;
       clip-path: polygon(75% 0%, 100% 0, 79% 100%, 0% 100%, 0 49%, 0% 0%); }
-    .list-table .second-row .each-product:nth-child(3) > div::after {
+    .list-table .second-row .each-product:nth-child(3) .image-container::after {
       position: absolute;
-      transform: translate(-160%, -160%);
+      transform: translate(-160%, -270%);
       content: '599$';
       font-size: 28px;
       font-weight: 600;
-      color: #301c53;
+      color: #F8484A;
       text-decoration: line-through;
       letter-spacing: 7px; }
   .list-table .third-row {
     padding: 5%;
     display: flex;
     justify-content: space-between; }
-    .list-table .third-row .each-product:nth-child(1) > div::before {
+    .list-table .third-row .each-product:nth-child(1) .image-container::before {
       content: 'Sale';
       background-color: #F8484A;
       color: #fff;
@@ -96,13 +96,13 @@
       display: inline-block;
       font-weight: 700;
       clip-path: polygon(75% 0%, 100% 0, 79% 100%, 0% 100%, 0 49%, 0% 0%); }
-    .list-table .third-row .each-product:nth-child(1) > div::after {
+    .list-table .third-row .each-product:nth-child(1) .image-container::after {
       position: absolute;
-      transform: translate(-160%, -160%);
+      transform: translate(-160%, -270%);
       content: '699$';
       font-size: 28px;
       font-weight: 600;
-      color: #301c53;
+      color: #F8484A;
       text-decoration: line-through;
       letter-spacing: 7px; }
 
@@ -117,5 +117,5 @@
     .page-turner .pagination li {
       letter-spacing: 8px; }
       .page-turner .pagination li a {
-        color: #54a90f;
+        color: #3c78d8; ;
         font-weight: 500; }

@@ -42,8 +42,7 @@ class App extends Component {
       products: null,
       activePage: 1
     }
-    this.handlePageChange = this.handlePageChange.bind(this);
-    this.handleStateChange = this.handleStateChange.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this)
   }
   componentDidMount() {
     const FETCHURL = "http://localhost:5000/api/products";
@@ -71,43 +70,29 @@ class App extends Component {
   handlePageChange(pageNumber) {
     this.setState({ activePage: pageNumber })
   }
-  handleStateChange() {
-    console.log(75, 'fired')
-    fetch("http://localhost:5000/api/users/getcart", {
-      method: 'post',
-      headers: new Headers({
-        'Authorization': localStorage.getItem("Authorized")
-      })
-    })
-      .then(res => res.json())
-      .then(cart => {
-        this.setState({ cart });
-      })
-      .catch(err => console.log(err))
-  }
 
   searchHandler = e => {
     e.preventDefault();
     let query;
     if (e.target.tagName === "LI") {
-      query = e.target.textContent.slice(0, -1).toLowerCase();
+     query = e.target.textContent.slice(0, -1).toLowerCase();
     } else {
-      query = e.target.elements.search2.value.toLowerCase();
+     query = e.target.elements.search2.value.toLowerCase();
     }
     let FETCHURL = `http://localhost:5000/api/products/${query}`;
     fetch(FETCHURL)
-      .then(res => res.json())
-      .then(products => {
-        this.setState({ products });
-      })
-      .catch(err => console.log(err));
-  };
+     .then(res => res.json())
+     .then(products => {
+      this.setState({ products });
+     })
+     .catch(err => console.log(err));
+   };
 
   render() {
     return (
       <Router>
         <div className="App">
-          <Header showLogin={this.state.showLogin} searchHandler={this.searchHandler} adminLog={this.state.adminLog} />
+          <Header showLogin={this.state.showLogin} searchHandler={this.searchHandler} adminLog={this.state.adminLog}/>
           <Route
             path="/"
             exact
@@ -167,17 +152,13 @@ class App extends Component {
             } />
           <Route
             path="/item"
-            render={
-              (props) => (
-                <Description {...props} handleStateChange={this.handleStateChange} />
-              )
-            }
-          />
+            component={Description}
+             />
 
           <ProtectedRoute path="/userpanel" component={UserPanel} />
           <ProtectedRoute path="/adminpanel" component={AdminPanel} />
-          {this.state.registered && (<Redirect to={'/'} />)}
-
+          {this.state.registered &&(<Redirect to={'/'}/>)}
+        
           {!this.state.showLogin && (<Redirect to={`/userpanel`} />)}
           {this.state.adminLog && (<Redirect to={`/adminpanel`} />)}
 

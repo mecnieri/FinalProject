@@ -2,6 +2,8 @@ $color-primary: #5D5D5D;
 $color-background: #3d3d3d;
 $color-backgroundWhite: #f7f8f9;
 $color-white: #fff;
+$color-blue:#3c78d8;
+$color-blue-Hover:#2964c4;
 $color-green: #59B210;
 $color-fonts: #434343;
 $color-prize: #301c53;
@@ -146,7 +148,7 @@ $color-names: #1257ab;
         & li{
             letter-spacing: 8px;
             & a{
-                color: $color-navHover;
+                color: $color-blue-Hover;
                 font-weight: 500;
             }
         }
