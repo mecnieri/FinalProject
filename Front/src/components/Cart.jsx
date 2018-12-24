@@ -6,7 +6,7 @@ import "../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
 export default class Cart extends Component {
   constructor(props) {
     super(props);
-    console.log("14", props.cart);
+    // console.log("14", props.cart);
     this.state = {
       items: null,
       qtyTotal: 0,
@@ -29,6 +29,7 @@ export default class Cart extends Component {
         let arrOfIds = cart.map(product => {
           return product.product_id;
         });
+
         fetch("http://localhost:5000/api/products/getArray", {
           method: "POST",
           headers: new Headers({
@@ -39,15 +40,27 @@ export default class Cart extends Component {
         })
           .then(res => res.json())
           .then(products => {
-            this.setState({ items: products });
+            let newProducts = products.map((prod)=>{
+              let elem = cart.find((element)=>{
+                // console.log(45, element, prod)
+                 return element.product_id == prod._id
+                 
+              })
+              // console.log(48, prod);
+              prod.quantity = Number(elem.quantity)
+              return prod
+            })
+            console.log(63, newProducts);
+            this.setState({ items: newProducts });
             this.handleSubTotal();
           });
       })
       .catch(err => console.log(err));
   }
   changeQty = (itemId, qty) => {
-    let item = _.find(this.props.cart, item => item._id === itemId);
-    item.quantity = 1;
+    console.log(61, "itemId", itemId);
+    let item = _.find(this.state.items, item => item._id === itemId);
+    // item.quantity = 1;
     item.quantity = qty;
     this.setState({ qtyTotal: this.state.qtyTotal + item.quantity });
     this.setState({ priceTotal: this.state.priceTotal + item.price });
@@ -57,9 +70,20 @@ export default class Cart extends Component {
     let items = _.without(
       this.state.items,
       _.findWhere(this.state.items, {
-        id: itemId
-      })
+        _id: itemId
+      }), 
+        fetch("http://localhost:5000/api/users/cart", {
+          method: "DELETE",
+          headers: new Headers({
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: localStorage.getItem("Authorized")
+          }),
+          body: JSON.stringify({ productId: itemId})
+        }).then(res => res.json())     
     );
+    console.log("64", items);
+    console.log("65", items);
     this.setState({ items: items });
     this.handleSubTotal();
   };
@@ -74,11 +98,11 @@ export default class Cart extends Component {
     this.setState({ grandTotal: this.state.tax * subTotal + subTotal });
   };
   render() {
-      if (this.state.items) {
-        const { grandTotal: total } = this.state;
-        if (total === 0) {
-          return <h2 className="empty-cart">You have no Items in the Cart</h2>;
-        }
+    if (this.state.items) {
+      const { grandTotal: total } = this.state;
+      if (total === 0) {
+        return <h2 className="empty-cart">You have no Items in the Cart</h2>;
+      }
       return (
         <div className="cart">
           <div className="container">
@@ -87,7 +111,6 @@ export default class Cart extends Component {
                 <table className="table table-hover ">
                   <thead>
                     <tr>
-                      <th>{this.state.items[0].price}</th>
                       <th>Product</th>
                       <th>Quantity</th>
                       <th>Price</th>
@@ -97,7 +120,7 @@ export default class Cart extends Component {
                     </tr>
                   </thead>
                   <List
-                    items={this.props.cart}
+                    items={this.state.items}
                     removeItem={this.removeItem}
                     changeQty={this.changeQty}
                     handleSubTotal={this.handleSubTotal}

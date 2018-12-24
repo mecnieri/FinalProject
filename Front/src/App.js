@@ -40,7 +40,9 @@ class App extends Component {
     this.state = {
       showLogin: true,
       products: null,
-      activePage: 1
+      activePage: 1,
+      adminLog:false,
+      registered:false
     }
     this.handlePageChange = this.handlePageChange.bind(this)
   }
@@ -90,18 +92,18 @@ class App extends Component {
     e.preventDefault();
     let query;
     if (e.target.tagName === "LI") {
-     query = e.target.textContent.slice(0, -1).toLowerCase();
+    query = e.target.textContent.slice(0, -1).toLowerCase();
     } else {
-     query = e.target.elements.search2.value.toLowerCase();
+    query = e.target.elements.search2.value.toLowerCase();
     }
     let FETCHURL = `http://localhost:5000/api/products/${query}`;
     fetch(FETCHURL)
-     .then(res => res.json())
-     .then(products => {
+    .then(res => res.json())
+    .then(products => {
       this.setState({ products });
-     })
-     .catch(err => console.log(err));
-   };
+    })
+    .catch(err => console.log(err));
+  };
 
   render() {
     return (
@@ -174,13 +176,13 @@ class App extends Component {
                 <Description {...props} handleStateChange={this.handleStateChange}/>
               )
             }/>
-             />
+            />
 
           <ProtectedRoute path="/userpanel" component={UserPanel} />
           <ProtectedRoute path="/adminpanel" component={AdminPanel} />
           {this.state.registered &&(<Redirect to={'/'}/>)}
         
-          {!this.state.showLogin && (<Redirect to={`/userpanel`} />)}
+          {!this.state.showLogin && (<Redirect to={`/`} />)}
           {this.state.adminLog && (<Redirect to={`/adminpanel`} />)}
 
           <Footer />
