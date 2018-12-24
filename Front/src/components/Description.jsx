@@ -3,7 +3,7 @@ import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
 import Tabs from "./Tabs";
 import ReactDOM from 'react-dom';
-import ReactImageZoom from 'react-image-zoom';
+// import ReactImageZoom from 'react-image-zoom';
 
 class Description extends React.Component {
   constructor(props) {
