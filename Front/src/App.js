@@ -27,6 +27,7 @@ import './css/Description.css'
 import Description from './components/Description';
 import AdminDescription from './components/AdminDescription';
 import Contact from './components/Contact';
+import AdminContact from './components/AdminContact';
 import Pagination from "../node_modules/react-js-pagination";
 import './css/Home-List.css';
 import './css/responsive.css';
@@ -115,6 +116,10 @@ class App extends Component {
           <Route
             path="/contact"
             render={() => (<Contact />)}
+          />
+          <Route
+            path="/contactAdmin"
+            render={() => (<AdminContact />)}
           />
           <Route
             path="/login"

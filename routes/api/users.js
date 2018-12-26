@@ -232,6 +232,7 @@ router.get('/boughtProducts/:id', passport.authenticate('admin-rule', { session:
 //@access User
 router.post('/message', passport.authenticate('user-rule', { session: false }), (req, res) => {
   //Find user by id
+  console.log("aq shemodis turne")
   User.findById(req.user.id).then(user => {
     user.inbox = req.body.inbox
     // // ----

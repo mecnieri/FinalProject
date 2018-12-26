@@ -10,23 +10,23 @@ class Input extends Component {
             text: ""
         }
     }
-    onChange(e) {
+    onChangeAdmin(e) {
         this.setState({ text: e.target.value });
     }
-    onSubmit(e) {
+    onSubmitAdmin(e) {
         e.preventDefault();
         this.setState({ text: "" });
         this.props.onSendMessage(this.state.text);
-        this.props.handleSaveInBase()
-        
+        this.props.handleSaveInBaseAdmin()
+
     }
-   
+
     render() {
         return (
             <div className="input">
-                <form onSubmit={e => this.onSubmit(e)}>
+                <form onSubmit={e => this.onSubmitAdmin(e)}>
                     <input
-                        onChange={e => this.onChange(e)}
+                        onChange={e => this.onChangeAdmin(e)}
                         value={this.state.text}
                         type="text"
                         placeholder="Enter your message and press ENTER"
