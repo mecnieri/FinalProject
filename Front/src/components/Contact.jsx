@@ -8,10 +8,32 @@ class Contact extends Component {
         this.state = {
             messages: [],
             member: {
-                username: 'Vaxo'
+                username: 'test12'
             }
         }
     }
+    componentDidMount() {
+        //  let query = "test12"
+
+        // query = e.target.children[0].childNodes[1].value;
+        let FETCHURL = `http://localhost:5000/api/users/current`;
+        fetch(FETCHURL, {
+            method: 'get',
+            headers: new Headers({
+                'Authorization': localStorage.getItem("Authorized")
+            })
+        })
+            .then(res => res.json())
+            .then(user => {
+                this.setState({
+                    messages: user.inbox,
+                    member: { username: user.username }
+                })
+            })
+            .catch(err => console.log(err))
+    }
+
+
     render() {
         return (
             <div className="contact-us">
@@ -24,6 +46,7 @@ class Contact extends Component {
                 />
                 <Input
                     onSendMessage={this.onSendMessage}
+                    handleSaveInBase={this.handleSaveInBase}
                 />
             </div>
         );
@@ -31,10 +54,26 @@ class Contact extends Component {
     onSendMessage = (message) => {
         const messages = this.state.messages
         messages.push({
-            text: message,
-            member: this.state.member
+            letter: message,
+            sender: this.state.member.username
         })
         this.setState({ messages: messages })
+    }
+    handleSaveInBase = () => {
+        console.log(63, "Contact", this.state.messages)
+
+        let FETCHURL = `http://localhost:5000/api/users/message`;
+        fetch(FETCHURL, {
+            method: 'post',
+            headers: new Headers({
+                'Authorization': localStorage.getItem("Authorized"),
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            }),
+            body: JSON.stringify({ inbox: this.state.messages })
+        })
+            .catch(err => console.log(err))
+
     }
 }
 

@@ -17,7 +17,9 @@ class Input extends Component {
         e.preventDefault();
         this.setState({ text: "" });
         this.props.onSendMessage(this.state.text);
+        this.props.handleSaveInBase()
     }
+   
     render() {
         return (
             <div className="input">
