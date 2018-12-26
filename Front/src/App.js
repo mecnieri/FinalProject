@@ -10,10 +10,8 @@ import './login.css';
 import './Header.css';
 import './Cart.css';
 // import './style.css';
-import Data from './db/data.json';
 import Products from './components/Products';
 // import { Product } from './components/Product';
-import { ContactPage } from './components/ContactPage';
 import LoginPage from './components/LoginPage';
 import AdminLogin from './components/AdminLogin';
 import AdminPanel from './components/AdminPanel';
@@ -27,13 +25,14 @@ import Checkout from './components/Checkout';
 import './Checkout.css';
 import './css/Description.css'
 import Description from './components/Description';
+import AdminDescription from './components/AdminDescription';
 import Contact from './components/Contact';
-import Dat from './data/item.json';
 import Pagination from "../node_modules/react-js-pagination";
 import './css/Home-List.css';
 import './css/responsive.css';
 import './css/Contact.css';
 import './css/Admin-Panel.css';
+import './css/AdminProducts.css';
 
 class App extends Component {
   constructor(props) {
@@ -74,7 +73,7 @@ class App extends Component {
 
   searchHandler = e => {
     e.preventDefault();
-    
+
     let query;
     if (e.target.tagName === "LI") {
       query = e.target.textContent.slice(0, -1).toLowerCase();
@@ -155,6 +154,10 @@ class App extends Component {
           <Route
             path="/item"
             component={Description}
+          />
+          <Route
+            path="/itemAdmin"
+            component={AdminDescription}
           />
 
           <ProtectedRoute path="/userpanel" component={UserPanel} />

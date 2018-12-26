@@ -1,0 +1,84 @@
+$color-primary: #5D5D5D;
+$color-background: #3d3d3d;
+$color-backgroundWhite: #f7f8f9;
+$color-white: #fff;
+$color-blue:#3c78d8;
+$color-blue-Hover:#2964c4;
+$color-green: #59B210;
+$color-fonts: #434343;
+$color-prize: #301c53;
+$color-table: #747474;
+$color-navHover: #54a90f;
+$color-backTextarea: #EFEEED;
+$color-borderHover: #c7c6c6;
+$color-sale:#F8484A;
+$color-names: #1257ab;
+.admin-list-table{
+    display: flex;
+    flex-direction: column;
+    .admin-image-container{
+        text-align: center;
+    }
+    & .admin-first-row .admin-each-product div,& .admin-second-row .admin-each-product div,& .admin-third-row .admin-each-product div{
+        & img{
+            margin: auto;
+            padding: 10%;
+            transition: transform .5s;
+            &:hover{
+                transform: scale(1.2);
+                cursor: pointer;
+            }
+        }
+            & h1, h2{
+                text-align: center;
+                text-transform: capitalize;
+                color: $color-names;
+                text-align: center;
+                text-transform: capitalize;
+            }
+            & h3{
+                text-align: right;
+                font-weight: 700;
+                color: $color-prize;
+                font-size: 28px;
+                letter-spacing: -2px;
+                margin-right: 10%;
+                text-transform: capitalize;
+            }
+    }
+    & .admin-first-row{
+        padding: 5%;
+        display: flex;
+        justify-content: space-between;
+    }
+    & .admin-second-row{
+        padding: 5%;
+        display: flex;
+        justify-content: space-between;
+    }
+    & .admin-third-row{
+        padding: 5%;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+.page-turner{
+    position: relative;
+    height: 15vh;
+    & .pagination{
+        position: absolute;
+        left: 50%;
+        top:50%;
+        transform: translate(-50%,-50%);
+        & li{
+            letter-spacing: 8px;
+            & a{
+                color: $color-blue-Hover;
+                font-weight: 500;
+            }
+        }
+    }
+}
+.admin-btn-details{
+    width: 40%;
+}

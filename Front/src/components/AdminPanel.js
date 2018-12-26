@@ -263,7 +263,7 @@ export default class AdminPanel extends React.Component {
     e.preventDefault()
     let FETCHURL = `http://localhost:5000/api/users`;
     let username = e.target.children[0].childNodes[1].value
-    let userId = this.state.id
+    // let userId = this.state.id
     console.log(username);
     fetch(FETCHURL, {
       method: 'put',
@@ -273,10 +273,11 @@ export default class AdminPanel extends React.Component {
         'Authorization': localStorage.getItem("Authorized")
       }),
       body: JSON.stringify({
-        id: userId,
+        // id: userId,
         username: username
       })
     })
+    debugger
   }
   handleDeleteUser(e) {
     e.preventDefault()
@@ -316,7 +317,7 @@ export default class AdminPanel extends React.Component {
         "Content-Type": "application/json",
         'Authorization': localStorage.getItem("Authorized")
       }),
-      body: JSON.stringify({ category, price, model, brand, weight, size })
+      body: JSON.stringify({ category: category, price, model, brand, weight, size })
     })
   }
   componentDidMount() {
@@ -351,7 +352,7 @@ export default class AdminPanel extends React.Component {
                   </div>
                   <h1>
                     {this.state.cart > 0 && <h1> User Has an Active Cart</h1>}
-                    {this.state.cart == 0 && <h1 className="empty-cart"> User's Cart is empty</h1>}
+                    {this.state.cart === 0 && <h1 className="empty-cart"> User's Cart is empty</h1>}
                   </h1>
                   {/* <button onClick={this.handleDeleteUser} value="Delete User" className="btn btn-danger" /> */}
                   <input type="submit" value="Save Changes" className=" btn btn-primary change-user-btn" />
@@ -412,7 +413,7 @@ export default class AdminPanel extends React.Component {
 
                     <input className="search-input" type="text" placeholder="Search for products" name="search2" />
 
-                    <button type="submit"><i className="fa fa-search"></i></button>
+                    <button type="submit" className="search-btn"><i className="fa fa-search"></i></button>
 
                   </div>
                   <div>

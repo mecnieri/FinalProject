@@ -1,0 +1,55 @@
+.admin-list-table {
+  display: flex;
+  flex-direction: column; }
+  .admin-list-table .admin-image-container {
+    text-align: center; }
+  .admin-list-table .admin-first-row .admin-each-product div img, .admin-list-table .admin-second-row .admin-each-product div img, .admin-list-table .admin-third-row .admin-each-product div img {
+    margin: auto;
+    padding: 10%;
+    transition: transform .5s; }
+    .admin-list-table .admin-first-row .admin-each-product div img:hover, .admin-list-table .admin-second-row .admin-each-product div img:hover, .admin-list-table .admin-third-row .admin-each-product div img:hover {
+      transform: scale(1.2);
+      cursor: pointer; }
+  .admin-list-table .admin-first-row .admin-each-product div h1, .admin-list-table .admin-first-row .admin-each-product div h2, .admin-list-table .admin-second-row .admin-each-product div h1, .admin-list-table .admin-second-row .admin-each-product div h2, .admin-list-table .admin-third-row .admin-each-product div h1, .admin-list-table .admin-third-row .admin-each-product div h2 {
+    text-align: center;
+    text-transform: capitalize;
+    color: #1257ab;
+    text-align: center;
+    text-transform: capitalize; }
+  .admin-list-table .admin-first-row .admin-each-product div h3, .admin-list-table .admin-second-row .admin-each-product div h3, .admin-list-table .admin-third-row .admin-each-product div h3 {
+    text-align: right;
+    font-weight: 700;
+    color: #301c53;
+    font-size: 28px;
+    letter-spacing: -2px;
+    margin-right: 10%;
+    text-transform: capitalize; }
+  .admin-list-table .admin-first-row {
+    padding: 5%;
+    display: flex;
+    justify-content: space-between; }
+  .admin-list-table .admin-second-row {
+    padding: 5%;
+    display: flex;
+    justify-content: space-between; }
+  .admin-list-table .admin-third-row {
+    padding: 5%;
+    display: flex;
+    justify-content: space-between; }
+
+.page-turner {
+  position: relative;
+  height: 15vh; }
+  .page-turner .pagination {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); }
+    .page-turner .pagination li {
+      letter-spacing: 8px; }
+      .page-turner .pagination li a {
+        color: #2964c4;
+        font-weight: 500; }
+
+.admin-btn-details {
+  width: 40%; }

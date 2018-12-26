@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom'
 import logo from '../images/logo2.png'
-import { Link as LinkFromScroll, Element, Events, animateScroll as scroll, scrollSpy } from 'react-scroll'
+import { Link as LinkFromScroll} from 'react-scroll'
+import { TinyButton as ScrollUpButton } from "react-scroll-up-button";
 
-const mql = window.matchMedia(`(min-width: 800px)`);
 
 class Header extends Component {
-
-    constructor(props) {
-        super(props);
+    showSettings(event) {
+        event.preventDefault();
     }
     render(props) {
         return (
             <header className="header">
+                {/* {Adding ScrollUpButton} Vaxo*/}
+                <ScrollUpButton ContainerClassName="ScrollUpButton"
+                    style={{ backgroundColor: '#2964c4', width: 40, height: 40, fill: 'rgb(255,255,255)', }}
+                    ShowAtPosition={700}
+                    AnimationDuration={1000}
+                />
+                {/* {Adding ScrollUpButton} Vaxo*/}
                 <div className="top">
                     <div className="menu"><ul className="left">
                         <li className="menu--item">
@@ -25,13 +31,8 @@ class Header extends Component {
                             <Link to="/about">About</Link>
                         </li>
 
-                        {/* <li className="menu--item">
-                            <Link to="/cartTest">Cart Test</Link>
-                        </li> */}
-
 
                     </ul>
-
                         <ul className="right">
                             {
                                 this.props.showLogin && (
@@ -79,9 +80,7 @@ class Header extends Component {
                                 </li>
                                 )
                             }
-
                         </ul>
-
                     </div>
                 </div>
                 <div className="middleHeader">
@@ -95,7 +94,7 @@ class Header extends Component {
 
                             <input className="search-input" type="text" placeholder="Search for products" name="search2" />
 
-                            <button type="submit"><i className="fa fa-search"></i></button>
+                            <button type="submit" className="search-btn"><i className="fa fa-search"></i></button>
 
                         </div>
 
@@ -113,22 +112,44 @@ class Header extends Component {
                 <div className="nav-bar">
                     <div className="nav-bar_container">
                         <ul className="nav-bar_container--list">
-                            {/* <li onClick={this.props.searchHandler}>Laptops</li> */}
-                            <LinkFromScroll
-                                activeClass="active"
-                                className="productList"
-                                to="productList"
-                                spy={true}
+                            {/* Change in Links Scroll Vaxo */}
+                            <LinkFromScroll activeClass="active" to="first-row"
                                 smooth={true}
                                 duration={500}
                             >
-                                <li>Laptops</li>
+                                <li onClick={this.props.searchHandler}>Laptops</li>
                             </LinkFromScroll>
-                            <li onClick={this.props.searchHandler}>Mobiles</li>
-                            <li onClick={this.props.searchHandler}>Tablets</li>
-                            <li onClick={this.props.searchHandler}>Cameras</li>
-                            <li onClick={this.props.searchHandler}>Consoles</li>
-                            <li onClick={this.props.searchHandler}>TVs</li>
+                            <LinkFromScroll activeClass="active" to="first-row"
+                                smooth={true}
+                                duration={500}
+                            >
+                                <li onClick={this.props.searchHandler}>Mobiles</li>
+                            </LinkFromScroll>
+                            <LinkFromScroll activeClass="active" to="first-row"
+                                smooth={true}
+                                duration={500}
+                            >
+                                <li onClick={this.props.searchHandler}>Tablets</li>
+                            </LinkFromScroll>
+                            <LinkFromScroll activeClass="active" to="first-row"
+                                smooth={true}
+                                duration={500}
+                            >
+                                <li onClick={this.props.searchHandler}>Cameras</li>
+                            </LinkFromScroll>
+                            <LinkFromScroll activeClass="active" to="first-row"
+                                smooth={true}
+                                duration={500}
+                            >
+                                <li onClick={this.props.searchHandler}>Consoles</li>
+                            </LinkFromScroll>
+                            <LinkFromScroll activeClass="active" to="first-row"
+                                smooth={true}
+                                duration={500}
+                            >
+                                <li onClick={this.props.searchHandler}>TVs</li>
+                            </LinkFromScroll>
+                            {/* Change in Links Scroll Vaxo*/}
                         </ul>
                     </div>
                 </div>

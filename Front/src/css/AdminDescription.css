@@ -1,0 +1,35 @@
+.tabs {
+    margin-top: 5%; }
+  
+  .admin-panel .user-search {
+    display: flex;
+    flex-direction: column; }
+  
+  .user-input {
+    display: flex; }
+  
+  .search-user-form {
+    padding-bottom: 5%; }
+    .search-user-form p {
+      font-weight: 700; }
+    .search-user-form .submit-input {
+      margin-left: 5%; }
+  
+  .product-brand, .product-model, .product-price, .product-category, .product-image,.product-description,   {
+    width: 40%; }
+  
+  .edit-user p {
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 5px; }
+  
+  .change-user-btn {
+    margin-right: 5%; }
+  
+  .edit-user .empty-cart {
+    display: inline;
+    color: red; }
+  
+  .add-product-btn {
+    margin-left: 5%; }
+  
