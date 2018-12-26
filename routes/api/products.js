@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 const ObjectId = require("mongodb").ObjectID;
 const passport = require("passport");
 
@@ -52,16 +52,22 @@ router.put(
   (req, res) => {
     // console.log(req.body.Oid);
     // Product.findOneAndUpdate({"_id" : ObjectId(req.body.Oid)}, {productName: req.body.productName, productPrice: req.body.price, category: req.body.category, details: {battery: req.body.battery, size: req.body.size, brand: req.body.brand}}).then(product => res.json(product))
-    console.log(req.body.Oid);
-    Product.findById(req.body.Oid).then(product => {
-      if (req.body.productName) {
-        product.productName = req.body.productName;
+    Product.findById(req.body.Oid).then((product) => {
+      if (req.body.category) {
+        product.category = req.body.category;
       }
-      if (req.body.battery) {
-        product.details.battery = req.body.battery;
+      if (req.body.brand) {
+        product.brand = req.body.brand;
       }
-      if (req.body.productPrice) {
-        product.price = req.body.productPrice;
+      if (req.body.model) {
+        product.model = req.body.model;
+      }
+      if (req.body.image) {
+        product.image = req.body.image;
+      }
+      console.log(70, req.body.price)
+      if (req.body.price) {
+        product.price = req.body.price;
       } //add other else conditions for user's other details
       product.save();
       res.json(product);

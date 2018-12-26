@@ -1,7 +1,7 @@
 import React from 'react'
 function Product(props) {
     return (
-        <div className="image-container">
+        <div className="admin-image-container">
             <h1>{props.product.brand}</h1>
             <h2>{props.product.model}</h2>
             <img src={props.product.image} alt={props.product.productName} width="300px" height="300px" />
@@ -15,12 +15,12 @@ function Product(props) {
                 smooth={true}
                 duration={500}
             > */}
-            <button className="btn btn-secondary btn-lg btn-details">Details</button>
+            <button className="btn btn-secondary btn-lg admin-btn-details">Details</button>
             {/* </LinkFromScroll> */}
 
             <hr />
         </div>
     )
 }
-export default Product
+export default Product;
 
