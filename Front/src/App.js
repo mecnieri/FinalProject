@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
-
+import { Link as LinkFromScroll } from 'react-scroll';
+import { TinyButton as ScrollUpButton } from "react-scroll-up-button";
+import { slide as Menu } from 'react-burger-menu'
 import "bootstrap";
 import "./App.css";
 // import './user.css';
@@ -44,7 +46,9 @@ class App extends Component {
       products: null,
       activePage: 1,
       adminLog: false,
-      registered: false
+      registered: false,
+      tg:'LI',
+      text: ''
     };
     this.handlePageChange = this.handlePageChange.bind(this);
   }
@@ -76,20 +80,29 @@ class App extends Component {
 
   searchHandler = e => {
     e.preventDefault();
+    console.log(83, e.target[0].value);
     let query;
-    if (e.target.tagName === "LI") {
-      query = e.target.textContent.slice(0, -1).toLowerCase();
-    } else {
-      query = e.target.elements.search2.value.toLowerCase();
-    }
-    let FETCHURL = `http://localhost:5000/api/products/${query}`;
-    fetch(FETCHURL)
-      .then(res => res.json())
-      .then(products => {
-        this.setState({ products });
-      })
-      .catch(err => console.log(err));
-  };
+    this.setState({text: e.target[0].value},()=>{
+      console.log(this.state.text)
+      console.log(this.state.tg)
+      console.log(e.target);
+      if(this.state.tg=="LI") {
+        console.log(88, this.state.tg);
+        console.log(89, this.state.text);
+        query = this.state.text.slice(0, -1).toLowerCase();
+       } else {
+        query = this.state.text.elements.search2.value.toLowerCase();
+       }
+       console.log(96, query)
+       let FETCHURL = `http://localhost:5000/api/products/${query}`;
+         fetch(FETCHURL)
+         .then(res => res.json())
+         .then(products => {
+          this.setState({ products });
+         })
+         .catch(err => console.log(err));
+    });
+   }
 
   render() {
     return (
@@ -100,6 +113,54 @@ class App extends Component {
             searchHandler={this.searchHandler}
             adminLog={this.state.adminLog}
           />
+          <div className="nav-bar">
+                <div className="nav-bar_container">
+                    <ul className="nav-bar_container--list">
+                    <LinkFromScroll activeClass="active" to="first-row"
+                                smooth={true}
+                                duration={500}
+                    >
+                    <li onClick={this.searchHandler}><Link to="Laptops"
+                    style={{color:'#fff',textDecoration:'none'}}>Laptops</Link></li>
+                    </LinkFromScroll>
+                    <LinkFromScroll activeClass="active" to="first-row"
+                                smooth={true}
+                                duration={500}
+                            >
+                    <li onClick={this.searchHandler}><Link to="Mobiles" 
+                    style={{color:'#fff',textDecoration:'none'}}>Mobiles</Link></li>
+                    </LinkFromScroll>
+                    <LinkFromScroll activeClass="active" to="first-row"
+                                smooth={true}
+                                duration={500}
+                    >
+                    <li onClick={this.searchHandler}><Link to="Tablets" 
+                    style={{color:'#fff',textDecoration:'none'}}>Tablets</Link></li>
+                    </LinkFromScroll>
+                    <LinkFromScroll activeClass="active" to="first-row"
+                                smooth={true}
+                                duration={500}
+                    >
+                    <li onClick={this.searchHandler}><Link to="Cameras" 
+                    style={{color:'#fff',textDecoration:'none'}}>Cameras</Link></li>
+                    </LinkFromScroll>
+                    <LinkFromScroll activeClass="active" to="first-row"
+                                smooth={true}
+                                duration={500}
+                            >
+                    <li onClick={this.searchHandler}><Link to="Consoles" 
+                    style={{color:'#fff',textDecoration:'none'}}>Consoles</Link></li>
+                    </LinkFromScroll>
+                    <LinkFromScroll activeClass="active" to="first-row"
+                                smooth={true}
+                                duration={500}
+                            >
+                   <li onClick={this.searchHandler}><Link to="TVs" 
+                   style={{color:'#fff', textDecoration:'none'}}>TVs</Link></li>
+                   </LinkFromScroll>
+                    </ul>
+                </div>
+            </div>
           <Route
             path="/"
             exact
@@ -170,6 +231,48 @@ class App extends Component {
           <Route path="/checkoutTest" render={() => <Checkout />} />
           {/* change */}
           {/* appshi chaamate es  */}
+          <Route
+            path="/Laptops"
+            render={
+              () => (
+                <Products products={this.state.products} number={this.state.activePage} />
+              )
+            }/>
+             <Route
+            path="/Mobiles"
+            render={
+              () => (
+                <Products products={this.state.products} number={this.state.activePage} />
+              )
+            }/>
+             <Route
+            path="/Tablets"
+            render={
+              () => (
+                <Products products={this.state.products} number={this.state.activePage} />
+              )
+            }/>
+             <Route
+            path="/Cameras"
+            render={
+              () => (
+                <Products products={this.state.products} number={this.state.activePage} />
+              )
+            }/>
+             <Route
+            path="/Consoles"
+            render={
+              () => (
+                <Products products={this.state.products} number={this.state.activePage} />
+              )
+            }/>
+             <Route
+            path="/TVs"
+            render={
+              () => (
+                <Products products={this.state.products} number={this.state.activePage} />
+              )
+            }/>
           <Route
             path="/successdata"
             render={props => <SuccessData {...props} />}

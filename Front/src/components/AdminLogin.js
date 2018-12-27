@@ -42,6 +42,7 @@ export default class LoginPage extends React.Component {
             .then(result => {
                 if (result.success) {
                     localStorage.setItem('Authorized', result.token);
+                    localStorage.setItem('Admin', "Admin");
                     this.props.adminLog(true);
                 }
                 else {

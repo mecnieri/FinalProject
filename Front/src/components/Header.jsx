@@ -29,63 +29,61 @@ class Header extends Component {
                             <li className="menu--item">
                                 <Link to="/">Home</Link>
                             </li>
-                            <li className="menu--item">
+                            {/* <li className="menu--item">
                                 <Link to="/contact">Contact</Link>
-                            </li>
+                            </li> */}
                             <li className="menu--item">
                                 <Link to="/about">About</Link>
                             </li>
 
 
                         </ul>
-                            <ul className="right">
-                                {
-                                    this.props.showLogin && (
-                                        <li className="menu--item">
-                                            <Link to="/login" style={{ display: this.props.adminLog ? 'none' : 'block' }}>Login</Link>
-                                        </li>
-                                    )
-                                }
+                        <ul className="right">
+                        { 
+                        !localStorage.getItem("Authorized") &&  ( 
+                            <li className="menu--item">
+                            <Link to="/login" >Login</Link>
+                            </li>
+                        )
+                        }
+                    
+                        {
+                        (localStorage.getItem("Authorized") && !localStorage.getItem("Admin")) && (
+                        <li className="menu--item">
+                            <Link to="/userpanel">User Profile</Link>
+                        </li>
+                        )
+                        }
 
-                                {
-                                    !this.props.showLogin && (
-                                        <li className="menu--item">
-                                            <Link to="/userpanel">User Profile</Link>
-                                        </li>
-                                    )
-                                }
-
-                                {
-                                    this.props.showLogin && (
-                                        <li className="menu--item">
-                                            <Link to="/signUp" style={{ display: this.props.adminLog ? 'none' : 'block' }}>Sign  Up</Link>
-                                        </li>
-                                    )
-                                }
-                                {
-                                    !this.props.showLogin && (<li className="menu--item">
-                                        <Link to="/checkoutTest">Checkout</Link>
-                                    </li>
-                                    )
-                                }
-                                <li className="menu--item">
-                                    <i className="fas fa-shopping-cart"></i>
-                                    <Link to="/cart">Cart</Link>
-                                </li>
-                                {
-                                    !this.props.showLogin && (<li onClick={<Redirect to={'/'} />} className="menu--item">
-
-                                        <Link to="/">Log Out</Link>
-                                    </li>
-                                    )
-                                }
-                                {
-                                    this.props.adminLog && (<li onClick={<Redirect to="/" />} className="menu--item">
-                                        <Link to="/">Log Out</Link>
-                                    </li>
-                                    )
-                                }
-                            </ul>
+                        { 
+                        !localStorage.getItem("Authorized") &&  ( 
+                            <li className="menu--item">
+                            <Link to="/signUp" >Sign  Up</Link>
+                            </li>
+                        )
+                        }
+                        {
+                        (localStorage.getItem("Authorized") && !localStorage.getItem("Admin")) &&(<li className="menu--item">
+                            <Link to="/checkoutTest">Checkout</Link>
+                        </li>
+                        )
+                        }
+                        <li className="menu--item">
+                        <i className="fas fa-shopping-cart"></i>
+                            <Link to="/cart">Cart</Link>
+                        </li>
+                        {
+                        localStorage.getItem("Authorized") &&(<li onClick={()=>{
+                            localStorage.removeItem("Authorized");
+                            localStorage.removeItem("Admin");
+                            // window.location.reload();
+                        }} className="menu--item">
+                            
+                            <Link to="/">Log Out</Link>
+                        </li>
+                        )
+                        }
+                    </ul>
                         </div>
                     {/* </Menu> */}
                 </div>
@@ -115,50 +113,9 @@ class Header extends Component {
                         {/* <p>Your balance:</p> */}
                     </div>
                 </div>
-                <div className="nav-bar">
-                    <div className="nav-bar_container">
-                        <ul className="nav-bar_container--list">
-                            {/* Change in Links Scroll Vaxo */}
-                            <LinkFromScroll activeClass="active" to="first-row"
-                                smooth={true}
-                                duration={500}
-                            >
-                                <li onClick={this.props.searchHandler}>Laptops</li>
-                            </LinkFromScroll>
-                            <LinkFromScroll activeClass="active" to="first-row"
-                                smooth={true}
-                                duration={500}
-                            >
-                                <li onClick={this.props.searchHandler}>Mobiles</li>
-                            </LinkFromScroll>
-                            <LinkFromScroll activeClass="active" to="first-row"
-                                smooth={true}
-                                duration={500}
-                            >
-                                <li onClick={this.props.searchHandler}>Tablets</li>
-                            </LinkFromScroll>
-                            <LinkFromScroll activeClass="active" to="first-row"
-                                smooth={true}
-                                duration={500}
-                            >
-                                <li onClick={this.props.searchHandler}>Cameras</li>
-                            </LinkFromScroll>
-                            <LinkFromScroll activeClass="active" to="first-row"
-                                smooth={true}
-                                duration={500}
-                            >
-                                <li onClick={this.props.searchHandler}>Consoles</li>
-                            </LinkFromScroll>
-                            <LinkFromScroll activeClass="active" to="first-row"
-                                smooth={true}
-                                duration={500}
-                            >
-                                <li onClick={this.props.searchHandler}>TVs</li>
-                            </LinkFromScroll>
-                            {/* Change in Links Scroll Vaxo*/}
-                        </ul>
-                    </div>
-                </div>
+                
+                    
+               
             </header>
         )
     }

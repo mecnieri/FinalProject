@@ -11,10 +11,33 @@ class AdminContact extends Component {
                 username: 'admin'
             },
             username: null,
+            query: null
         }
+    }
+    componentDidMount() {
+        this.interval = setInterval(() => this.tick(), 1000);
+    }
+    tick() {
+        let FETCHURL = `http://localhost:5000/api/users/${this.state.query}`;
+        fetch(FETCHURL, {
+            method: 'get',
+            headers: new Headers({
+                'Authorization': localStorage.getItem("Authorized")
+            })
+        })
+            .then(res => res.json())
+            .then(user => {
+                this.setState({
+                    username: user.username,
+                    id: user._id,
+                    messages: user.inbox,
+                })
+            })
+            .catch(err => console.log(err))
     }
     handleUserSearch = (e) => {
         e.preventDefault();
+        this.setState({query: e.target.children[0].childNodes[1].value})
         let query;
         query = e.target.children[0].childNodes[1].value;
         let FETCHURL = `http://localhost:5000/api/users/${query}`;
