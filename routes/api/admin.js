@@ -14,7 +14,23 @@ const User = require("../../models/User");
 //Load Admin model
 const Admin = require("../../models/Admin");
 
+router.put('/notifications', passport.authenticate('admin-rule', { session: false }), (req, res) => {
+  let sender = req.body.sender
+  console.log(76, sender);
+  console.log(77, req.body);
+  Admin.findOne({ email: "admin@gmail.com" }).then(admin => {
+    admin.notifications = admin.notifications.filter(notif => notif.from !== sender);
+    admin.save()
+    res.json(admin.notifications)
+  })
+ });
 
+router.get('/', passport.authenticate('admin-rule', { session: false }), (req, res) => {
+  // Find user by id (update later)
+  Admin.findOne({email: "admin@gmail.com"}).then(admin => {
+    res.json(admin.notifications);
+  });
+});
 //@route Post api/admin/login
 //@desc login admin / return jwt token
 //@access Public
@@ -55,6 +71,8 @@ router.post("/login", (req, res) => {
     });
   });
 });
+
+
 
 //@route Post api/admin-auth/
 //@desc return current user
