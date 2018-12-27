@@ -299,6 +299,9 @@ form.search input[type=text] {
     margin: 0;
     background-color: #f7f8f9;
 } */
+.scroll-btn {
+    width: 15%;
+}
 .search-btn{
     float: left;
     width: 20%;

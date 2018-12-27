@@ -5,7 +5,7 @@ export default class Item extends Component {
     super(props);
 
     this.state = {
-      itemTotal: this.props.quantity * this.props.price + this.props.shipping
+      itemTotal: this.props.quantity * this.props.price
     };
   }
 
@@ -72,7 +72,6 @@ export default class Item extends Component {
           <strong className="itemPrice">${this.props.price.toFixed(2)}</strong>
         </td>
         <td>
-          {/* <strong className="shipping">${this.props.shipping.toFixed(2)}</strong> */}
         </td>
         <td>
           <strong className="itemTotal">

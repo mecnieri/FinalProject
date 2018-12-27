@@ -47,8 +47,7 @@ class App extends Component {
       activePage: 1,
       adminLog: false,
       registered: false,
-      tg:'LI',
-      text: ''
+
     };
     this.handlePageChange = this.handlePageChange.bind(this);
   }
@@ -80,28 +79,35 @@ class App extends Component {
 
   searchHandler = e => {
     e.preventDefault();
-    console.log(83, e.target[0].value);
+    e.persist();
     let query;
-    this.setState({text: e.target[0].value},()=>{
-      console.log(this.state.text)
-      console.log(this.state.tg)
-      console.log(e.target);
-      if(this.state.tg=="LI") {
-        console.log(88, this.state.tg);
-        console.log(89, this.state.text);
-        query = this.state.text.slice(0, -1).toLowerCase();
-       } else {
-        query = this.state.text.elements.search2.value.toLowerCase();
-       }
-       console.log(96, query)
-       let FETCHURL = `http://localhost:5000/api/products/${query}`;
-         fetch(FETCHURL)
+    console.log(e.target.tagName);
+    if (e.target.tagName === "FORM"){
+      query = e.target.elements.search2.value.toLowerCase();
+      let FETCHURL = `http://localhost:5000/api/products/${query}`;
+        fetch(FETCHURL)
          .then(res => res.json())
          .then(products => {
           this.setState({ products });
          })
          .catch(err => console.log(err));
-    });
+      
+    }
+    else{
+    this.setState({text:e.target.textContent},()=>{
+      console.log(this.state.text)
+        query = this.state.text.slice(0, -1).toLowerCase();
+        let FETCHURL = `http://localhost:5000/api/products/${query}`;
+        fetch(FETCHURL)
+         .then(res => res.json())
+         .then(products => {
+          this.setState({ products });
+         })
+         .catch(err => console.log(err));
+       }) 
+      }
+      
+       
    }
 
   render() {

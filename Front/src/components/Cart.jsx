@@ -12,7 +12,6 @@ export default class Cart extends Component {
       qtyTotal: 0,
       priceTotal: 0,
       subTotal: 0,
-      shipping: 0,
       tax: 0.1,
       grandTotal: 0
     };
@@ -113,7 +112,7 @@ export default class Cart extends Component {
                       <th>Product</th>
                       <th>Quantity</th>
                       <th>Price</th>
-                      <th>Shipping</th>
+                      <th> </th>
                       <th>Total</th>
                       <th> </th>
                     </tr>
