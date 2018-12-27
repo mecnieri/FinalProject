@@ -31,7 +31,7 @@
         font-size: 20px;
         font-weight: 700;
         font-family: 'Open Sans', sans-serif;
-        padding: 18px 60px;
+        padding: 18px 0px;
         
         text-decoration: none;
         border-right: 1px #5D5D5D solid; }
@@ -41,3 +41,6 @@
           background-color: var(--color-blue-Hover);
           cursor: pointer; }
           
+  #category {
+    padding: 18px 60px !important;
+  }

@@ -126,42 +126,42 @@ class App extends Component {
                                 smooth={true}
                                 duration={500}
                     >
-                    <li onClick={this.searchHandler}><Link to="Laptops"
+                    <li onClick={this.searchHandler}><Link id="category" to="Laptops"
                     style={{color:'#fff',textDecoration:'none'}}>Laptops</Link></li>
                     </LinkFromScroll>
                     <LinkFromScroll activeClass="active" to="first-row"
                                 smooth={true}
                                 duration={500}
                             >
-                    <li onClick={this.searchHandler}><Link to="Mobiles" 
+                    <li onClick={this.searchHandler}><Link id="category" to="Mobiles" 
                     style={{color:'#fff',textDecoration:'none'}}>Mobiles</Link></li>
                     </LinkFromScroll>
                     <LinkFromScroll activeClass="active" to="first-row"
                                 smooth={true}
                                 duration={500}
                     >
-                    <li onClick={this.searchHandler}><Link to="Tablets" 
+                    <li onClick={this.searchHandler}><Link id="category" to="Tablets" 
                     style={{color:'#fff',textDecoration:'none'}}>Tablets</Link></li>
                     </LinkFromScroll>
                     <LinkFromScroll activeClass="active" to="first-row"
                                 smooth={true}
                                 duration={500}
                     >
-                    <li onClick={this.searchHandler}><Link to="Cameras" 
+                    <li onClick={this.searchHandler}><Link id="category" to="Cameras" 
                     style={{color:'#fff',textDecoration:'none'}}>Cameras</Link></li>
                     </LinkFromScroll>
                     <LinkFromScroll activeClass="active" to="first-row"
                                 smooth={true}
                                 duration={500}
                             >
-                    <li onClick={this.searchHandler}><Link to="Consoles" 
+                    <li onClick={this.searchHandler}><Link id="category" to="Consoles" 
                     style={{color:'#fff',textDecoration:'none'}}>Consoles</Link></li>
                     </LinkFromScroll>
                     <LinkFromScroll activeClass="active" to="first-row"
                                 smooth={true}
                                 duration={500}
                             >
-                   <li onClick={this.searchHandler}><Link to="TVs" 
+                   <li onClick={this.searchHandler}><Link id="category" to="TVs" 
                    style={{color:'#fff', textDecoration:'none'}}>TVs</Link></li>
                    </LinkFromScroll>
                     </ul>
