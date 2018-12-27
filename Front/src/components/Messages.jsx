@@ -12,9 +12,9 @@ class Messages extends Component {
     }
 
     renderMessage(message) {
-        const { member, text } = message;
+        const { member, letter } = message;
         const { currentMember } = this.props;
-        const messageFromMe = member.id === currentMember.id;
+        const messageFromMe = message.sender === currentMember.username;
         const className = messageFromMe ?
             "Messages-message currentMember" : "Messages-message";
         return (
@@ -22,9 +22,9 @@ class Messages extends Component {
                 <img src={admin} alt="admin" className="avatar" />
                 <div className="Message-content">
                     <div className="username">
-                        {member.username}
+                        {message.sender}
                     </div>
-                    <div className="text">{text}</div>
+                    <div className="text">{letter}</div>
                 </div>
             </li >
         );

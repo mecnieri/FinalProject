@@ -1,28 +1,68 @@
 import React, { Component } from "react";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
+import SuccessData from "../components/SuccessData";
+import { Link, Router, Route, Redirect } from "react-router-dom";
 
 class Checkout extends Component {
   state = {
-    user: null
+    user: null,
+    error: null,
+    redirect: false
   };
   componentDidMount() {
-    fetch('http://localhost:5000/api/users/current', {
-        method:"GET",
-        headers: new Headers({
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-            'Authorization': localStorage.getItem("Authorized")
-          }),
+    fetch("http://localhost:5000/api/users/current", {
+      method: "GET",
+      headers: new Headers({
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("Authorized")
+      })
     })
-    .then( res => res.json() )
-    .then(user => {this.setState ({user})})
+      .then(res => res.json())
+      .then(user => {
+        this.setState({ user });
+      });
   }
-  handleCheckout() {
-      //send request to server, update balance, 
-  }
+  handleCheckout = () => {
+    fetch("http://localhost:5000/api/users/checkout", {
+      method: "POST",
+      headers: new Headers({
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("Authorized")
+      })
+    })
+      .then(res => res.json())
+      .then((result) =>{
+        console.log(38, result);
+        if (result.error) {
+          return this.setState({ error: result.error, redirect: true });
+        } else {
+          return (this.setState({ user: result, redirect: true }) );
+        }
+      });
+  };
   render() {
-    if (this.state.user) {
+    if (this.state.redirect) {
+      let message, purchaseStatus;
+      if(this.state.error ) {
+        message = this.state.error
+        purchaseStatus = false
+      } else {
+        message = "wooo ho, purchase successful"
+        purchaseStatus = true
+      }
+      return (
+        <Redirect
+          to={{
+            pathname: "/successdata",
+            state: { message, purchaseStatus}
+          }}
+        />
+      );
+    } 
+    else if (this.state.user) {
       return (
         <section className="checkout container">
           <div className="checkout--header">
@@ -114,11 +154,25 @@ class Checkout extends Component {
               />
             </div>
             <div className="place-order">
-              <button className="place-order--btn btn btn-success">
               {/* opens popup showing success message, and balance remaining */}
               {/* we need new page called broughtproducts, user will be redirected to it after clicks place order*/}
-                Place Order
-              </button>
+
+              <div className="place-order">
+                {/* // replace link with goto, and if elfe depending the respone from /checkout from handlecheckout method */}
+                {/* <Link
+                  to={{
+                    pathname: "/successdata",
+                    state: { balance: this.state.user.balance }
+                  }}
+                > */}
+                <button
+                  className="place-order--btn btn btn-success"
+                  onClick={this.handleCheckout}
+                >
+                  Place Order
+                </button>
+                {/* </Link> */}
+              </div>
             </div>
           </div>
         </section>

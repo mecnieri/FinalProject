@@ -18,8 +18,8 @@ export default class Cart extends Component {
     };
   }
   componentDidMount() {
-    fetch("http://localhost:5000/api/users/getcart", {
-      method: "post",
+    fetch("http://localhost:5000/api/users/getCart", {
+      method: "POST",
       headers: new Headers({
         Authorization: localStorage.getItem("Authorized")
       })
@@ -50,7 +50,6 @@ export default class Cart extends Component {
               prod.quantity = Number(elem.quantity)
               return prod
             })
-            console.log(63, newProducts);
             this.setState({ items: newProducts });
             this.handleSubTotal();
           });

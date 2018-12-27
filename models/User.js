@@ -24,13 +24,14 @@ const UserSchema = new Schema({
     required: true
   },
   balance: {
-    type: String,
+    type: Number,
     required: true
   },
   inbox: {
     type: Array
   },
-  cart: [{ product_id: String, quantity: String }],
+  cart: [{ _id: false, product_id: String, quantity: String, }],
+  
   boughtProducts: [{ product_id: String, quantity: String }]
 });
 

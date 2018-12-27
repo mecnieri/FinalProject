@@ -1,4 +1,5 @@
 import React from 'react';
+import Contact from './Contact';
 // import {Redirect } from 'react-router-dom';
 import './../user.css';
 const FETCHURL = 'http://localhost:5000/api/users/current';
@@ -46,8 +47,8 @@ export default class UserPanel extends React.Component {
         <div className="user-container">
 
           <h2><i className="fas fa-user fa-2x"></i> User Details</h2>
-          <h3><i className="fas fa-shopping-cart fa-2x"></i>Cart</h3>
-          <table className="table">
+          {/* <h3><i className="fas fa-shopping-cart fa-2x"></i>Cart</h3> */}
+          <table className="table table-hover user-table">
             <tbody>
               <tr>
                 <th>Username</th>
@@ -65,12 +66,12 @@ export default class UserPanel extends React.Component {
             </tbody>
 
           </table>
-
-
-          <form className="textarea">
+          <Contact />
+          {/* მისაწერი აქვე არ სჭირდება. მაგისთვის ცალკე კონტაქტია გაკეთებული. ვახო */}
+          {/* <form className="textarea">
             <textarea></textarea>
             <button className="btn btn-success">Send Message</button>
-          </form>
+          </form> */}
 
         </div>
       </div>

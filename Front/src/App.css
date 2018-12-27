@@ -269,7 +269,7 @@ img.logoImg {
     flex-direction: column;
     align-self: center;
     align-items: center;
-    width: 25%;
+    /* width: 25%; */
 }
 .categories {
     width: 40%;
@@ -299,7 +299,7 @@ form.search input[type=text] {
     margin: 0;
     background-color: #f7f8f9;
 } */
-form.search button {
+.search-btn{
     float: left;
     width: 20%;
     background-color: var(--color-blue);

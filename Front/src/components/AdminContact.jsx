@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 import Messages from './Messages';
-import Input from './Input';
+import AdminInput from './AdminInput';
 
-class Contact extends Component {
+class AdminContact extends Component {
     constructor(props) {
         super(props);
         this.state = {
             messages: [],
             member: {
-                username: 'test12'
-            }
+                username: 'admin'
+            },
+            username: null,
         }
     }
-    componentDidMount() {
-        //  let query = "test12"
-
-        // query = e.target.children[0].childNodes[1].value;
-        let FETCHURL = `http://localhost:5000/api/users/current`;
+    handleUserSearch = (e) => {
+        e.preventDefault();
+        let query;
+        query = e.target.children[0].childNodes[1].value;
+        let FETCHURL = `http://localhost:5000/api/users/${query}`;
         fetch(FETCHURL, {
             method: 'get',
             headers: new Headers({
@@ -26,27 +27,36 @@ class Contact extends Component {
             .then(res => res.json())
             .then(user => {
                 this.setState({
+                    username: user.username,
+                    id: user._id,
                     messages: user.inbox,
-                    member: { username: user.username }
                 })
             })
             .catch(err => console.log(err))
     }
 
 
+
     render() {
         return (
             <div className="contact-us">
                 <div className="App-header">
-                    <h1>Contact Admin</h1>
+                    <h1>Contact User</h1>
                 </div>
+                <form onSubmit={this.handleUserSearch} className="search-user-form ">
+                    <label className="admin-panel label search-user"><p>Search Username:</p>
+                        <input type="text" className="name-input form-control" placeholder="Search for user by name" />
+                    </label>
+                    <input type="submit" value="Search" className="submit-input btn btn-primary" />
+                </form>
+
                 <Messages
                     messages={this.state.messages}
                     currentMember={this.state.member}
                 />
-                <Input
+                <AdminInput
                     onSendMessage={this.onSendMessage}
-                    handleSaveInBase={this.handleSaveInBase}
+                    handleSaveInBaseAdmin={this.handleSaveInBaseAdmin}
                 />
             </div>
         );
@@ -59,10 +69,10 @@ class Contact extends Component {
         })
         this.setState({ messages: messages })
     }
-    handleSaveInBase = () => {
-        console.log(63, "Contact", this.state.messages)
+    handleSaveInBaseAdmin = () => {
+        console.log(73, "Contact", this.state.messages)
 
-        let FETCHURL = `http://localhost:5000/api/users/message`;
+        let FETCHURL = `http://localhost:5000/api/admin/message`;
         fetch(FETCHURL, {
             method: 'post',
             headers: new Headers({
@@ -70,11 +80,12 @@ class Contact extends Component {
                 Accept: "application/json",
                 "Content-Type": "application/json"
             }),
-            body: JSON.stringify({ inbox: this.state.messages })
+            body: JSON.stringify({ inbox: this.state.messages, username: this.state.username })
         })
             .catch(err => console.log(err))
+        console.log(86, "Contact", this.state.username)
 
     }
 }
 
-export default Contact;
+export default AdminContact;

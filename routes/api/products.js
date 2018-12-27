@@ -54,16 +54,22 @@ router.put(
   (req, res) => {
     // console.log(req.body.Oid);
     // Product.findOneAndUpdate({"_id" : ObjectId(req.body.Oid)}, {productName: req.body.productName, productPrice: req.body.price, category: req.body.category, details: {battery: req.body.battery, size: req.body.size, brand: req.body.brand}}).then(product => res.json(product))
-
-    Product.findById(req.body.Oid).then(product => {
-      if (req.body.productName) {
-        product.productName = req.body.productName;
+    Product.findById(req.body.Oid).then((product) => {
+      if (req.body.category) {
+        product.category = req.body.category;
       }
-      if (req.body.battery) {
-        product.details.battery = req.body.battery;
+      if (req.body.brand) {
+        product.brand = req.body.brand;
       }
-      if (req.body.productPrice) {
-        product.price = req.body.productPrice;
+      if (req.body.model) {
+        product.model = req.body.model;
+      }
+      if (req.body.image) {
+        product.image = req.body.image;
+      }
+      console.log(70, req.body.price)
+      if (req.body.price) {
+        product.price = req.body.price;
       } //add other else conditions for user's other details
       product.save();
       res.json(product);
@@ -142,7 +148,7 @@ router.get("/product/:id", (req, res) => {
 //@desc get product by category
 //@access public
 router.post("/getArray", (req, res) => {
-  console.log(115, req.body);
+  console.log(145, req.body);
   Product.find({'_id': { $in: req.body} }, function (err, products) {
     if (err) throw err;
     res.json(products);

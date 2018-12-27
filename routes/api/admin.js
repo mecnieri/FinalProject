@@ -20,9 +20,9 @@ const Admin = require("../../models/Admin");
 //@access Public
 router.post("/login", (req, res) => {
   console.log('enters');
-  const {errors, isValid} = validateLoginInput(req.body);
+  const { errors, isValid } = validateLoginInput(req.body);
   //Check validation
-  if(!isValid) {
+  if (!isValid) {
     return res.status(400).json(errors)
   }
   const email = req.body.email;
@@ -39,10 +39,10 @@ router.post("/login", (req, res) => {
     bcrypt.compare(password, admin.password).then(isMatch => {
       if (isMatch) {
         //komment may have to add other fields
-        const payload = { id: admin.id, name: admin.username} //create jwt payload
+        const payload = { id: admin.id, name: admin.username } //create jwt payload
         //Sign token
-        jwt.sign(payload, keys.secretOrKey, {expiresIn: 3600000},
-          (err, token)=>{
+        jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600000 },
+          (err, token) => {
             res.json({
               success: true,
               token: 'Bearer ' + token
@@ -62,10 +62,7 @@ router.post("/login", (req, res) => {
 router.post('/message', passport.authenticate('admin-rule', { session: false }), (req, res) => {
   // Find user by id
   User.findOne({ username: req.body.username }).then(user => {
-    user.inbox.push({
-      sender: "admin",
-      letter: req.body.letter
-    })
+    user.inbox = req.body.inbox
     user.save()
     res.json(user);
   });
