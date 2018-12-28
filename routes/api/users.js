@@ -13,7 +13,7 @@ const validateLoginInput = require("../../validation/login");
 //Load User model
 const User = require("../../models/User");
 
-//@route Post api/users/register
+//@route POST api/users/register
 //@desc Register user
 //@access Public
 router.post("/register", (req, res) => {
@@ -33,8 +33,6 @@ router.post("/register", (req, res) => {
         email: req.body.email,
         password: req.body.password,
         birthday: req.body.birthday,
-        // write a function to repalce req.body.age
-
         balance: req.body.balance
       });
       //encrypt password
