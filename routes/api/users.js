@@ -258,29 +258,21 @@ router.post('/message', passport.authenticate('user-rule', { session: false }), 
   console.log("aq shemodis turne")
   User.findById(req.user.id).then(user => {
     user.inbox = req.body.inbox
-    // // ----
-    // Admin.findOne({ email: "admin@gmail.com" }).then(admin => {
-    //   console.log(admin.notifications)
-    //   let index = admin.notifications.findIndex((mess) => mess.from === user.username)
-    //   if (index > -1) {
-    //     admin.notifications.splice(index, 1, {
-    //       from: user.username,
-    //       seen: false
-    //     })
-    //   } else {
-    //     admin.notifications.push({
-    //       from: user.username,
-    //       seen: false
-    //     })
-    //   }
-
-    //   console.log(admin.notifications)
-    //   // res.json(user.inbox);
-    //   admin.save()
-    //   res.json(admin)
-    // })
-    console.log(258, "back", user.inbox);
-    user.save()
+    Admin.findOne({ email: "admin@gmail.com" }).then(admin => {
+      let index = admin.notifications.findIndex((mess) => mess.from === user.username)
+      if (index > -1) {
+        admin.notifications.splice(index, 1, {
+          from: user.username
+        })
+      } else {
+        admin.notifications.push({
+          from: user.username
+        })
+      }
+      admin.save()
+      res.json(admin)
+    })
+   user.save()
   });
 });
 
