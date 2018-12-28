@@ -3,6 +3,8 @@ import List from "./List";
 import _ from "../../node_modules/underscore/underscore";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
+import { Link, Router, Route, Redirect } from "react-router-dom";
+
 export default class Cart extends Component {
   constructor(props) {
     super(props);
@@ -13,7 +15,10 @@ export default class Cart extends Component {
       priceTotal: 0,
       subTotal: 0,
       tax: 0.1,
-      grandTotal: 0
+      grandTotal: 0,
+      user: null,
+      error: null,
+      redirect: false
     };
   }
   componentDidMount() {
@@ -39,16 +44,15 @@ export default class Cart extends Component {
         })
           .then(res => res.json())
           .then(products => {
-            let newProducts = products.map((prod)=>{
-              let elem = cart.find((element)=>{
+            let newProducts = products.map(prod => {
+              let elem = cart.find(element => {
                 // console.log(45, element, prod)
-                 return element.product_id == prod._id
-                 
-              })
+                return element.product_id == prod._id;
+              });
               // console.log(48, prod);
-              prod.quantity = Number(elem.quantity)
-              return prod
-            })
+              prod.quantity = Number(elem.quantity);
+              return prod;
+            });
             this.setState({ items: newProducts });
             this.handleSubTotal();
           });
@@ -69,16 +73,16 @@ export default class Cart extends Component {
       this.state.items,
       _.findWhere(this.state.items, {
         _id: itemId
-      }), 
-        fetch("http://localhost:5000/api/users/cart", {
-          method: "DELETE",
-          headers: new Headers({
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: localStorage.getItem("Authorized")
-          }),
-          body: JSON.stringify({ productId: itemId})
-        }).then(res => res.json())     
+      }),
+      fetch("http://localhost:5000/api/users/cart", {
+        method: "DELETE",
+        headers: new Headers({
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: localStorage.getItem("Authorized")
+        }),
+        body: JSON.stringify({ productId: itemId })
+      }).then(res => res.json())
     );
     console.log("64", items);
     console.log("65", items);
@@ -87,7 +91,9 @@ export default class Cart extends Component {
   };
   handleSubTotal = (itemTotal = 0) => {
     _.each(this.state.items, function(item) {
-      itemTotal += item.price;
+      // itemTotal += item.price * item;
+      console.log(91, item);
+      itemTotal += item.price * item.quantity;
     });
     this.setState({ subTotal: itemTotal });
     this.handleGrandTotal(itemTotal);
@@ -95,8 +101,44 @@ export default class Cart extends Component {
   handleGrandTotal = subTotal => {
     this.setState({ grandTotal: this.state.tax * subTotal + subTotal });
   };
+  handleCheckout = () => {
+    fetch("http://localhost:5000/api/users/checkout", {
+      method: "POST",
+      headers: new Headers({
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("Authorized")
+      })
+    })
+      .then(res => res.json())
+      .then(result => {
+        console.log(38, result);
+        if (result.error) {
+          return this.setState({ error: result.error, redirect: true });
+        } else {
+          return this.setState({ user: result, redirect: true });
+        }
+      });
+  };
   render() {
-    if (this.state.items) {
+    if (this.state.redirect) {
+      let message, purchaseStatus;
+      if (this.state.error) {
+        message = this.state.error;
+        purchaseStatus = false;
+      } else {
+        message = "wooo ho, purchase successful";
+        purchaseStatus = true;
+      }
+      return (
+        <Redirect
+          to={{
+            pathname: "/successdata",
+            state: { message, purchaseStatus }
+          }}
+        />
+      );
+    } else if (this.state.items) {
       const { grandTotal: total } = this.state;
       if (total === 0) {
         return <h2 className="empty-cart">You have no Items in the Cart</h2>;
@@ -165,14 +207,17 @@ export default class Cart extends Component {
                       <td />
                       <td />
                       <td>
-                        <button className="btn btn-default">
-                          Continue Shopping
-                        </button>
+                        <Link to="/">
+                          <button className="btn btn-primary">
+                            Continue Shopping
+                          </button>
+                        </Link>
                       </td>
                       <td>
                         <button
                           disabled={!this.state.grandTotal > 0}
                           className="btn btn-success"
+                          onClick={this.handleCheckout}
                         >
                           Checkout
                         </button>

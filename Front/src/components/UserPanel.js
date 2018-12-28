@@ -2,6 +2,7 @@ import React from 'react';
 import Contact from './Contact';
 // import {Redirect } from 'react-router-dom';
 import './../user.css';
+import { CLIENT_RENEG_LIMIT } from 'tls';
 const FETCHURL = 'http://localhost:5000/api/users/current';
 
 export default class UserPanel extends React.Component {
@@ -45,7 +46,7 @@ export default class UserPanel extends React.Component {
     return (
       <div className="co">
         <div className="user-container">
-
+        {console.log(49, Date.parse(this.state.birthday))}
           <h2><i className="fas fa-user fa-2x"></i> User Details</h2>
           {/* <h3><i className="fas fa-shopping-cart fa-2x"></i>Cart</h3> */}
           <table className="table table-hover user-table">
@@ -54,13 +55,13 @@ export default class UserPanel extends React.Component {
                 <th>Username</th>
                 <th>E-Mail</th>
                 <th>Birth Date</th>
-                <th>Balance</th>
+                <th>Enter amount of Balance</th>
               </tr>
 
               <tr>
                 <td>{this.state.username}</td>
                 <td>{this.state.email}</td>
-                <td>{this.state.birthday}</td>
+                <td>{this.state.birthday && this.state.birthday.substr(0, 10)}</td>
                 <td>{this.state.balance}</td>
               </tr>
             </tbody>

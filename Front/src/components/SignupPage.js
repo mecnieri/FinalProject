@@ -23,7 +23,6 @@ export default class SignupPage extends React.Component {
       }
       else{
       // console.log(this.email.current.value, this.password.current.value);
-      console.log(26, this.birthday.current.value)
       this.login(this.username.current.value,this.email.current.value,this.password.current.value,
                  this.password2.current.value, this.birthday.current.value,this.balance.current.value);
       }
@@ -65,7 +64,7 @@ export default class SignupPage extends React.Component {
         <div className="input-icon"><i className="fa fa-envelope"></i></div>
       </div>
       <div className="input-group input-group-icon">
-        <input type="password" ref={this.password} placeholder="Password" required/>
+        <input type="password" ref={this.password} placeholder="Password (6 char at least)" required/>
         <div className="input-icon"><i className="fa fa-key"></i></div>
       </div>
       <div className="input-group input-group-icon">
@@ -88,7 +87,7 @@ export default class SignupPage extends React.Component {
       <h4>Payment Details</h4>
       
       <div className="input-group input-group-icon">
-        <input type="text" placeholder="Enter Amount of Balance" ref={this.balance}/>
+        <input type="number" placeholder="Enter amount of Balance" ref={this.balance}/>
         <div className="input-icon"><i className="fas fa-address-card"></i></div>
       </div>
     </div>
