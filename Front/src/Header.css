@@ -41,6 +41,7 @@
           background-color: var(--color-blue-Hover);
           cursor: pointer; }
           
+          /* maybe remove importatn to save responsiveness */
   #category {
     padding: 18px 60px !important;
   }

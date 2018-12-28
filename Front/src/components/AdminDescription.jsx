@@ -17,8 +17,10 @@ class AdminDescription extends React.Component {
         let brand = e.target.children[1].childNodes[1].value;
         let model = e.target.children[2].childNodes[1].value;
         let price = e.target.children[4].childNodes[1].value;
-        let category = e.target.children[3].childNodes[1].value
-        let productId = this.state.product._id
+        let category = e.target.children[3].childNodes[1].value;
+        let weight = e.target.children[5].childNodes[1].value;
+        let size = e.target.children[6].childNodes[1].value;
+        let Oid = this.state.product._id
         fetch(FETCHURL, {
             method: 'put',
             headers: new Headers({
@@ -27,10 +29,18 @@ class AdminDescription extends React.Component {
                 'Authorization': localStorage.getItem("Authorized")
             }),
             body: JSON.stringify({
+                category,
+                image,
+                brand,
+                model,
+                price,
+                size,
+                weight,
+                Oid
                 // id: productId,
-                category: category,
-                image, brand, model, price,
-                Oid: productId
+                // category: category,
+                // image, brand, model, price,
+                // Oid: productId
             })
         })
 
@@ -89,7 +99,14 @@ class AdminDescription extends React.Component {
                                     <input type="text" placeholder={this.state.product.category} className="form-control" /><br />
                                 </div>
                                 <div className="product-category"><p>Price:</p>
-                                    <input type="text" placeholder={this.state.product.price} className="form-control" /><br />
+                                    <input type="number" placeholder={this.state.product.price} className="form-control" /><br />
+                                </div>
+                                <div className="product-category"><p>Weight:</p>
+                                {console.log(101, this.state.product)}
+                                    <input type="text" placeholder={this.state.product.specs &&this.state.product.specs.weight} className="form-control" /><br />
+                                </div>
+                                <div className="product-category"><p>Size:</p>
+                                    <input type="text" placeholder={this.state.product.specs && this.state.product.specs.size} className="form-control" /><br />
                                 </div>
                                 <input type="submit" value="Save Changes" className=" btn btn-primary change-user-btn" />
                                 <button onClick={this.handleDeleteProduct} value="X" className="btn btn-danger delete-user-btn">Delete Product</button>
@@ -118,11 +135,11 @@ class AdminDescription extends React.Component {
                                         </tr>
                                         <tr>
                                             <td>Weight</td>
-                                            <td>{this.state.product.specs.weight}</td>
+                                            <td>{this.state.product.weight}</td>
                                         </tr>
                                         <tr>
                                             <td>Size</td>
-                                            <td>{this.state.product.specs.size}cm</td>
+                                            <td>{this.state.product.size}cm</td>
                                         </tr>
                                     </tbody>
                                 </table>

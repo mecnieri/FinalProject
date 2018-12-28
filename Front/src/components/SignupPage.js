@@ -64,7 +64,7 @@ export default class SignupPage extends React.Component {
         <div className="input-icon"><i className="fa fa-envelope"></i></div>
       </div>
       <div className="input-group input-group-icon">
-        <input type="password" ref={this.password} placeholder="Password" required/>
+        <input type="password" ref={this.password} placeholder="Password (6 char at least)" required/>
         <div className="input-icon"><i className="fa fa-key"></i></div>
       </div>
       <div className="input-group input-group-icon">
@@ -87,7 +87,7 @@ export default class SignupPage extends React.Component {
       <h4>Payment Details</h4>
       
       <div className="input-group input-group-icon">
-        <input type="text" placeholder="Balance" ref={this.balance}/>
+        <input type="number" placeholder="Enter amount of Balance" ref={this.balance}/>
         <div className="input-icon"><i className="fas fa-address-card"></i></div>
       </div>
     </div>

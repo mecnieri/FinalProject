@@ -20,7 +20,7 @@ const UserSchema = new Schema({
     required: false
   },
   birthday: {
-    type: String,
+    type: Date,
     required: true
   },
   balance: {

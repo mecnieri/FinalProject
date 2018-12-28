@@ -15,7 +15,7 @@ export default class SuccessData extends Component {
         if(this.props.location.state.purchaseStatus) {
             this.setState({url: "/BoughtProducts"});
         } else {
-            this.setState({url: "/checkoutTest"});
+            this.setState({url: "/userpanel"});
         }
     }
 

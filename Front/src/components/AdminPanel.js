@@ -73,6 +73,11 @@ export default class AdminPanel extends React.Component {
     e.preventDefault()
     let FETCHURL = `http://localhost:5000/api/users`;
     let username = e.target.children[0].childNodes[1].value
+    let balance = e.target.children[1].childNodes[1].value
+    let birthday = e.target.children[2].childNodes[1].value
+    this.setState({birthday: e.target.children[2].childNodes[1].value})
+    e.target.children[2].childNodes[1].value = '';
+    console.log(balance);
     let userId = this.state.id
     console.log(username);
     fetch(FETCHURL, {
@@ -84,7 +89,9 @@ export default class AdminPanel extends React.Component {
       }),
       body: JSON.stringify({
         id: userId,
-        username: username
+        username: username,
+        balance: balance,
+        birthday: birthday
       })
     })
   }
@@ -153,11 +160,12 @@ export default class AdminPanel extends React.Component {
                   <div className="user-username"><p>Username:</p>
                     <input type="text" placeholder={this.state.username} className="form-control" /><br />
                   </div>
-                  <div className="user-balance"><p>Email:</p>
-                    <input type="text" placeholder={this.state.balance} className="form-control" /><br />
+                  <div className="user-balance"><p>Balance:</p>
+                    <input type="number" placeholder={this.state.balance} className="form-control" /><br />
                   </div>
-                  <div className="user-birthday"><p>Birthday:</p>
-                    <input type="text" placeholder={this.state.birthday} className="form-control" /><br />
+                  {console.log(164, this.state.birthday)}
+                  <div className="user-birthday"><p>Birthday: {this.state.birthday && this.state.birthday.substring(0, 10)}</p>
+                    <input type="date"  className="form-control" /><br />
                   </div>
                   <h1>
                     {this.state.cart > 0 && <h1> User Has an Active Cart</h1>}
@@ -177,19 +185,19 @@ export default class AdminPanel extends React.Component {
                   <label>
                     <div className="product-add-inputs">
                       <p>Category:</p>
-                      <input type="text" name="category" className="form-control" />
+                      <input type="text" name="category" className="form-control" required/>
                     </div>
                     <div className="product-add-inputs">
                       <p>Price:</p>
-                      <input type="text" name="price" className="form-control" />
+                      <input type="number" name="price" className="form-control" required/>
                     </div>
                     <div className="product-add-inputs">
                       <p>Brand:</p>
-                      <input type="text" name="brand" className="form-control" />
+                      <input type="text" name="brand" className="form-control" required/>
                     </div>
                     <div className="product-add-inputs">
                       <p>Model:</p>
-                      <input type="text" name="model" className="form-control" />
+                      <input type="text" name="model" className="form-control" required/>
                     </div>
                     <div className="product-add-inputs">
                       <p>Weight:</p>
