@@ -297,6 +297,7 @@ router.post(
       })
         .then(function(response) {
           let total = 0;
+          let tax = 0.1;
           user.cart.map(productFromCart => {
             console.log(311, productFromCart);
             let found = response.data.find(function(productFromProducts) {
@@ -304,7 +305,7 @@ router.post(
               return productFromCart.product_id === productFromProducts._id;
             });
             if(found) {
-              total += found.price * Number(productFromCart.quantity);
+              total += ((found.price + found.price * tax ) * Number(productFromCart.quantity) );
             }
           });
 
