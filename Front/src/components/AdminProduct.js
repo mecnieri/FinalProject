@@ -15,7 +15,7 @@ function Product(props) {
                 smooth={true}
                 duration={500}
             > */}
-            <button className="btn btn-secondary btn-lg admin-btn-details">Details</button>
+            <button className="btn btn-secondary btn-lg admin-btn-details">Edut</button>
             {/* </LinkFromScroll> */}
 
             <hr />

@@ -55,9 +55,13 @@ router.put(
     // console.log(req.body.Oid);
     // Product.findOneAndUpdate({"_id" : ObjectId(req.body.Oid)}, {productName: req.body.productName, productPrice: req.body.price, category: req.body.category, details: {battery: req.body.battery, size: req.body.size, brand: req.body.brand}}).then(product => res.json(product))
     Product.findById(req.body.Oid).then((product) => {
+      console.log(58, req.body);
       if (req.body.category) {
         product.category = req.body.category;
       }
+      if (req.body.price) {
+        product.price = req.body.price;
+      } 
       if (req.body.brand) {
         product.brand = req.body.brand;
       }
@@ -67,10 +71,12 @@ router.put(
       if (req.body.image) {
         product.image = req.body.image;
       }
-      console.log(70, req.body.price)
-      if (req.body.price) {
-        product.price = req.body.price;
-      } //add other else conditions for user's other details
+      if (req.body.weight) {
+        product.specs.weight = req.body.weight;
+      }
+      if (req.body.size) {
+        product.specs.size = req.body.size;
+      }
       product.save();
       res.json(product);
     });

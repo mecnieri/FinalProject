@@ -185,19 +185,19 @@ export default class AdminPanel extends React.Component {
                   <label>
                     <div className="product-add-inputs">
                       <p>Category:</p>
-                      <input type="text" name="category" className="form-control" />
+                      <input type="text" name="category" className="form-control" required/>
                     </div>
                     <div className="product-add-inputs">
                       <p>Price:</p>
-                      <input type="text" name="price" className="form-control" />
+                      <input type="number" name="price" className="form-control" required/>
                     </div>
                     <div className="product-add-inputs">
                       <p>Brand:</p>
-                      <input type="text" name="brand" className="form-control" />
+                      <input type="text" name="brand" className="form-control" required/>
                     </div>
                     <div className="product-add-inputs">
                       <p>Model:</p>
-                      <input type="text" name="model" className="form-control" />
+                      <input type="text" name="model" className="form-control" required/>
                     </div>
                     <div className="product-add-inputs">
                       <p>Weight:</p>
