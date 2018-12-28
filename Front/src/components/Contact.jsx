@@ -14,25 +14,30 @@ class Contact extends Component {
         }
     }
     tick() {
-        let FETCHURL = `http://localhost:5000/api/users/current`;
-        fetch(FETCHURL, {
-            method: 'get',
-            headers: new Headers({
-                'Authorization': localStorage.getItem("Authorized")
-            })
-        })
-            .then(res => res.json())
-            .then(user => {
-                this.setState({
-                    messages: user.inbox,
-                    member: { username: user.username }
+        
+            let FETCHURL = `http://localhost:5000/api/users/current`;
+            fetch(FETCHURL, {
+                method: 'get',
+                headers: new Headers({
+                    'Authorization': localStorage.getItem("Authorized")
                 })
             })
-            .catch(err => console.log(err))
+                .then(res => res.json())
+                .then(user => {
+                    this.setState({
+                        messages: user.inbox,
+                        member: { username: user.username }
+                    })
+                })
+                .catch(err => console.log(err))
+        
+        
       }
 
     componentDidMount() {
-        this.interval = setInterval(() => this.tick(), 1000);
+       
+            this.interval = setInterval(() => this.tick(), 1000);
+        
         // this.tick()
         //  let query = "test12"
 
@@ -54,7 +59,9 @@ class Contact extends Component {
         //     .catch(err => console.log(err))
     }
 
-
+    componentWillUnmount() {
+        clearInterval(this.interval);
+      }
     render() {
         return (
             <div className="contact-us">
