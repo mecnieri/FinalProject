@@ -21,7 +21,15 @@ export default class BoughtProducts extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:5000/api/users/current", {
+    let FETCHURL;
+    console.log(25, this.props);
+    if(this.props.id) {
+      FETCHURL = `http://localhost:5000/api/users/getById/${this.props.id}`
+    } else {
+      FETCHURL = "http://localhost:5000/api/users/current"
+    }
+
+    fetch(FETCHURL, {
       method: "GET",
       headers: new Headers({
         Accept: "application/json",

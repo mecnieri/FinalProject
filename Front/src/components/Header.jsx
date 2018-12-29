@@ -23,79 +23,90 @@ class Header extends Component {
                         pageWrapId={"page-wrap"} outerContainerId={"outer-container"}
                         pushRotate
                     > */}
-                        <div className="menu">
-                        <ul className="left">
-                            <li className="menu--item">
-                                <Link to="/">Home</Link>
-                            </li>
-                            {/* <li className="menu--item">
+                        
+                    <div className="menu">
+                        <label for="toggle" className="burger-label">&#9776;</label>
+                        <input type="checkbox" id="toggle" />
+                        <nav>
+                            <div className="left">
+                                <ul>
+                                    <li className="menu--item">
+                                        <Link to="/">Home</Link>
+                                    </li>
+                                    {/* <li className="menu--item">
                                 <Link to="/contact">Contact</Link>
                             </li> */}
-                            <li className="menu--item">
-                                <Link to="/about">About</Link>
-                            </li>
-                        </ul>
-                        <ul className="right">
-                        { 
-                        !localStorage.getItem("Authorized") &&  ( 
-                            <li className="menu--item">
-                            <Link to="/login" >Login</Link>
-                            </li>
-                        )
-                        }
-                    
-                        {
-                        (localStorage.getItem("Authorized") && !localStorage.getItem("Admin")) && (
-                        <li className="menu--item">
-                            <Link to="/userpanel">User Profile</Link>
-                        </li>
-                        )
-                        }
-                        { 
-                        !localStorage.getItem("Authorized") &&  ( 
-                            <li className="menu--item">
-                            <Link to="/signUp" >Sign  Up</Link>
-                            </li>
-                        )
-                        }
-                        {
-                        (localStorage.getItem("Authorized") && !localStorage.getItem("Admin")) &&(<li className="menu--item">
-                            <Link to="/checkout">Checkout</Link>
-                        </li>
-                        )
-                        }
-                        {
-                        (localStorage.getItem("Authorized") && !localStorage.getItem("Admin")) &&(<li className="menu--item">
-                            <Link to="/BoughtProducts">Bought Products</Link>
-                        </li>
-                        )
-                        }
-                        {
-                        (localStorage.getItem("Authorized") && localStorage.getItem("Admin")) &&(<li className="menu--item">
-                            <Link to="/adminPanel">Admin Panel</Link>
-                        </li>
-                        )
-                        }
-                        {
-                            !localStorage.getItem("Admin") && (<li className="menu--item">
-                        <i className="fas fa-shopping-cart"></i>
-                            <Link to="/cart">Cart</Link>
-                        </li>)
-                        }
+                                    <li className="menu--item">
+                                        <Link to="/about">About</Link>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="right">
+                                <ul>
+                                    {
+                                        !localStorage.getItem("Authorized") && (
+                                            <li className="menu--item">
+                                                <Link to="/login" >Login</Link>
+                                            </li>
+                                        )
+                                    }
 
-                        
-                        {localStorage.getItem("Authorized") &&(<li onClick={()=>{
-                            localStorage.removeItem("Authorized");
-                            localStorage.removeItem("Admin");
-                            // window.location.reload();
-                        }} className="menu--item">
-                            
-                            <Link to="/">Log Out</Link>
-                        </li>
-                        )
-                        }
-                    </ul>
-                        </div>
+                                    {
+                                        (localStorage.getItem("Authorized") && !localStorage.getItem("Admin")) && (
+                                            <li className="menu--item">
+                                                <Link to="/userpanel">User Profile</Link>
+                                            </li>
+                                        )
+                                    }
+                                    {
+                                        !localStorage.getItem("Authorized") && (
+                                            <li className="menu--item">
+                                                <Link to="/signUp" >Sign  Up</Link>
+                                            </li>
+                                        )
+                                    }
+                                    {
+                                        (localStorage.getItem("Authorized") && !localStorage.getItem("Admin")) && (<li className="menu--item">
+                                            <Link to="/checkout">Checkout</Link>
+                                        </li>
+                                        )
+                                    }
+                                    {
+                                        (localStorage.getItem("Authorized") && !localStorage.getItem("Admin")) && (<li className="menu--item">
+                                            <Link to="/BoughtProducts">Bought Products</Link>
+                                        </li>
+                                        )
+                                    }
+                                    {
+                                        (localStorage.getItem("Authorized") && localStorage.getItem("Admin")) && (<li className="menu--item">
+                                            <Link to="/adminPanel">Admin Panel</Link>
+                                        </li>
+                                        )
+                                    }
+                                    {
+                                        !localStorage.getItem("Admin") && (<li className="menu--item">
+                                            <i className="fas fa-shopping-cart"></i>
+                                            <Link to="/cart">Cart</Link>
+                                        </li>)
+                                    }
+
+
+                                    {localStorage.getItem("Authorized") && (<li onClick={() => {
+                                        localStorage.removeItem("Authorized");
+                                        localStorage.removeItem("Admin");
+                                        // window.location.reload();
+                                    }} className="menu--item">
+
+                                        <Link to="/">Log Out</Link>
+                                    </li>
+                                    )
+                                    }
+                                </ul>
+
+                            </div>
+                        </nav>
+                    </div>
+                    {/* </Menu> */}
                     {/* </Menu> */}
                 </div>
                 <div className="middleHeader">

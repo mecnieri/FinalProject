@@ -44,6 +44,15 @@ export default class Products extends Component {
               ))}
 
             </div>
+            <div className="page-turner">
+                  <Pagination
+                    activePage={this.props.number}
+                    itemsCountPerPage={10}
+                    totalItemsCount={450}
+                    pageRangeDisplayed={5}
+                    onChange={this.props.handlePageChange}
+                  />
+                </div>
           </div>
         </div>
       );

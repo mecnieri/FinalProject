@@ -1,4 +1,26 @@
- 
-  .cart .container .card .row table {
-    background-color: #f7f8f9; 
-  }
+.cart .container .card .row table {
+  background-color: #f7f8f9; 
+}
+.media-body h5, .media-body p{
+  text-transform: capitalize;
+}
+.cart {
+  display: flex;
+  align-items: center;
+  background-color: white;
+}
+.qt-input{
+display: block;
+width: 25%;
+height: calc(2.25rem + 2px);
+padding: .375rem .75rem;
+font-size: 1rem;
+font-weight: 400;
+line-height: 1.5;
+color: #495057;
+background-color: #fff;
+background-clip: padding-box;
+border: 1px solid #ced4da;
+border-radius: .25rem;
+-webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;}

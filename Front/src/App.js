@@ -230,16 +230,9 @@ class App extends Component {
                 <Products
                   products={this.state.products}
                   number={this.state.activePage}
+                  handlePageChange={this.handlePageChange}
                 />
-                <div className="page-turner">
-                  <Pagination
-                    activePage={this.state.activePage}
-                    itemsCountPerPage={10}
-                    totalItemsCount={450}
-                    pageRangeDisplayed={5}
-                    onChange={this.handlePageChange}
-                  />
-                </div>
+                
               </div>
             )}
           />
@@ -297,6 +290,7 @@ class App extends Component {
               <Products
                 products={this.state.products}
                 number={this.state.activePage}
+                handlePageChange={this.handlePageChange}
               />
             )}
           />
@@ -306,6 +300,7 @@ class App extends Component {
               <Products
                 products={this.state.products}
                 number={this.state.activePage}
+                handlePageChange={this.handlePageChange}
               />
             )}
           />
@@ -315,6 +310,7 @@ class App extends Component {
               <Products
                 products={this.state.products}
                 number={this.state.activePage}
+                handlePageChange={this.handlePageChange}
               />
             )}
           />
@@ -324,6 +320,7 @@ class App extends Component {
               <Products
                 products={this.state.products}
                 number={this.state.activePage}
+                handlePageChange={this.handlePageChange}
               />
             )}
           />
@@ -333,6 +330,7 @@ class App extends Component {
               <Products
                 products={this.state.products}
                 number={this.state.activePage}
+                handlePageChange={this.handlePageChange}
               />
             )}
           />
@@ -342,6 +340,7 @@ class App extends Component {
               <Products
                 products={this.state.products}
                 number={this.state.activePage}
+                handlePageChange={this.handlePageChange}
               />
             )}
           />
@@ -352,12 +351,12 @@ class App extends Component {
 
           <Route
             path="/BoughtProducts/"
-            component={BoughtProducts}
-            // render={
-            //   () => (
-            //     <BoughtProduct/>
-            //   )
-            // }
+            // component={BoughtProducts}
+            render={
+              (props) => (
+                <BoughtProducts {...props}/>
+              )
+            }
           />
 
           {/* aqamde */}

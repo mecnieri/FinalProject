@@ -49,7 +49,7 @@ export default class Item extends Component {
             </a>
             <div className="media-body">
               <h5 className="media-heading">
-                <a href="#">{this.props.name}</a>
+                <a href="#">{this.props.model}</a>
               </h5>
               <p className="media-heading">
                 {" "}
@@ -62,7 +62,7 @@ export default class Item extends Component {
           {/* max={this.props.limit} */}
           <input
             type="number"
-            className="form-control"
+            className="qt-input"
             min="1"
             value={this.props.quantity}
             onChange={this.handleChange.bind(this, this.props._id)}
@@ -70,8 +70,6 @@ export default class Item extends Component {
         </td>
         <td>
           <strong className="itemPrice">${this.props.price.toFixed(2)}</strong>
-        </td>
-        <td>
         </td>
         <td>
           <strong className="itemTotal">

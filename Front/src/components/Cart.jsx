@@ -90,7 +90,7 @@ export default class Cart extends Component {
     this.handleSubTotal();
   };
   handleSubTotal = (itemTotal = 0) => {
-    _.each(this.state.items, function(item) {
+    _.each(this.state.items, function (item) {
       // itemTotal += item.price * item;
       console.log(91, item);
       itemTotal += item.price * item.quantity;
@@ -154,8 +154,7 @@ export default class Cart extends Component {
                       <th>Product</th>
                       <th>Quantity</th>
                       <th>Price</th>
-                      <th> </th>
-                      <th>Total</th>
+                      <th>Total </th>
                       <th> </th>
                     </tr>
                   </thead>

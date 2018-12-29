@@ -122,6 +122,19 @@ router.get(
     });
   }
 );
+//@route Get api/users/getById/:id
+//@desc return user by username
+//@access Admin
+router.get(
+  "/getById/:id",
+  passport.authenticate("admin-rule", { session: false }),
+  (req, res) => {
+    console.log(123, req.params)
+    User.findById(req.params.id).then(user => {
+      res.json(user);
+    });
+  }
+);
 
 //@route Put api/users
 //@desc edit user found by id

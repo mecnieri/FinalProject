@@ -6,6 +6,7 @@ import AdminProducts from './AdminProducts';
 import {Redirect, Link} from 'react-router-dom';
 import AdminContact from './AdminContact';
 import Pagination from "../../node_modules/react-js-pagination";
+import BoughtProducts from "./BoughtProducts";
 // import '../css/Tabs.css';
 export default class AdminPanel extends React.Component {
   constructor(props) {
@@ -28,7 +29,9 @@ export default class AdminPanel extends React.Component {
     this.handleAddProduct = this.handleAddProduct.bind(this);
   }
   redirect=()=>{
-    return <Redirect to="/BoughtProducts"/>
+    return <Redirect to={{
+      pathname: "/BoughtProducts",
+    }}/>
   }
   AdminSearchHandler = e => {
     e.preventDefault();
@@ -177,7 +180,6 @@ export default class AdminPanel extends React.Component {
                   </h1>
                   {/* <button onClick={this.handleDeleteUser} value="Delete User" className="btn btn-danger" /> */}
                   <input type="submit" value="Save Changes" className=" btn btn-primary change-user-btn" />
-                  <Link to="/BoughtProducts"><button value="X" onSubmit={this.redirect} className="btn btn-primary" style={{marginRight:"35px"}}>Bought Products</button></Link>
                   <button onClick={this.handleDeleteUser} value="X" className="btn btn-danger delete-user-btn">Delete User</button>
                 </form>
               </div>
@@ -220,6 +222,7 @@ export default class AdminPanel extends React.Component {
                   <input type="submit" value="Add Product" className="btn btn-primary add-product-btn" />
                 </form>
               </div>
+
             </div>
 
 
@@ -255,6 +258,9 @@ export default class AdminPanel extends React.Component {
             </div>
             <div label="Contact User">
             <AdminContact />
+            </div>
+            <div label="Bought Products" style={{overflow:'hidden'}}>
+            <BoughtProducts id={this.state.id}/>
             </div>
           </Tabs>
           <div>

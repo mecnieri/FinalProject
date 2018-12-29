@@ -55,14 +55,14 @@ export default class UserPanel extends React.Component {
                 <th>Username</th>
                 <th>E-Mail</th>
                 <th>Birth Date</th>
-                <th>Enter amount of Balance</th>
+                <th>Balance</th>
               </tr>
 
               <tr>
                 <td>{this.state.username}</td>
                 <td>{this.state.email}</td>
                 <td>{this.state.birthday && this.state.birthday.substr(0, 10)}</td>
-                <td>{this.state.balance}</td>
+                <td>{this.state.balance && this.state.balance.toFixed(2)}</td>
               </tr>
             </tbody>
 
