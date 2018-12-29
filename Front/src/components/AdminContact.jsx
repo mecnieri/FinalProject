@@ -114,7 +114,7 @@ class AdminContact extends Component {
         </form>
         <h1>
           {this.state.notification.map(notif => (
-            <button onClick={this.handleUserSearch}>{notif.from}</button>
+            <button onClick={this.handleUserSearch} className="btn btn-primary">{notif.from}</button>
           ))}
         </h1>
         <Messages

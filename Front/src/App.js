@@ -28,6 +28,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Slider from "./components/Slider";
 import Checkout from "./components/Checkout";
+import About from "./components/About";
 import "./Checkout.css";
 import "./css/Description.css";
 import Description from "./components/Description";
@@ -332,6 +333,12 @@ class App extends Component {
                 number={this.state.activePage}
                 handlePageChange={this.handlePageChange}
               />
+            )}
+          />
+          <Route
+            path="/about"
+            render={() => (
+              <About/>
             )}
           />
           <Route

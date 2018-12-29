@@ -58,6 +58,7 @@
 .menu nav{
   width: 100%;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 .menu nav ul {
