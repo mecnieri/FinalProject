@@ -14,7 +14,7 @@ const User = require("../../models/User");
 const Admin = require("../../models/Admin");
 
 
-// ROUTERS FOR ADMIN  .. 24 post login .. 65 post message .. 77 .get .. 87 put notifications .. 
+// ROUTERS FOR ADMIN  .. 23 Login .. 68 post message .. 80 .get notification.. 89 put notifications .. 
 
 
 //@route Post api/admin/login
@@ -45,7 +45,7 @@ router.post("/login", (req, res) => {
         jwt.sign(
           payload,
           keys.secretOrKey,
-          { expiresIn: 3600000 },
+          { expiresIn: 360000 },
           (err, token) => {
             res.json({
               success: true,
@@ -64,7 +64,7 @@ router.post("/login", (req, res) => {
 
 //@route Post api/admin/message
 //@desc admin sends message
-//@access private
+//@access Admin
 router.post('/message', passport.authenticate('admin-rule', { session: false }), (req, res) => {
   // Find user by id
   User.findOne({ username: req.body.username }).then(user => {
@@ -76,9 +76,8 @@ router.post('/message', passport.authenticate('admin-rule', { session: false }),
 
 //@route GET api/admin/
 //@desc admin gets notifications
-//@access private
+//@access Admin
 router.get('/', passport.authenticate('admin-rule', { session: false }), (req, res) => {
-  // Find user by id (update later)
   Admin.findOne({ email: "admin@gmail.com" }).then(admin => {
     res.json(admin.notifications);
   });
@@ -86,7 +85,7 @@ router.get('/', passport.authenticate('admin-rule', { session: false }), (req, r
 
 //@route put api/admin/notifications
 //@desc admin deletes notification
-//@access private
+//@access Admin
 router.put('/notifications', passport.authenticate('admin-rule', { session: false }), (req, res) => {
   let sender = req.body.sender
   Admin.findOne({ email: "admin@gmail.com" }).then(admin => {
