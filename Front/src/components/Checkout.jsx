@@ -35,7 +35,6 @@ class Checkout extends Component {
     })
       .then(res => res.json())
       .then((result) =>{
-        console.log(38, result);
         if (result.error) {
           return this.setState({ error: result.error, redirect: true });
         } else {

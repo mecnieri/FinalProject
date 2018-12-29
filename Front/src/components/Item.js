@@ -18,7 +18,6 @@ export default class Item extends Component {
   }
 
   handleChange = (itemId, e) => {
-    console.log(107, "entered handlechange");
     this.setState({ itemTotal: e.target.value * this.props.price });
     this.props.changeQty(itemId, e.target.value);
     // // this.props._id, this.props.quantity

@@ -48,7 +48,6 @@ class AdminDescription extends React.Component {
 
     handleDeleteProduct = (e) => {
         e.preventDefault()
-        console.log(42, "state product", this.state.product)
         let productId = this.state.product._id
         let FETCHURL = `http://localhost:5000/api/products/`;
         fetch(FETCHURL, {
@@ -102,7 +101,6 @@ class AdminDescription extends React.Component {
                                     <input type="number" placeholder={this.state.product.price} className="form-control" /><br />
                                 </div>
                                 <div className="product-category"><p>Weight:</p>
-                                {console.log(101, this.state.product)}
                                     <input type="text" placeholder={this.state.product.specs &&this.state.product.specs.weight} className="form-control" /><br />
                                 </div>
                                 <div className="product-category"><p>Size:</p>

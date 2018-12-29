@@ -88,7 +88,6 @@ class Contact extends Component {
         this.setState({ messages: messages })
     }
     handleSaveInBase = () => {
-        console.log(63, "Contact", this.state.messages)
 
         let FETCHURL = `http://localhost:5000/api/users/message`;
         fetch(FETCHURL, {

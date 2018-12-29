@@ -12,7 +12,6 @@ class Description extends React.Component {
     this.addHandler = this.addHandler.bind(this);
   }
   addHandler() {
-    console.log(16, 'addHandler');
       let quantity = document.getElementById("quant").value;
       let productId = this.state.product._id;
     fetch('http://localhost:5000/api/users/cart', {
@@ -30,7 +29,6 @@ class Description extends React.Component {
   componentDidMount() {
     let query;
     this.props.location.myCustomProps ? (query = this.props.location.myCustomProps ) : (query = localStorage.getItem("prodId"));
-    console.log("mounted");
     fetch(
       `http://localhost:5000/api/products/product/${
         query

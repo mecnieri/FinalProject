@@ -54,12 +54,9 @@ class AdminContact extends Component {
   handleUserSearch = e => {
     e.preventDefault();
     let query;
-    // debugger
-    console.log(57, e.target.type);
     if (e.target.nodeName === "BUTTON") {
       query = e.target.innerHTML;
       this.setState({ query: query });
-      console.log(59, query);
       fetch("http://localhost:5000/api/admin/notifications", {
         method: "put",
         headers: new Headers({
@@ -137,7 +134,6 @@ class AdminContact extends Component {
     this.setState({ messages: messages });
   };
   handleSaveInBaseAdmin = () => {
-    console.log(73, "Contact", this.state.messages);
 
     let FETCHURL = `http://localhost:5000/api/admin/message`;
     fetch(FETCHURL, {
@@ -152,7 +148,6 @@ class AdminContact extends Component {
         username: this.state.username
       })
     }).catch(err => console.log(err));
-    console.log(86, "Contact", this.state.username);
   };
 }
 

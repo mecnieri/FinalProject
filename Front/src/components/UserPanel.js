@@ -46,7 +46,6 @@ export default class UserPanel extends React.Component {
     return (
       <div className="co">
         <div className="user-container">
-        {console.log(49, Date.parse(this.state.birthday))}
           <h2><i className="fas fa-user fa-2x"></i> User Details</h2>
           {/* <h3><i className="fas fa-shopping-cart fa-2x"></i>Cart</h3> */}
           <table className="table table-hover user-table">

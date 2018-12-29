@@ -10,11 +10,11 @@ import { Link as LinkFromScroll } from "react-scroll";
 import { TinyButton as ScrollUpButton } from "react-scroll-up-button";
 import { slide as Menu } from "react-burger-menu";
 import "bootstrap";
-import "./App.css";
+import "./css/Main.css";
 // import './user.css';
-import "./login.css";
-import "./Header.css";
-import "./Cart.css";
+import "./css/login.css";
+import "./css/Header.css";
+import "./css/Cart.css";
 // import './style.css';
 import Products from "./components/Products";
 // import { Product } from './components/Product';
@@ -29,21 +29,21 @@ import Footer from "./components/Footer";
 import Slider from "./components/Slider";
 import Checkout from "./components/Checkout";
 import About from "./components/About";
-import "./Checkout.css";
+import "./css/Checkout.css";
 import "./css/Description.css";
 import Description from "./components/Description";
 import AdminDescription from "./components/AdminDescription";
-import Pagination from "../node_modules/react-js-pagination";
+// import Pagination from "../node_modules/react-js-pagination";
 import "./css/Home-List.css";
 import "./css/responsive.css";
 import "./css/Contact.css";
 import "./css/Admin-Panel.css";
 import "./css/AdminProducts.css";
-import Contact from "./components/Contact";
+// import Contact from "./components/Contact";
 import SuccessData from "./components/SuccessData";
-import BoughtProduct from "./components/BoughtProduct";
+// import BoughtProduct from "./components/BoughtProduct";
 import BoughtProducts from "./components/BoughtProducts";
-import BoughtWrapper from "./components/BoughtWrapper";
+// import BoughtWrapper from "./components/BoughtWrapper";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -86,7 +86,6 @@ class App extends Component {
     e.preventDefault();
     e.persist();
     let query;
-    console.log(84, e.target.tagName);
     if (e.target.tagName === "I" || e.target.tagName === "BUTTON") {
       query = document.getElementById("searchInput").value;
       let FETCHURL = `http://localhost:5000/api/products/${query}`;
@@ -98,7 +97,6 @@ class App extends Component {
         .catch(err => console.log(err));
     } else {
       this.setState({ text: e.target.textContent }, () => {
-        console.log(this.state.text);
         query = this.state.text.slice(0, -1).toLowerCase();
         let FETCHURL = `http://localhost:5000/api/products/${query}`;
         fetch(FETCHURL)

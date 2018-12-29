@@ -6,8 +6,6 @@ import { Link, } from "react-router-dom";
 
 export default class AdminProducts extends Component {
     render() {
-        // console.log(9, "AdminProducts.js", this.props.adminProducts)
-        console.log(10, "AdminProducts.js", this.props.number)
 
         if (this.props.adminProducts) {
             return (
