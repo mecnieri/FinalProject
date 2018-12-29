@@ -22,7 +22,6 @@ export default class BoughtProducts extends React.Component {
 
   componentDidMount() {
     let FETCHURL;
-    console.log(25, this.props);
     if(this.props.id) {
       FETCHURL = `http://localhost:5000/api/users/getById/${this.props.id}`
     } else {
@@ -55,10 +54,8 @@ export default class BoughtProducts extends React.Component {
           .then(products => {
             let newProducts = products.map(prod => {
               let elem = user.boughtProducts.find(element => {
-                // console.log(45, element, prod)
                 return element.product_id == prod._id;
               });
-              // console.log(48, prod);
               prod.quantity = Number(elem.quantity);
               return prod;
             });

@@ -25,7 +25,6 @@ export default class LoginPage extends React.Component {
     }
     OnSubmitHandler(event) {
         event.preventDefault();
-        // console.log(this.email.current.value, this.password.current.value);
         this.login(this.email.current.value, this.password.current.value);
     }
 
@@ -54,7 +53,6 @@ export default class LoginPage extends React.Component {
 
     render() {
         const { isLoggedIn } = this.state;
-        //console.log(isLoggedIn);
         if (isLoggedIn) {
             return <Redirect to={`/adminpanel`} />
         }

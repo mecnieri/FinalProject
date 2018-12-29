@@ -46,7 +46,6 @@ export default class AdminPanel extends React.Component {
       .then(res => res.json())
       .then(adminProducts => {
         this.setState({ adminProducts });
-        console.log(43, "adminProducts", adminProducts);
       })
       .catch(err => console.log(err));
   };
@@ -84,9 +83,7 @@ export default class AdminPanel extends React.Component {
     let birthday = e.target.children[2].childNodes[1].value
     this.setState({birthday: e.target.children[2].childNodes[1].value})
     e.target.children[2].childNodes[1].value = '';
-    console.log(balance);
-    let userId = this.state.id
-    console.log(username);
+    let userId = this.state.id;
     fetch(FETCHURL, {
       method: 'put',
       headers: new Headers({
@@ -170,7 +167,6 @@ export default class AdminPanel extends React.Component {
                   <div className="user-balance"><p>Balance:</p>
                     <input type="number" placeholder={this.state.balance} className="form-control" /><br />
                   </div>
-                  {console.log(164, this.state.birthday)}
                   <div className="user-birthday"><p>Birthday: {this.state.birthday && this.state.birthday.substring(0, 10)}</p>
                     <input type="date"  className="form-control" /><br />
                   </div>

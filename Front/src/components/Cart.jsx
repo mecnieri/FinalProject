@@ -8,7 +8,6 @@ import { Link, Router, Route, Redirect } from "react-router-dom";
 export default class Cart extends Component {
   constructor(props) {
     super(props);
-    // console.log("14", props.cart);
     this.state = {
       items: null,
       qtyTotal: 0,
@@ -46,10 +45,8 @@ export default class Cart extends Component {
           .then(products => {
             let newProducts = products.map(prod => {
               let elem = cart.find(element => {
-                // console.log(45, element, prod)
                 return element.product_id == prod._id;
               });
-              // console.log(48, prod);
               prod.quantity = Number(elem.quantity);
               return prod;
             });
@@ -60,7 +57,6 @@ export default class Cart extends Component {
       .catch(err => console.log(err));
   }
   changeQty = (itemId, qty) => {
-    console.log(61, "itemId", itemId);
     let item = _.find(this.state.items, item => item._id === itemId);
     // item.quantity = 1;
     item.quantity = qty;
@@ -84,15 +80,11 @@ export default class Cart extends Component {
         body: JSON.stringify({ productId: itemId })
       }).then(res => res.json())
     );
-    console.log("64", items);
-    console.log("65", items);
     this.setState({ items: items });
     this.handleSubTotal();
   };
   handleSubTotal = (itemTotal = 0) => {
     _.each(this.state.items, function (item) {
-      // itemTotal += item.price * item;
-      console.log(91, item);
       itemTotal += item.price * item.quantity;
     });
     this.setState({ subTotal: itemTotal });
@@ -112,7 +104,6 @@ export default class Cart extends Component {
     })
       .then(res => res.json())
       .then(result => {
-        console.log(38, result);
         if (result.error) {
           return this.setState({ error: result.error, redirect: true });
         } else {

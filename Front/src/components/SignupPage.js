@@ -19,10 +19,8 @@ export default class SignupPage extends React.Component {
     OnSubmitHandler(event){
       event.preventDefault();
       if(this.password.current.value!==this.password2.current.value){
-        console.log("confirm password");
       }
       else{
-      // console.log(this.email.current.value, this.password.current.value);
       this.login(this.username.current.value,this.email.current.value,this.password.current.value,
                  this.password2.current.value, this.birthday.current.value,this.balance.current.value);
       }
