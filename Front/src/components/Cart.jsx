@@ -127,7 +127,7 @@ export default class Cart extends Component {
         message = this.state.error;
         purchaseStatus = false;
       } else {
-        message = "wooo ho, purchase successful";
+        message = "Purchase Successful";
         purchaseStatus = true;
       }
       return (

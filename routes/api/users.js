@@ -310,7 +310,7 @@ router.post(
           user.cart = [];
           user.balance -= total;
           if (user.balance < 0) {
-            return res.json({ error: "outta money" });
+            return res.json({ error: "Not enough Balance" });
           }
           user.save();
           return res.json(user);

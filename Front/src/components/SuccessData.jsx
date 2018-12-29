@@ -27,7 +27,7 @@ export default class SuccessData extends Component {
             <div id="id01" ref="id01" style={{display: 'block' }} className="modal">                    
             <form  className="modal-content animate"  >
                 <div className="formContainer">
-                   <div>{this.props.location.state.message}</div>
+                   <div><h1>{this.props.location.state.message}</h1></div>
                 </div>
                 <div>
                 <button onClick={this.goTo}>
