@@ -13,7 +13,7 @@ const validateLoginInput = require("../../validation/login");
 //Load User model
 const User = require("../../models/User");
 
-// ROUTES .. 21 post register .. 59 post login .. 104 get current .. 113 get :username .. 122 .put .. 146 ROUTES FOR USER'S CART .. 284 ROUTE FOR MESSAGE
+// Routes for Users Login, Registration, and Crud [from 21 to 166]
 
 //@route Post api/users/register
 //@desc Register user
@@ -123,13 +123,13 @@ router.get(
   }
 );
 //@route Get api/users/getById/:id
-//@desc return user by username
+//@desc return user by id
 //@access Admin
 router.get(
   "/getById/:id",
   passport.authenticate("admin-rule", { session: false }),
   (req, res) => {
-    console.log(123, req.params)
+    console.log(123, req.params);
     User.findById(req.params.id).then(user => {
       res.json(user);
     });
@@ -165,7 +165,8 @@ router.put(
   }
 );
 
-// ROUTERS FOR USER'S CART   .. 151 post cart .. 175 put cart.. 187 .delete .. 203 post getCart .. 212 get boughtProducts/:id .. 222 post checkout
+// Routes for Users Cart CRUD operations, BoughtProducts, Checkout,  [from 174 to 323]
+
 
 //@route POST api/users/cart
 //@desc add products to cart.
@@ -276,7 +277,7 @@ router.post(
           "Content-Type": "application/json"
         }
       })
-      //accumulate total cost of products in cart
+        //accumulate total cost of products in cart
         .then(function(response) {
           let total = 0;
           let tax = 0.1;
@@ -321,7 +322,8 @@ router.post(
   }
 );
 
-//  ROUTER FOR MESSAGE .. 289 message ..
+// Routes for Users message [from 328 to 359]
+
 
 //@route GET api/users/message
 //@desc message
