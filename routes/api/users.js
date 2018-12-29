@@ -13,6 +13,8 @@ const validateLoginInput = require("../../validation/login");
 //Load User model
 const User = require("../../models/User");
 
+// ROUTES .. 21 post register .. 59 post login .. 104 get current .. 113 get :username .. 122 .put .. 146 ROUTES FOR USER'S CART .. 284 ROUTE FOR MESSAGE 
+
 //@route Post api/users/register
 //@desc Register user
 //@access Public
@@ -33,9 +35,8 @@ router.post("/register", (req, res) => {
         email: req.body.email,
         password: req.body.password,
         birthday: req.body.birthday,
-        // write a function to repalce req.body.age
-
         balance: req.body.balance
+        // age: req.body.age,
       });
       //encrypt password
       bcrypt.genSalt(10, (err, salt) => {
@@ -48,10 +49,6 @@ router.post("/register", (req, res) => {
             .catch(err => console.log(err));
         });
       });
-      console.log(newUser._id);
-      // const newCart = new Cart({
-      //   user: newUser._id, products: [12,13,14]})
-      // newCart.save();
     }
   });
 });
@@ -60,7 +57,6 @@ router.post("/register", (req, res) => {
 //@desc login user / return jwt token
 //@access Public
 router.post("/login", (req, res) => {
-  console.log(63, "login why?", req.body);
   const { errors, isValid } = validateLoginInput(req.body);
   //Check validation
   if (!isValid) {
@@ -81,7 +77,6 @@ router.post("/login", (req, res) => {
       if (isMatch) {
         //token generated here in future
         //user matched
-        //komment may have to add other fields
         const payload = { id: user.id, name: user.username }; //create jwt payload
         //Sign token
         jwt.sign(
@@ -106,28 +101,20 @@ router.post("/login", (req, res) => {
 //@route Get api/users/current
 //@desc return user by token
 //@access User
-router.get(
-  "/current",
-  passport.authenticate("user-rule", { session: false }),
-  (req, res) => {
+router.get("/current", passport.authenticate("user-rule", { session: false }), (req, res) => {
     User.findById(req.user.id).then(user => {
       res.json(user);
     });
-  }
-);
+  });
 
 //@route Get api/users/:username
 //@desc return user by username
 //@access Admin
-router.get(
-  "/:username",
-  passport.authenticate("admin-rule", { session: false }),
-  (req, res) => {
+router.get("/:username", passport.authenticate("admin-rule", { session: false }), (req, res) => {
     User.findOne({ username: req.params.username }).then(user => {
       res.json(user);
     });
-  }
-);
+  });
 
 //@route Put api/users
 //@desc edit user found by id
@@ -149,28 +136,23 @@ router.put('/', passport.authenticate('admin-rule', { session: false }), (req, r
     if (req.body.password) {
       user.password = req.body.password
     }
-
-
-    //add other else conditions for user's other details
     user.save()
     res.json(user);
   })
 })
 
-// ------------------CART
+
+
+// ROUTERS FOR USER'S CART   .. 151 post cart .. 175 put cart.. 187 .delete .. 203 post getCart .. 212 get boughtProducts/:id .. 222 post checkout 
 
 //@route POST api/users/cart
 //@desc add products to cart.
 //@access user
-router.post(
-  "/cart",
-  passport.authenticate("user-rule", { session: false }),
-  (req, res) => {
+router.post("/cart", passport.authenticate("user-rule", { session: false }), (req, res) => {
     User.findById(req.user.id).then(user => {
-      if (
-        !user.cart.find(element => {
+      if (!user.cart.find(element => {
           return (
-            element.product_id === req.body.productId &&
+            element.product_id === req.body.productId && 
             element.quantity === req.body.quantity
           );
         })
@@ -185,32 +167,24 @@ router.post(
       }
       user.save();
     });
-  }
-);
+  });
 
 //@route Put api/users/cart
 //@desc update quantity in cart
 //@access User
-router.put(
-  "/cart",
-  passport.authenticate("user-rule", { session: false }),
-  (req, res) => {
+router.put("/cart", passport.authenticate("user-rule", { session: false }), (req, res) => {
     User.findById(req.user.id).then(user => {
       let item = user.cart.find(prod => prod.product_id === req.body.productId);
       item.quantity = req.body.quantity;
       user.save();
       res.json(user.cart);
     });
-  }
-);
+  });
 
 //@route delete api/users/cart
-//@desc put product in the cart
+//@desc delete product from the cart
 //@access User
-router.delete(
-  "/cart",
-  passport.authenticate("user-rule", { session: false }),
-  (req, res) => {
+router.delete("/cart", passport.authenticate("user-rule", { session: false }), (req, res) => {
     User.findById(req.user.id).then(user => {
       console.log(205, "req body", req.body);
       user.cart = user.cart.filter(
@@ -219,68 +193,33 @@ router.delete(
       user.save();
       res.json(user.cart);
     });
-  }
-);
+  });
 
-//@route GET api/users/cart
+
+
+//@route post api/users/getCart
 //@desc get cart from users
 //@access Admin
-router.post(
-  "/getCart",
-  passport.authenticate("user-rule", { session: false }),
-  (req, res) => {
+router.post("/getCart", passport.authenticate("user-rule", { session: false }), (req, res) => {
     User.findById(req.user.id).then(user => {
       res.json(user.cart);
     });
-  }
-);
+  });
 
-//@route GET api/users/boughtProducts
+//@route GET api/users/boughtProducts/:id
 //@desc get products from users broughtProducts
 //@access Admin
-router.get(
-  "/boughtProducts/:id",
-  passport.authenticate("admin-rule", { session: false }),
-  (req, res) => {
+router.get("/boughtProducts/:id",  passport.authenticate("admin-rule", { session: false }),(req, res) => {
     User.findById(req.params.id).then(user => {
       res.json(user.boughtProducts);
     });
-  }
-);
-
-//@route GET api/users/message
-//@desc message
-//@access User
-router.post('/message', passport.authenticate('user-rule', { session: false }), (req, res) => {
-  //Find user by id
-  console.log("aq shemodis turne")
-  User.findById(req.user.id).then(user => {
-    user.inbox = req.body.inbox
-    Admin.findOne({ email: "admin@gmail.com" }).then(admin => {
-      let index = admin.notifications.findIndex((mess) => mess.from === user.username)
-      if (index > -1) {
-        admin.notifications.splice(index, 1, {
-          from: user.username
-        })
-      } else {
-        admin.notifications.push({
-          from: user.username
-        })
-      }
-      admin.save()
-      res.json(admin)
-    })
-   user.save()
   });
-});
+
 
 //@route POST api/users/checkout
 //@desc checkout logic
 //@access User
-router.post(
-  "/checkout",
-  passport.authenticate("user-rule", { session: false }),
-  (req, res) => {
+router.post("/checkout", passport.authenticate("user-rule", { session: false }), (req, res) => {
     User.findById(req.user.id).then(user => {
       let arrOfIds = user.cart.map(product => {
         return product.product_id;
@@ -293,17 +232,17 @@ router.post(
           "Content-Type": "application/json"
         }
       })
-        .then(function(response) {
+        .then(function (response) {
           let total = 0;
           let tax = 0.1;
           user.cart.map(productFromCart => {
             console.log(311, productFromCart);
-            let found = response.data.find(function(productFromProducts) {
+            let found = response.data.find(function (productFromProducts) {
               console.log(313, productFromCart, productFromProducts);
               return productFromCart.product_id === productFromProducts._id;
             });
-            if(found) {
-              total += ((found.price + found.price * tax ) * Number(productFromCart.quantity) );
+            if (found) {
+              total += ((found.price + found.price * tax) * Number(productFromCart.quantity));
             }
           });
 
@@ -336,11 +275,37 @@ router.post(
           user.save();
           return res.json(user);
         })
-        .catch(function(error) {
+        .catch(function (error) {
           console.log(error);
         });
     });
-  }
-);
+  });
 
+//  ROUTER FOR MESSAGE .. 289 message ..
+
+//@route GET api/users/message
+//@desc message
+//@access User
+router.post('/message', passport.authenticate('user-rule', { session: false }), (req, res) => {
+  //Find user by id
+   User.findById(req.user.id).then(user => {
+    user.inbox = req.body.inbox
+    Admin.findOne({ email: "admin@gmail.com" }).then(admin => {
+      let index = admin.notifications.findIndex((mess) => mess.from === user.username)
+      if (index > -1) {
+        admin.notifications.splice(index, 1, {
+          from: user.username
+        })
+      } else {
+        // save notifications for admin 
+        admin.notifications.push({
+          from: user.username
+        })
+      }
+      admin.save()
+      res.json(admin)
+    })
+    user.save()
+  });
+});
 module.exports = router;
