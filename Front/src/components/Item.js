@@ -20,11 +20,9 @@ export default class Item extends Component {
   handleChange = (itemId, e) => {
     this.setState({ itemTotal: e.target.value * this.props.price });
     this.props.changeQty(itemId, e.target.value);
-    // // this.props._id, this.props.quantity
     setTimeout(() => {
       fetch("http://localhost:5000/api/users/cart", {
         method: "PUT",
-        //check headers, content type etc.
         headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -51,14 +49,12 @@ export default class Item extends Component {
                 <a href="#">{this.props.model}</a>
               </h5>
               <p className="media-heading">
-                {" "}
                 by <a href="#">{this.props.brand}</a>
               </p>
             </div>
           </div>
         </td>
         <td>
-          {/* max={this.props.limit} */}
           <input
             type="number"
             className="qt-input"

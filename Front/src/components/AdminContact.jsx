@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Messages from "./Messages";
 import AdminInput from "./AdminInput";
-import { Link, Redirect } from "react-router-dom";
 
 class AdminContact extends Component {
   constructor(props) {

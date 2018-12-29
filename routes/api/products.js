@@ -7,7 +7,7 @@ const passport = require("passport");
 const Product = require("../../models/Product");
 
 // ROUTES FOR PRODUCTS CRUD 
-//   .. 12 post .. 35 get .. 45 put .. 76 delete .. 
+//   .. 16 post .. 35 get .. 45 put .. 76 delete .. 
 
 
 //@route Post api/products/
@@ -81,7 +81,7 @@ router.delete("/", passport.authenticate("admin-rule", { session: false }), (req
 
 
 
-// ROUTES FOR PRODUCTS SEARCH     .. 88 get :name .. 103 get :id .. 114 post getArray 
+// ROUTES FOR PRODUCTS SEARCH     .. 89 get :name .. 104 get :id .. 115 post getArray 
 
 //@route GET api/products/:name
 //@desc get product by brand, model, category or id
@@ -110,7 +110,7 @@ router.get("/product/:id", (req, res) => {
 
 
 //@route post api/products/:getArray
-//@desc get product by id
+//@desc get products array by array of product Id's
 //@access public
 router.post("/getArray", (req, res) => {
   Product.find({ '_id': { $in: req.body } }, function (err, products) {

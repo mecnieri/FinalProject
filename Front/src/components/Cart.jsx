@@ -3,7 +3,7 @@ import List from "./List";
 import _ from "../../node_modules/underscore/underscore";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
-import { Link, Router, Route, Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 export default class Cart extends Component {
   constructor(props) {
@@ -45,7 +45,7 @@ export default class Cart extends Component {
           .then(products => {
             let newProducts = products.map(prod => {
               let elem = cart.find(element => {
-                return element.product_id == prod._id;
+                return element.product_id === prod._id;
               });
               prod.quantity = Number(elem.quantity);
               return prod;
@@ -58,7 +58,6 @@ export default class Cart extends Component {
   }
   changeQty = (itemId, qty) => {
     let item = _.find(this.state.items, item => item._id === itemId);
-    // item.quantity = 1;
     item.quantity = qty;
     this.setState({ qtyTotal: this.state.qtyTotal + item.quantity });
     this.setState({ priceTotal: this.state.priceTotal + item.price });
@@ -84,7 +83,7 @@ export default class Cart extends Component {
     this.handleSubTotal();
   };
   handleSubTotal = (itemTotal = 0) => {
-    _.each(this.state.items, function (item) {
+    _.each(this.state.items, function(item) {
       itemTotal += item.price * item.quantity;
     });
     this.setState({ subTotal: itemTotal });

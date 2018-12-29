@@ -7,17 +7,13 @@ import {
 } from "react-router-dom";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { Link as LinkFromScroll } from "react-scroll";
-import { TinyButton as ScrollUpButton } from "react-scroll-up-button";
-import { slide as Menu } from "react-burger-menu";
 import "bootstrap";
 import "./css/Main.css";
-// import './user.css';
 import "./css/login.css";
 import "./css/Header.css";
 import "./css/Cart.css";
-// import './style.css';
+import "./css/signup.css";
 import Products from "./components/Products";
-// import { Product } from './components/Product';
 import LoginPage from "./components/LoginPage";
 import AdminLogin from "./components/AdminLogin";
 import AdminPanel from "./components/AdminPanel";
@@ -33,17 +29,13 @@ import "./css/Checkout.css";
 import "./css/Description.css";
 import Description from "./components/Description";
 import AdminDescription from "./components/AdminDescription";
-// import Pagination from "../node_modules/react-js-pagination";
 import "./css/Home-List.css";
 import "./css/responsive.css";
 import "./css/Contact.css";
 import "./css/Admin-Panel.css";
 import "./css/AdminProducts.css";
-// import Contact from "./components/Contact";
 import SuccessData from "./components/SuccessData";
-// import BoughtProduct from "./components/BoughtProduct";
 import BoughtProducts from "./components/BoughtProducts";
-// import BoughtWrapper from "./components/BoughtWrapper";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -64,18 +56,6 @@ class App extends Component {
         this.setState({ products });
       })
       .catch(err => console.log(err));
-    //mergevaxo - მგონი მე წავშალე და არაა საჭირო
-    //   fetch("http://localhost:5000/api/users/getcart", {
-    //   method: 'post',
-    //   headers: new Headers({
-    //     'Authorization': localStorage.getItem("Authorized")
-    //   })
-    // })
-    //   .then(res => res.json())
-    //   .then(cart => {
-    //     this.setState({ cart });
-    //   })
-    //   .catch(err => console.log(err))
   }
 
   handlePageChange(pageNumber) {
@@ -235,14 +215,6 @@ class App extends Component {
               </div>
             )}
           />
-          {/* <Route
-            path="/contact"
-            render={() => (<Contact />)}
-          /> */}
-          {/* <Route
-            path="/contactAdmin"
-            render={() => (<AdminContact />)}
-          /> */}
           <Route
             path="/login"
             render={() => (

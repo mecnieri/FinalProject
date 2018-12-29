@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import Product from "./Product"
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
-import { BrowserRouter as Router, Route, Link, RouteHandler, Redirect } from "react-router-dom";
 import BoughtProduct from "./BoughtProduct";
-import BoughtProducts from "./BoughtProducts";
 
 
 export default class BoughtWrapper extends Component {
@@ -17,7 +14,6 @@ export default class BoughtWrapper extends Component {
   render() {
     if (this.props.products) {
       return (
-        //davarendero komponenti propsad gadavcem states
         <div>
           <div className="table list-table">
             <div className="first-row">

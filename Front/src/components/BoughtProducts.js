@@ -1,11 +1,8 @@
-import BoughtProduct from "./BoughtProduct";
 import BoughtWrapper from "./BoughtWrapper";
 import Pagination from "react-js-pagination";
-import React, { Component } from "react";
-import Product from "./Product"
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import '../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
-import { BrowserRouter as Router, Route, Link, RouteHandler, Redirect } from "react-router-dom";
+import React from "react";
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
 
 export default class BoughtProducts extends React.Component {
   constructor(props) {
@@ -22,10 +19,10 @@ export default class BoughtProducts extends React.Component {
 
   componentDidMount() {
     let FETCHURL;
-    if(this.props.id) {
-      FETCHURL = `http://localhost:5000/api/users/getById/${this.props.id}`
+    if (this.props.id) {
+      FETCHURL = `http://localhost:5000/api/users/getById/${this.props.id}`;
     } else {
-      FETCHURL = "http://localhost:5000/api/users/current"
+      FETCHURL = "http://localhost:5000/api/users/current";
     }
 
     fetch(FETCHURL, {
@@ -38,7 +35,6 @@ export default class BoughtProducts extends React.Component {
     })
       .then(res => res.json())
       .then(user => {
-        // this.setState({ products: user.boughtProducts });
         let arrOfIds = user.boughtProducts.map(product => {
           return product.product_id;
         });
@@ -54,7 +50,7 @@ export default class BoughtProducts extends React.Component {
           .then(products => {
             let newProducts = products.map(prod => {
               let elem = user.boughtProducts.find(element => {
-                return element.product_id == prod._id;
+                return element.product_id === prod._id;
               });
               prod.quantity = Number(elem.quantity);
               return prod;
@@ -69,9 +65,12 @@ export default class BoughtProducts extends React.Component {
     this.setState({ activePage: pageNumber });
   }
   render() {
-    if(this.state.products) {
+    if (this.state.products) {
       return (
         <div>
+          <h1 style={{ textAlign: "center", margin: "10px" }}>
+            Bought Products
+          </h1>
           <BoughtWrapper
             products={this.state.products}
             number={this.state.activePage}
@@ -88,8 +87,7 @@ export default class BoughtProducts extends React.Component {
         </div>
       );
     } else {
-      return <div />
+      return <div />;
     }
-    
   }
 }

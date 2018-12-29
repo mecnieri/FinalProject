@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
-import SuccessData from "../components/SuccessData";
-import { Link, Router, Route, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class Checkout extends Component {
   state = {
