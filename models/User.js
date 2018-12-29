@@ -30,9 +30,9 @@ const UserSchema = new Schema({
   inbox: {
     type: Array
   },
-  cart: [{ _id: false, product_id: String, quantity: String, }],
+  cart: [{ _id: false, product_id: String, quantity: Number, }],
   
-  boughtProducts: [{ product_id: String, quantity: String }]
+  boughtProducts: [{ product_id: String, quantity: Number }]
 });
 
 module.exports = User = mongoose.model("users", UserSchema);
