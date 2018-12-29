@@ -1,13 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
-const jwt = require('jsonwebtoken');
-const keys = require('../../config/keys')
-const passport = require('passport');
-
+const jwt = require("jsonwebtoken");
+const keys = require("../../config/keys");
+const passport = require("passport");
 
 //Load Input Validation
-const validateLoginInput = require('../../validation/login')
+const validateLoginInput = require("../../validation/login");
 
 //Load User model
 const User = require("../../models/User");
@@ -25,7 +24,7 @@ router.post("/login", (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
   //Check validation
   if (!isValid) {
-    return res.status(400).json(errors)
+    return res.status(400).json(errors);
   }
 
   const email = req.body.email;
@@ -35,7 +34,7 @@ router.post("/login", (req, res) => {
   Admin.findOne({ email: email }).then(admin => {
     //Check for admin via email
     if (!admin) {
-      errors.email = 'User not found'
+      errors.email = "User not found";
       return res.status(404).json(errors);
     }
     //Check Password
@@ -43,15 +42,19 @@ router.post("/login", (req, res) => {
       if (isMatch) {
         const payload = { id: admin.id, name: admin.username } //create jwt payload
         //Sign token
-        jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600000 },
+        jwt.sign(
+          payload,
+          keys.secretOrKey,
+          { expiresIn: 3600000 },
           (err, token) => {
             res.json({
               success: true,
-              token: 'Bearer ' + token
-            })
-          });
+              token: "Bearer " + token
+            });
+          }
+        );
       } else {
-        errors.password = 'Password incorrect';
+        errors.password = "Password incorrect";
         return res.status(400).json(errors);
       }
     });
