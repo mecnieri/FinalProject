@@ -7,7 +7,7 @@
     "start": "node server.js",
     "server": "nodemon server.js",
     "heroku-postbuild": 
-    "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "NPM_CONFIG_PRODUCTION=false npm install --prefix Front && npm run build --prefix Front"
   },
   "author": "techub team",
   "license": "ISC",
