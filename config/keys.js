@@ -1,4 +1,5 @@
-module.exports = {
-  mongoURI: 'mongodb://nika:nika123456@ds261078.mlab.com:61078/techubtechnics',
-  secretOrKey: 'secret'
-}
+ if(process.env.NODE_ENV === 'production') {
+   module.exports = require('./keys_prod');
+ } else {
+   module.exports = require('./keys_dev')
+ }
