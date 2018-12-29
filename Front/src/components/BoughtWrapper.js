@@ -17,7 +17,7 @@ export default class BoughtWrapper extends Component {
         <div>
           <div className="table list-table">
             <div className="first-row">
-              {this.props.products.slice((this.props.number - 1) * 12, (this.props.number - 1) * 12 + 4).map(product => (
+              {this.props.products.slice((this.props.number - 1) * 9, (this.props.number - 1) * 9 + 3).map(product => (
                 <div key={product._id} className="each-product one">
                 <BoughtProduct product={product} />
                 </div>
@@ -25,7 +25,7 @@ export default class BoughtWrapper extends Component {
 
             </div>
             <div className="second-row">
-              {this.props.products.slice((this.props.number - 1) * 12 + 4, (this.props.number - 1) * 12 + 8).map(product => (
+              {this.props.products.slice((this.props.number - 1) * 9 + 3, (this.props.number - 1) * 9 + 6).map(product => (
                 <div key={product._id} className="each-product two">
                 <BoughtProduct product={product} />
                 </div>
@@ -33,7 +33,7 @@ export default class BoughtWrapper extends Component {
 
             </div>
             <div className="third-row">
-              {this.props.products.slice((this.props.number - 1) * 12 + 8, (this.props.number - 1) * 12 + 12).map(product => (
+              {this.props.products.slice((this.props.number - 1) * 9 + 6, (this.props.number - 1) * 9 + 9).map(product => (
                 <div key={product._id} className="each-product">
                 <BoughtProduct product={product} />
                 </div>
