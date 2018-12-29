@@ -1,109 +1,112 @@
-
 .contact-us {
   display: flex;
   margin-top: 5%;
   flex-direction: column;
   justify-content: space-between;
-  height: 80vh;
-}
-
-.App-header {
+  height: 100vh;
+ }
+ 
+ .App-header {
   background-color: #4f87e2;
   overflow: visible;
   width: 100%;
   text-align: center;
   color: white;
-}
-
-.Messages-list {
+ }
+ 
+ .Messages-list {
   padding: 20px 0;
-  max-width: 60%;
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
-  margin-left: 40%;
   margin-top: 2%;
   list-style: none;
   border: 1px solid black;
   padding-left: 0;
   flex-grow: 1;
   overflow: auto;
-}
-
-.Messages-message {
+ }
+ 
+ .message-input{
+  height: 100px;
+ }
+ .Messages-message {
   display: flex;
   margin-top: 10px;
-}
-
-.Messages-message.currentMember {
+ }
+ 
+ .Messages-message.currentMember {
   /*justify-content: flex-end;*/
   flex-direction: row-reverse;
   text-align: right;
-}
-
-.Message-content {
+ }
+ 
+ .Message-content {
   display: inline-block;
-}
-
-.currentMember > .Message-content {
+ }
+ 
+ .currentMember > .Message-content {
   align-items: flex-end;
-}
-
-.currentMember > .avatar{
+ }
+ 
+ .currentMember > .avatar{
   height: 35px;
   width: 35px;
   border-radius: 50%;
   display: inline-block;
   margin: 0 10px -10px;
-}
-.Messages-message > .avatar {
+ }
+ .Messages-message > .avatar {
   height: 35px;
   width: 35px;
   border-radius: 50%;
   display: inline-block;
   margin: 0 10px -10px;
-}
-
-.Message-content > .username {
+ }
+ 
+ .Message-content > .username {
   display: block;
   color: gray;
   font-size: 14px;
   padding-bottom: 4px;
-}
-
-.Message-content > .text {
+ }
+ 
+ .Message-content > .text {
   padding: 10px;
   max-width: 400px;
   margin: 0;
   border-radius: 12px;
-  background-color: #4f87e2;
+  background-color: #6279df;
   color: white;
   display: inline-block;
-}
-
-.currentMember > .Message-content .text {
-  background-color: #4f87e2;
-}
-
-.input form {
+ }
+ 
+ .currentMember > .Message-content .text {
+  background-color: #2964c4;
+ }
+ 
+ .input form {
   display: flex;
   width: 100%;
   justify-content: space-between;
   max-width: 900px;
-  margin: 0 auto 40px;
-}
-
-.input input {
+  margin: 20px auto 0;
+ }
+ 
+ .input .message-input {
   padding: 5px;
   font-size: 16px;
   border-radius: 8px;
   border: 1px solid #225bb7;
   flex-grow: 1;
-}
-.input{
-  width: 50%;
+  resize: none;
+ }
+ .input textarea:focus{
+  outline: none;
+ }
+ .input{
+  width: 100%;
   margin: 0 auto;
-  margin-left: 40%;
-}
-.btn-send{
+ }
+ .btn-send{
   margin-left: 10px;
-}
+ }

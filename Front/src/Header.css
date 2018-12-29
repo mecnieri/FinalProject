@@ -24,6 +24,10 @@
       .nav-bar_container--list{
         margin-bottom: 0px;
       }
+      .nav-bar_container ul a li a{
+        padding: 23px 60px 20px;
+        border-right: 1px #5D5D5D solid;
+      }
       .nav-bar_container ul li {
         list-style-type: none;
         display: inline;
@@ -31,17 +35,15 @@
         font-size: 20px;
         font-weight: 700;
         font-family: 'Open Sans', sans-serif;
-        padding: 18px 0px;
         
-        text-decoration: none;
-        border-right: 1px #5D5D5D solid; }
-        .nav-bar_container ul li:nth-child(1) {
+        text-decoration: none; }
+        .nav-bar_container ul li a:nth-child(1) {
           border-left: 1px #5D5D5D solid; }
-        .nav-bar_container ul li:hover {
+        .nav-bar_container ul li a:hover {
           background-color: var(--color-blue-Hover);
           cursor: pointer; }
           
-          /* maybe remove importatn to save responsiveness */
-  #category {
-    padding: 18px 60px !important;
-  }
+          /* ვახო. ცვლილება.  ID გადავაკეთე კლასად. important მოვაშორე */
+          /* .nav-bar_container ul li {
+              padding: 18px 60px;
+            } */

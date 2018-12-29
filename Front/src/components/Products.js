@@ -3,6 +3,8 @@ import Product from "./Product"
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
 import { BrowserRouter as Router, Route, Link, RouteHandler, Redirect } from "react-router-dom";
+import Pagination from "../../node_modules/react-js-pagination";
+
 // import Details from './components/UserDetails'
 // import Address from './components/UserAddress'
 // import Company from './components/UserCompany'

@@ -43,6 +43,7 @@ export default class LoginPage extends React.Component {
                 if (result.success) {
                     localStorage.setItem('Authorized', result.token);
                     this.props.showLogin(false);
+                    this.setState({cancel:true});
                 }
                 else {
                     localStorage.removeItem('Authorized');
@@ -54,7 +55,7 @@ export default class LoginPage extends React.Component {
     render() {
         const { isLoggedIn } = this.state;
         if (isLoggedIn) {
-            return <Redirect to={`/userpanel`} />
+            return <Redirect to={`/`} />
         }
         else {
             return (

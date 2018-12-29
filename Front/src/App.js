@@ -1,9 +1,14 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Link
+} from "react-router-dom";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
-import { Link as LinkFromScroll } from 'react-scroll';
+import { Link as LinkFromScroll } from "react-scroll";
 import { TinyButton as ScrollUpButton } from "react-scroll-up-button";
-import { slide as Menu } from 'react-burger-menu'
+import { slide as Menu } from "react-burger-menu";
 import "bootstrap";
 import "./App.css";
 // import './user.css';
@@ -46,8 +51,7 @@ class App extends Component {
       products: null,
       activePage: 1,
       adminLog: false,
-      registered: false,
-
+      registered: false
     };
     this.handlePageChange = this.handlePageChange.bind(this);
   }
@@ -81,34 +85,30 @@ class App extends Component {
     e.preventDefault();
     e.persist();
     let query;
-    console.log(e.target.tagName);
-    if (e.target.tagName === "FORM"){
-      query = e.target.elements.search2.value.toLowerCase();
+    console.log(84, e.target.tagName);
+    if (e.target.tagName === "I" || e.target.tagName === "BUTTON") {
+      query = document.getElementById("searchInput").value;
       let FETCHURL = `http://localhost:5000/api/products/${query}`;
-        fetch(FETCHURL)
-         .then(res => res.json())
-         .then(products => {
+      fetch(FETCHURL)
+        .then(res => res.json())
+        .then(products => {
           this.setState({ products });
-         })
-         .catch(err => console.log(err));
-      
-    }
-    else{
-    this.setState({text:e.target.textContent},()=>{
-      console.log(this.state.text)
+        })
+        .catch(err => console.log(err));
+    } else {
+      this.setState({ text: e.target.textContent }, () => {
+        console.log(this.state.text);
         query = this.state.text.slice(0, -1).toLowerCase();
         let FETCHURL = `http://localhost:5000/api/products/${query}`;
         fetch(FETCHURL)
-         .then(res => res.json())
-         .then(products => {
-          this.setState({ products });
-         })
-         .catch(err => console.log(err));
-       }) 
-      }
-      
-       
-   }
+          .then(res => res.json())
+          .then(products => {
+            this.setState({ products });
+          })
+          .catch(err => console.log(err));
+      });
+    }
+  };
 
   render() {
     return (
@@ -120,53 +120,107 @@ class App extends Component {
             adminLog={this.state.adminLog}
           />
           <div className="nav-bar">
-                <div className="nav-bar_container">
-                    <ul className="nav-bar_container--list">
-                    <LinkFromScroll activeClass="active" to="first-row"
-                                smooth={true}
-                                duration={500}
+            <div className="nav-bar_container">
+              <ul className="nav-bar_container--list">
+                <LinkFromScroll
+                  activeClass="active"
+                  to="first-row"
+                  smooth={true}
+                  duration={500}
+                >
+                  <li onClick={this.searchHandler}>
+                    <Link
+                      id="category"
+                      to="Laptops"
+                      style={{ color: "#fff", textDecoration: "none" }}
                     >
-                    <li onClick={this.searchHandler}><Link id="category" to="Laptops"
-                    style={{color:'#fff',textDecoration:'none'}}>Laptops</Link></li>
-                    </LinkFromScroll>
-                    <LinkFromScroll activeClass="active" to="first-row"
-                                smooth={true}
-                                duration={500}
-                            >
-                    <li onClick={this.searchHandler}><Link id="category" to="Mobiles" 
-                    style={{color:'#fff',textDecoration:'none'}}>Mobiles</Link></li>
-                    </LinkFromScroll>
-                    <LinkFromScroll activeClass="active" to="first-row"
-                                smooth={true}
-                                duration={500}
+                      Laptops
+                    </Link>
+                  </li>
+                </LinkFromScroll>
+                <LinkFromScroll
+                  activeClass="active"
+                  to="first-row"
+                  smooth={true}
+                  duration={500}
+                >
+                  <li onClick={this.searchHandler}>
+                    <Link
+                      id="category"
+                      to="Mobiles"
+                      style={{ color: "#fff", textDecoration: "none" }}
                     >
-                    <li onClick={this.searchHandler}><Link id="category" to="Tablets" 
-                    style={{color:'#fff',textDecoration:'none'}}>Tablets</Link></li>
-                    </LinkFromScroll>
-                    <LinkFromScroll activeClass="active" to="first-row"
-                                smooth={true}
-                                duration={500}
+                      Mobiles
+                    </Link>
+                  </li>
+                </LinkFromScroll>
+                <LinkFromScroll
+                  activeClass="active"
+                  to="first-row"
+                  smooth={true}
+                  duration={500}
+                >
+                  <li onClick={this.searchHandler}>
+                    <Link
+                      id="category"
+                      to="Tablets"
+                      style={{ color: "#fff", textDecoration: "none" }}
                     >
-                    <li onClick={this.searchHandler}><Link id="category" to="Cameras" 
-                    style={{color:'#fff',textDecoration:'none'}}>Cameras</Link></li>
-                    </LinkFromScroll>
-                    <LinkFromScroll activeClass="active" to="first-row"
-                                smooth={true}
-                                duration={500}
-                            >
-                    <li onClick={this.searchHandler}><Link id="category" to="Consoles" 
-                    style={{color:'#fff',textDecoration:'none'}}>Consoles</Link></li>
-                    </LinkFromScroll>
-                    <LinkFromScroll activeClass="active" to="first-row"
-                                smooth={true}
-                                duration={500}
-                            >
-                   <li onClick={this.searchHandler}><Link id="category" to="TVs" 
-                   style={{color:'#fff', textDecoration:'none'}}>TVs</Link></li>
-                   </LinkFromScroll>
-                    </ul>
-                </div>
+                      Tablets
+                    </Link>
+                  </li>
+                </LinkFromScroll>
+                <LinkFromScroll
+                  activeClass="active"
+                  to="first-row"
+                  smooth={true}
+                  duration={500}
+                >
+                  <li onClick={this.searchHandler}>
+                    <Link
+                      id="category"
+                      to="Cameras"
+                      style={{ color: "#fff", textDecoration: "none" }}
+                    >
+                      Cameras
+                    </Link>
+                  </li>
+                </LinkFromScroll>
+                <LinkFromScroll
+                  activeClass="active"
+                  to="first-row"
+                  smooth={true}
+                  duration={500}
+                >
+                  <li onClick={this.searchHandler}>
+                    <Link
+                      id="category"
+                      to="Consoles"
+                      style={{ color: "#fff", textDecoration: "none" }}
+                    >
+                      Consoles
+                    </Link>
+                  </li>
+                </LinkFromScroll>
+                <LinkFromScroll
+                  activeClass="active"
+                  to="first-row"
+                  smooth={true}
+                  duration={500}
+                >
+                  <li onClick={this.searchHandler}>
+                    <Link
+                      id="category"
+                      to="TVs"
+                      style={{ color: "#fff", textDecoration: "none" }}
+                    >
+                      TVs
+                    </Link>
+                  </li>
+                </LinkFromScroll>
+              </ul>
             </div>
+          </div>
           <Route
             path="/"
             exact
@@ -234,51 +288,63 @@ class App extends Component {
               <Cart {...props} cart={this.state.cart} />
             )}
           />
-          <Route path="/checkoutTest" render={() => <Checkout />} />
+          <Route path="/checkout" render={() => <Checkout />} />
           {/* change */}
           {/* appshi chaamate es  */}
           <Route
             path="/Laptops"
-            render={
-              () => (
-                <Products products={this.state.products} number={this.state.activePage} />
-              )
-            }/>
-             <Route
+            render={() => (
+              <Products
+                products={this.state.products}
+                number={this.state.activePage}
+              />
+            )}
+          />
+          <Route
             path="/Mobiles"
-            render={
-              () => (
-                <Products products={this.state.products} number={this.state.activePage} />
-              )
-            }/>
-             <Route
+            render={() => (
+              <Products
+                products={this.state.products}
+                number={this.state.activePage}
+              />
+            )}
+          />
+          <Route
             path="/Tablets"
-            render={
-              () => (
-                <Products products={this.state.products} number={this.state.activePage} />
-              )
-            }/>
-             <Route
+            render={() => (
+              <Products
+                products={this.state.products}
+                number={this.state.activePage}
+              />
+            )}
+          />
+          <Route
             path="/Cameras"
-            render={
-              () => (
-                <Products products={this.state.products} number={this.state.activePage} />
-              )
-            }/>
-             <Route
+            render={() => (
+              <Products
+                products={this.state.products}
+                number={this.state.activePage}
+              />
+            )}
+          />
+          <Route
             path="/Consoles"
-            render={
-              () => (
-                <Products products={this.state.products} number={this.state.activePage} />
-              )
-            }/>
-             <Route
+            render={() => (
+              <Products
+                products={this.state.products}
+                number={this.state.activePage}
+              />
+            )}
+          />
+          <Route
             path="/TVs"
-            render={
-              () => (
-                <Products products={this.state.products} number={this.state.activePage} />
-              )
-            }/>
+            render={() => (
+              <Products
+                products={this.state.products}
+                number={this.state.activePage}
+              />
+            )}
+          />
           <Route
             path="/successdata"
             render={props => <SuccessData {...props} />}
@@ -309,7 +375,7 @@ class App extends Component {
           {this.state.registered && <Redirect to={"/"} />}
 
           {!this.state.showLogin && <Redirect to={`/`} />}
-          {this.state.adminLog && <Redirect to={`/adminpanel`} />}
+          {this.state.adminLog && <Redirect to={`/adminPanel`} />}
 
           <Footer />
         </div>

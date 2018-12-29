@@ -269,7 +269,7 @@ img.logoImg {
     flex-direction: column;
     align-self: center;
     align-items: center;
-    /* width: 25%; */
+    width: 50%;
 }
 .categories {
     width: 40%;
@@ -277,7 +277,7 @@ img.logoImg {
     /* background-color: #f7f8f9; */
 }
 .inputAndAll{
-    border: 3px solid var(--color-primary);
+    border: 2px solid var(--color-primary);
     justify-items: center;
     box-sizing: border-box;
     display: flex;
@@ -288,7 +288,7 @@ form.search input[type=text] {
     padding-left: 2%;
     width: 90%;
     font-family: 'Open Sans', sans-serif;
-    font-size: 26px;
+    font-size: 20px;
 }
 /* form.search .categoriesClass {
     padding: 10px;
@@ -303,8 +303,8 @@ form.search input[type=text] {
     width: 15%;
 }
 .search-btn{
-    float: left;
-    width: 20%;
+    width: 100%;
+    height: 100%;
     background-color: var(--color-blue);
     color: white;
     font-size: 17px;

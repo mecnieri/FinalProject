@@ -25,7 +25,7 @@ class Input extends Component {
         return (
             <div className="input">
                 <form onSubmit={e => this.onSubmit(e)}>
-                    <input
+                    <textarea className="message-input"
                         onChange={e => this.onChange(e)}
                         value={this.state.text}
                         type="text"

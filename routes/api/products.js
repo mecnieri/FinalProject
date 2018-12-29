@@ -3,6 +3,7 @@ const router = express.Router();
 const ObjectId = require("mongodb").ObjectID;
 const passport = require("passport");
 
+//Load Product model
 const Product = require("../../models/Product");
 
 // ROUTES FOR PRODUCTS CRUD 

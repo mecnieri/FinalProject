@@ -2,7 +2,8 @@ import React from 'react';
 // import {Redirect } from 'react-router-dom';
 import Tabs from './Tabs';
 import './../user.css';
-import AdminProducts from './AdminProducts'
+import AdminProducts from './AdminProducts';
+import {Redirect, Link} from 'react-router-dom';
 import AdminContact from './AdminContact';
 import Pagination from "../../node_modules/react-js-pagination";
 // import '../css/Tabs.css';
@@ -25,6 +26,9 @@ export default class AdminPanel extends React.Component {
     this.handleEditUser = this.handleEditUser.bind(this);
     this.handleDeleteUser = this.handleDeleteUser.bind(this);
     this.handleAddProduct = this.handleAddProduct.bind(this);
+  }
+  redirect=()=>{
+    return <Redirect to="/BoughtProducts"/>
   }
   AdminSearchHandler = e => {
     e.preventDefault();
@@ -173,6 +177,7 @@ export default class AdminPanel extends React.Component {
                   </h1>
                   {/* <button onClick={this.handleDeleteUser} value="Delete User" className="btn btn-danger" /> */}
                   <input type="submit" value="Save Changes" className=" btn btn-primary change-user-btn" />
+                  <Link to="/BoughtProducts"><button value="X" onSubmit={this.redirect} className="btn btn-primary" style={{marginRight:"35px"}}>Bought Products</button></Link>
                   <button onClick={this.handleDeleteUser} value="X" className="btn btn-danger delete-user-btn">Delete User</button>
                 </form>
               </div>
