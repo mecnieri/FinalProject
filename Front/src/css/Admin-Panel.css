@@ -8,8 +8,6 @@
 .user-input {
   display: flex; }
 
-.search-user-form {
-  padding-bottom: 5%; }
   .search-user-form p {
     font-weight: 700; }
   .search-user-form .submit-input {

@@ -18,7 +18,6 @@ class Input extends Component {
         this.setState({ text: "" });
         this.props.onSendMessage(this.state.text);
         this.props.handleSaveInBaseAdmin()
-
     }
 
     render() {

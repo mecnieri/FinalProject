@@ -34,18 +34,17 @@
     height: 7px;
     margin-right: 10px;
     border-radius: 50%;
-    background: #59B210;
     cursor: pointer;
   }
   
   .react-slideshow-container + div.indicators > div:hover {
-    background: #54a90f;
+    background: var(--color-blue);
     height: 10px;
     width: 10px;
   }
   
   .react-slideshow-container + div.indicators > div.active {
-    background: #54a90f;
+    background: var(--color-blue-Hover);
     height: 10px;
     width: 10px;
   }
