@@ -1,34 +1,60 @@
 .tabs {
-  padding-top: 5%; }
+  padding-top: 5%;
+}
 
 .admin-panel .user-search {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+}
 
 .user-input {
-  display: flex; }
-
+  display: flex;
+}
+.search-btn-admin {
+  width: 12%;
+  background-color: #3c78d8;
+  background-color: var(--color-blue);
+  color: white;
+  font-size: 17px;
+  /* border: 1px solid grey; */
+  /* border-left: none; */
+  cursor: pointer;
+  border: none;
+}
+.search-icon::before{
+  color: #ffff;
+}
 .search-user-form {
-  padding-bottom: 5%; }
-  .search-user-form p {
-    font-weight: 700; }
-  .search-user-form .submit-input {
-    margin-left: 5%; }
+  padding-bottom: 5%;
+}
+.search-user-form p {
+  font-weight: 700;
+}
+.search-user-form .submit-input {
+  margin-left: 5%;
+}
 
-.user-username, .user-balance, .user-birthday {
-  width: 23%; }
+.user-username,
+.user-balance,
+.user-birthday {
+  width: 23%;
+}
 
 .edit-user p {
   font-weight: 500;
   letter-spacing: 1px;
-  margin-bottom: 5px; }
+  margin-bottom: 5px;
+}
 
 .change-user-btn {
-  margin-right: 5%; }
+  margin-right: 5%;
+}
 
 .edit-user .empty-cart {
   display: inline;
-  color: red; }
+  color: red;
+}
 
 .add-product-btn {
-  margin-left: 5%; }
+  margin-left: 5%;
+}

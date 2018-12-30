@@ -167,7 +167,6 @@ router.put(
 
 // Routes for Users Cart CRUD operations, BoughtProducts, Checkout,  [from 174 to 323]
 
-
 //@route POST api/users/cart
 //@desc add products to cart.
 //@access User
@@ -227,6 +226,18 @@ router.delete(
       user.save();
       res.json(user.cart);
     });
+  }
+);
+
+
+router.delete(
+  "/",
+  passport.authenticate("admin-rule", { session: false }),
+  (req, res) => {
+    console.log(237, req.body.id);
+    User.findOneAndRemove({ _id: req.body.id}).then(user => {
+      user.save()
+    })
   }
 );
 
@@ -323,7 +334,6 @@ router.post(
 );
 
 // Routes for Users message [from 328 to 359]
-
 
 //@route GET api/users/message
 //@desc message

@@ -1,5 +1,7 @@
 .admin-list-table {
   display: flex;
+  width: 70%;
+  margin: auto;
   flex-direction: column; }
   .admin-list-table .admin-image-container {
     text-align: center; }
