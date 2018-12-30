@@ -242,7 +242,7 @@ router.post(
       res.json(user.cart);
     });
   }
-);
+)
 
 //@route GET api/users/boughtProducts/:id
 //@desc get products from users broughtProducts
