@@ -80,7 +80,7 @@ router.post("/login", (req, res) => {
         jwt.sign(
           payload,
           keys.secretOrKey,
-          { expiresIn: 3600000 }, //change to realistic time for production
+          { expiresIn: 86400000 }, //change to realistic time for production
           (err, token) => {
             res.json({
               success: true,
@@ -167,7 +167,6 @@ router.put(
 
 // Routes for Users Cart CRUD operations, BoughtProducts, Checkout,  [from 174 to 323]
 
-
 //@route POST api/users/cart
 //@desc add products to cart.
 //@access User
@@ -230,6 +229,17 @@ router.delete(
   }
 );
 
+
+router.delete(
+  "/",
+  passport.authenticate("admin-rule", { session: false }),
+  (req, res) => {
+    console.log(237, req.body.id);
+    User.findOneAndRemove({ _id: req.body.id}).then(user => {
+      user.save()
+    })
+  }
+);
 
 //@route post api/users/getCart
 //@desc get cart from users
@@ -324,7 +334,6 @@ router.post(
 );
 
 // Routes for Users message [from 328 to 359]
-
 
 //@route GET api/users/message
 //@desc message
