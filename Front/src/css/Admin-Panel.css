@@ -4,7 +4,20 @@
 .admin-panel .user-search {
   display: flex;
   flex-direction: column; }
-
+  .search-btn-admin {
+    width: 12%;
+    background-color: #3c78d8;
+    background-color: var(--color-blue);
+    color: white;
+    font-size: 17px;
+    /* border: 1px solid grey; */
+    /* border-left: none; */
+    cursor: pointer;
+    border: none;
+    }
+    .search-icon::before{
+    color: #ffff;
+    }
 .user-input {
   display: flex; }
 

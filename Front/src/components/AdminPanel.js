@@ -312,8 +312,8 @@ export default class AdminPanel extends React.Component {
                       name="search2"
                     />
 
-                    <button type="submit" className="search-btn">
-                      <i className="fa fa-search" />
+                    <button type="submit" className="search-btn-admin">
+                      <i className="fa fa-search search-icon" />
                     </button>
                   </div>
                   <div>

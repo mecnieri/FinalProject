@@ -230,16 +230,7 @@ router.delete(
   }
 );
 
-router.delete(
-  "/",
-  passport.authenticate("admin-rule", { session: false }),
-  (req, res) => {
-    console.log(237, req.body.id);
-    User.findOneAndRemove({ _id: req.body.id}).then(user => {
-      user.save()
-    })
-  }
-  
+
 //@route post api/users/getCart
 //@desc get cart from users
 //@access Admin
