@@ -1,4 +1,4 @@
-check live demo at: https://techubtechnics.herokuapp.com/ (please disable adblock, or use incognito mode)
+check live demo at: https://techubtechnics.herokuapp.com/ (please disable adblock, or use incognito mode) 
       admin panel url: https://techubtechnics.herokuapp.com/admin email: admin@gmail.com pass:password123456
 
 or download files as zip. extract files, open terminal type: npm run server,
